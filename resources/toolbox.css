@@ -1,0 +1,81 @@
+.toolBoxSeperator {
+    height: 0;
+    border-bottom-color: white;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    margin: 5px 0; 
+}
+
+.transparentBg {
+    background-color: transparent;
+}
+
+#packagingDiv {
+    position: absolute;
+    right: 5vh;
+    top: 5vh;
+    size: 50px;
+    z-index: 1000000;
+
+    background-color: #1F1F1F;
+    border: #1F1F1F;
+    border-radius: 10px;
+}
+
+#packInforamtion {
+    position: absolute;
+    right: 5vh;
+    top: 20vh;
+    left: 125vh;
+    border-radius: 10px;
+    background-color:#1F1F1F;
+    size: 50px;
+    z-index: 1000000;
+}
+
+#saving {
+    position: absolute;
+    right: 20vh;
+    top: 3vh;
+    margin:0;
+    border-radius: 10px;
+    z-index: 1000000;
+    
+}
+
+#loading {
+    position: absolute;
+    right: 36vh;
+    top: 3vh;
+    margin:0;
+    border-radius: 10px;
+    z-index: 1000000;
+    
+}
+
+#saveBtn {
+    background-color: #3F3F3F;
+    border-radius: 20px;
+    box-shadow: 3px;
+    border: 2px solid black;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+
+.input {
+    margin: 4px;
+    background: #242424;
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 0;
+    color: white;
+    transition: border-color 0.5s, color 0.5s;
+}

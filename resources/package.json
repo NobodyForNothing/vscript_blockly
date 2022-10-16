@@ -1,0 +1,8 @@
+{
+  "name": "vscript-blockly",
+  "version": "1.0.0",
+  "description": "write portal 2 mods visually",
+  "main": "index.js",
+  "author": "derdilla",
+  "license": "ISC"
+}

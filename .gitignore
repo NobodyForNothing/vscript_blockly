@@ -17,3 +17,6 @@ neutralino.js
 
 # unrelated
 /.tmp
+/workspaces
+/.github
+

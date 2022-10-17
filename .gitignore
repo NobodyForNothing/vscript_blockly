@@ -13,10 +13,9 @@ neutralino.js
 *.log
 
 # libaries
-/blockly
+/resources/blockly
 
 # unrelated
 /.tmp
 /workspaces
-/.github
 

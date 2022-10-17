@@ -198,6 +198,35 @@ Blockly.Blocks['ppmod_wait'] = {
     });
   }
 }
+Blockly.Blocks['ppmod_repeat'] = {
+  init: function() {
+    this.jsonInit({
+      "type": "ppmod_repeat",
+      "message0": "every %1 seconds do %2 until %3",
+      "args0": [
+        {
+          "type": "input_value",
+          "name": "INTERVALL"
+        },
+        {
+          "type": "input_statement",
+          "name": "CODE"
+        },
+        {
+          "type": "input_value",
+          "name": "condition",
+          "check": "Boolean"
+        }
+      ],
+      "inputsInline": true,
+      "previousStatement": null,
+      "nextStatement": null,
+      "colour": 230,
+      "tooltip": "executes code after a set amount of time",
+      "helpUrl": "https://github.com/p2r3/ppmod/#ppmodwait"
+    });
+  }
+}
 
 
 // events

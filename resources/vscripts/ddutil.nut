@@ -49,3 +49,16 @@ ddutil.clientExecute <- function(cmd) {
   ppmod.fire(ddutil.conEnt, "Command", cmd);
 }
 
+ddutil.generateId <- function(length) {
+  local out = "";
+  for(local i = 0; i < length; i++) {
+    out += RandomInt(0,9);
+  }
+  return out;
+}
+
+ddutil.genUniqueEntName <- function() {
+  local name = "ddEnt" + genId(6);
+  return name;
+}
+

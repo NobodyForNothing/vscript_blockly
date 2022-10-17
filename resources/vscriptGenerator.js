@@ -452,5 +452,8 @@ vscriptGenerator['tick'] = function(block) {
 }
 vscriptGenerator['ppmod_repeat'] = function(block) {
     const actions = vscriptGenerator.statementToCode(block, 'CODE');
-    return `ppmod.interval(function() {\n${actions}\n});`
+    const intervall = vscriptGenerator.statementToCode(block, 'INTERVALL');
+    const condition = vscriptGenerator.statementToCode(block, 'COND');
+    if(condition === 'true') return ` ppmod.interval(function() {\n${actions}\n}, ${intervall});`
+    return `local en__ ddutil.genUniqueEntName();\n ppmod.interval(function(en__ = en__) {\nif(!(${condition})){ppmod.fire(en__, "kill")}\n${actions}\n}, ${intervall}, en__ );`
 }

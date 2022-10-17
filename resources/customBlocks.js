@@ -87,23 +87,24 @@ Blockly.Blocks['ppmod_fire'] = {
       "message0": "fire input %1 of entity %2 with the value %3 after %4 seconds",
       "args0": [
         {
-          "type": "field_input",
+          "type": "input_value",
           "name": "ACTION",
-          "text": "use"
+          "text": "use",
+          "check": "String"
         },
         {
           "type": "input_value",
           "name": "ENTITY"
         },
         {
-          "type": "field_input",
+          "type": "input_value",
           "name": "VALUE",
-          "text": ""
+          "check": "String"
         },
         {
-          "type": "field_number",
+          "type": "input_value",
           "name": "DELAY",
-          "value": 0
+          "check": "Number"
         },
       ],
       "previousStatement": null,
@@ -133,9 +134,9 @@ Blockly.Blocks['ppmod_add_script'] = {
           "name": "SCRIPT"
         },
         {
-          "type": "field_number",
+          "type": "input_value",
           "name": "DELAY",
-          "value": 0
+          "check": "Number"
         }
       ],
       "previousStatement": null,
@@ -182,7 +183,8 @@ Blockly.Blocks['ppmod_wait'] = {
       "args0": [
         {
           "type": "input_value",
-          "name": "DELAY"
+          "name": "DELAY",
+          "check": "Number"
         },
         {
           "type": "input_statement",

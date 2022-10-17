@@ -68,6 +68,3 @@ async function loadWorkspaceFromFile() {
 window.addEventListener('unload',
       function() {saveWorkspaceToFile}, false);
 
-
-  
-

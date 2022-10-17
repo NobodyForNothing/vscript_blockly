@@ -290,7 +290,21 @@ const toolbox = {
         {
           "kind": "block",
           "type": "tick"
-        }
+        },
+        {
+          "kind": "block",
+          "type": "ppmod_repeat",
+          "inputs": {
+            "COND": {
+              "shadow": {
+                "type": "logic_boolean",
+                "fields": {
+                  "BOOL": "TRUE"
+                }
+              }
+            },
+          }
+        },
       ]
     },
     {

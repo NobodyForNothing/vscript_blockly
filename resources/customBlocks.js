@@ -204,11 +204,12 @@ Blockly.Blocks['ppmod_repeat'] = {
   init: function() {
     this.jsonInit({
       "type": "ppmod_repeat",
-      "message0": "every %1 seconds do %2 until %3",
+      "message0": "every %1 seconds while %3 do %2",
       "args0": [
         {
           "type": "input_value",
-          "name": "INTERVALL"
+          "name": "INTERVALL",
+          "check": "Number"
         },
         {
           "type": "input_statement",
@@ -216,16 +217,13 @@ Blockly.Blocks['ppmod_repeat'] = {
         },
         {
           "type": "input_value",
-          "name": "condition",
+          "name": "COND",
           "check": "Boolean"
         }
       ],
-      "inputsInline": true,
-      "previousStatement": null,
-      "nextStatement": null,
       "colour": 230,
-      "tooltip": "executes code after a set amount of time",
-      "helpUrl": "https://github.com/p2r3/ppmod/#ppmodwait"
+      "tooltip": "executes code independently on a regular intervall",
+      "helpUrl": "https://github.com/p2r3/ppmod/#ppmodinterval"
     });
   }
 }

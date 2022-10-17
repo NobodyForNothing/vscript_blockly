@@ -25,6 +25,7 @@ vscriptGenerator.scrub_ = function(block, code, opt_thisOnly) {
     return code;
 };
 
+// order
 vscriptGenerator.ORDER_NONE = 99;
 
 // logic (https://github.com/google/blockly/blob/master/blocks/logic.js)
@@ -409,10 +410,10 @@ vscriptGenerator['ppmod_get'] = function(block) {
     return `ppmod.get(${name})`;
 }
 vscriptGenerator['ppmod_fire'] = function(block) {
-    const action = block.getFieldValue('ACTION');
+    const action = vscriptGenerator.statementToCode(block, 'ACTION');
     const entity = vscriptGenerator.statementToCode(block, 'ENTITY');
-    const value = block.getFieldValue('VALUE');
-    const delay = block.getFieldValue('DELAY');
+    const value = vscriptGenerator.statementToCode(block, 'VALUE');
+    const delay = vscriptGenerator.statementToCode(block, 'DELAY');
     
     return `ppmod.fire(entity=${entity},action="${action}",value="${value}",delay="${delay}");\n`;
 }
@@ -420,13 +421,13 @@ vscriptGenerator['ppmod_add_script'] = function(block) {
     const entity = vscriptGenerator.statementToCode(block, 'ENTITY');
     const entityOutput = vscriptGenerator.statementToCode(block, 'OUTPUT');
     const script = vscriptGenerator.statementToCode(block, 'SCRIPT');
-    const delay = block.getFieldValue('DELAY');
+    const delay = vscriptGenerator.statementToCode(block, 'DELAY');
     
     return `ppmod.addscript(${entity},${entityOutput},function(){\n${script}\n}, delay=${delay});\n`;
 }
 vscriptGenerator['ppmod_keyval'] = function(block) {
     const entity = vscriptGenerator.statementToCode(block, 'ENTITY');
-    const key = block.getFieldValue('KEY');
+    const key = vscriptGenerator.statementToCode(block, 'KEY');
     const value = vscriptGenerator.statementToCode(block, 'VALUE');
     
     return `ppmod.keyval(${entity}, ${key}, ${value});\n`;
@@ -446,6 +447,10 @@ vscriptGenerator['setup'] = function(block) {
     return `ddutil.runOnSetup(function() {\n${setupCode}\n});`
 }
 vscriptGenerator['tick'] = function(block) {
+    const actions = vscriptGenerator.statementToCode(block, 'CODE');
+    return `ppmod.interval(function() {\n${actions}\n});`
+}
+vscriptGenerator['ppmod_repeat'] = function(block) {
     const actions = vscriptGenerator.statementToCode(block, 'CODE');
     return `ppmod.interval(function() {\n${actions}\n});`
 }

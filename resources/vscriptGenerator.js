@@ -444,7 +444,7 @@ vscriptGenerator['ppmod_fire'] = function(block) {
     const value = vscriptGenerator.statementToCode(block, 'VALUE');
     const delay = vscriptGenerator.statementToCode(block, 'DELAY');
     
-    return `ppmod.fire(entity=${entity},action="${action}",value="${value}",delay="${delay}");\n`;
+    return `ppmod.fire(${entity},${action},${value},${delay});\n`;
 }
 vscriptGenerator['ppmod_add_script'] = function(block) {
     const entity = vscriptGenerator.statementToCode(block, 'ENTITY');
@@ -452,7 +452,7 @@ vscriptGenerator['ppmod_add_script'] = function(block) {
     const script = vscriptGenerator.statementToCode(block, 'SCRIPT');
     const delay = vscriptGenerator.statementToCode(block, 'DELAY');
     
-    return `ppmod.addscript(${entity},${entityOutput},function(){\n${script}\n}, delay=${delay});\n`;
+    return `ppmod.addscript(${entity},${entityOutput},function(){\n${script}\n},${delay});\n`;
 }
 vscriptGenerator['ppmod_keyval'] = function(block) {
     const entity = vscriptGenerator.statementToCode(block, 'ENTITY');

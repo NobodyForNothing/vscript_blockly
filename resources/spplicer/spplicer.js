@@ -301,8 +301,7 @@ async function createPackage() {
     Neutralino.os.showMessageBox(
       "Package created",
       `The package has been created successfully and saved to "${NL_PATH}/${pkg.name}_spplice.tar.gz"
-\nTo install it locally, find the Spplice install directory and put this file in the "custom" folder.
-\nFor publishing on the public Spplice package reposiory, contact p2r3@p2r3.com`,
+\nTo install it locally, find the Spplice install directory and put this file in the "custom" folder.`,
       "OK",
       "INFO"
     );

@@ -196,7 +196,40 @@ const toolbox = {
         {
           'kind': 'block',
           'type': 'lists_length'
-        }
+        },
+        {
+          'kind': 'block',
+          'type': 'list_getElement',
+          "inputs": {
+            "ID": {
+              "shadow": {
+                "type": "math_number",
+                "fields": {
+                  "NUM": 0
+                }
+              }
+            },
+          }
+        },
+        {
+          'kind': 'block',
+          'type': 'list_setElement',
+          "inputs": {
+            "ID": {
+              "shadow": {
+                "type": "math_number",
+                "fields": {
+                  "NUM": 0
+                }
+              }
+            },
+          }
+          
+        },
+        {
+          'kind': 'block',
+          'type': 'list_addElement',
+        },
       ]
     },
 

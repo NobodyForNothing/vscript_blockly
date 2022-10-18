@@ -469,7 +469,6 @@ vscriptGenerator['ppmod_wait'] = function(block) {
 }
 
 
-
 // events
 vscriptGenerator['setup'] = function(block) {
     const setupCode = vscriptGenerator.statementToCode(block, 'CODE');

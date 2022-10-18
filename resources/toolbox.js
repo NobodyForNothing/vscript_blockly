@@ -229,7 +229,7 @@ const toolbox = {
         {
           'kind': 'block',
           'type': 'list_addElement',
-        },
+        }
       ]
     },
 
@@ -251,6 +251,16 @@ const toolbox = {
         {
           "kind": 'block',
           'type': 'variables_set'
+        },
+      ]
+    },
+    {
+      "kind": "category",
+      "name": "Procedures",
+      "contents": [
+        {
+          "kind": 'block',
+          'type': 'procedures_defreturn'
         },
       ]
     },

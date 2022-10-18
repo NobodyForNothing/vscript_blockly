@@ -389,6 +389,35 @@ vscriptGenerator['variables_set'] = function(block) {
 }
 
 
+// procedures (functions)
+vscriptGenerator['procedures_defreturn'] = function(block) {
+    // fetch args
+    const name = block.getFieldValue('NAME');
+    const returns = vscriptGenerator.statementToCode(block, 'RETURN');
+    const statements = vscriptGenerator.statementToCode(block, 'STACK');
+    // todo find a way to directly access params
+    const paramsString = block.getFieldValue('PARAMS');
+    const params = (paramsString + '#').slice(6,-1).split(', '); // removes "with: " and splits
+
+    // move function variables to global scope to make them accessible by the default variable functions
+    // todo: find better way to solve this
+    let variableGlobalization = '// variable globalization\n// bad practice: dont\'t do this when writing code yourself\n';
+    for(const varName of params) {
+        variableGlobalization += `${variablePrefix + varName} = ${varName};\n`;
+    }
+
+    let code = `function ${name}(`;
+    code += params.toString();
+    code += `){
+        ${variableGlobalization}
+        ${statements}
+        returns ${returns};
+    }`;
+    console.log(code);
+    return code;
+}
+
+
 // p2 console
 vscriptGenerator['console_print'] = function(block) {
     const text = vscriptGenerator.statementToCode(block, 'TEXT');

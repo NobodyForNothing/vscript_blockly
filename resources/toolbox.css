@@ -1,3 +1,7 @@
+body {
+    overflow: hidden;
+}
+
 .toolBoxSeperator {
     height: 0;
     border-bottom-color: white;

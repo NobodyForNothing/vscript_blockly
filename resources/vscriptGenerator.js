@@ -379,13 +379,13 @@ vscriptGenerator['lists_length'] = function(block) {
 vscriptGenerator['variables_get'] = function(block) {
     const varId = block.getFieldValue('VAR');
     const varName = vscriptGenerator.idToName(varId);
-    return varName;
+    return variablePrefix + varName;
 }
 vscriptGenerator['variables_set'] = function(block) {
     const varId = block.getFieldValue('VAR');
     const varName = vscriptGenerator.idToName(varId);
     const value = vscriptGenerator.statementToCode(block, 'VALUE');
-    return varName + '=' + value;
+    return variablePrefix+varName + '=' + value;
 }
 
 

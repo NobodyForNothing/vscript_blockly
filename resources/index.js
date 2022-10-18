@@ -1,3 +1,5 @@
+const variablePrefix = 'mod.v.';
+
 let mapSpawnCode = "";
 
 const modInfo = {
@@ -16,8 +18,10 @@ function updateCode(event) {
 
     // define variables in script scope
     const variables = Blockly.getMainWorkspace().getAllVariables()
+    code += '::mod <- {};\n';
+    code += `// decaring variables on a global scope is generally not advised when codeing manually\nmod.v <- {};\n`;
     variables.forEach(v => {
-      code += 'local ' + v.name + ';\n';
+      code += variablePrefix + v.name + ' <- null;\n';
     });
     code += '\n';
 
@@ -66,5 +70,5 @@ async function loadWorkspaceFromFile() {
 }
 
 window.addEventListener('unload',
-      function() {saveWorkspaceToFile}, false);
+      saveWorkspaceToFile, false);
 

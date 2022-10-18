@@ -18,5 +18,13 @@ You can code your mods relatively intuitively by putting together blocks from th
 - current list implementation has little real use
 -  some valid block constellations cause the generated code not to work (feel free to create an issue containing the workspace file)
 
-### Expanding the feature set
-As of now, the amount of blocks to interact with portal 2 is very limited. In case you don't want to wait, you can expand it yourself by adding block information to the customBlocks.js file and a compiler for the block to the index.js file.
+### Contributing
+To contribute add contents of the [Blockly repository](https://github.com/google/blockly/tree/master) to `ressources/blockly` install neutralino and `neu run`  the project.
+
+### Planed features
+- improving the list functionality
+- implementing Tables
+- more export options
+- allow adding more information to package export
+- rework GUI
+- adding plugin support

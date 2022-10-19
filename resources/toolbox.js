@@ -416,6 +416,162 @@ const toolbox = {
             },
           }
         },
+        {
+          "kind": "block",
+          "type": "ppmod_player_eyes",
+        },
+        /* todo
+        {
+          "kind": "block",
+          "type": "ppmod_player_holding",
+        },
+        */
+        {
+          "kind": "block",
+          "type": "ppmod_player_event",
+        },
+        {
+          "kind": "block",
+          "type": "ppmod_create",
+          "inputs": {
+            "CODE": {
+              "block": {
+                "type": "var_pre_ent",
+              }
+            }
+          }
+        },
+        {
+          "kind": "block",
+          "type": "ppmod_text_simple",
+          "inputs": {
+            "TEXT": {
+              "shadow": {
+                "type": "text",
+                "fields": {
+                  "TEXT": ""
+                }
+              }
+            },
+          }
+        },
+        {
+          "kind": "block",
+          "type": "ppmod_text",
+          "inputs": {
+            "TEXT": {
+              "shadow": {
+                "type": "text",
+                "fields": {
+                  "TEXT": ""
+                }
+              }
+            },
+            "X": {
+              "shadow": {
+                "type": "math_number",
+                "fields": {
+                  "NUM": -1
+                }
+              }
+            },
+            "Y": {
+              "shadow": {
+                "type": "math_number",
+                "fields": {
+                  "NUM": -1
+                }
+              }
+            },
+            "TIME": {
+              "shadow": {
+                "type": "math_number",
+                "fields": {
+                  "NUM": 10
+                }
+              }
+            },
+            "COL_FORG": {
+              "shadow": {
+                "type": "colour_rgb",
+                "inputs": {
+                  "RED": {
+                    "shadow": {
+                      "type": "math_number",
+                      "fields": {
+                        "NUM": 255
+                      }
+                    }
+                  },
+                  "GREEN": {
+                    "shadow": {
+                      "type": "math_number",
+                      "fields": {
+                        "NUM": 255
+                      }
+                    }
+                  },
+                  "BLUE": {
+                    "shadow": {
+                      "type": "math_number",
+                      "fields": {
+                        "NUM": 255
+                      }
+                    }
+                  },
+                }
+              }
+            },
+            "COL_BACK": {
+              "shadow": {
+                "type": "colour_rgb",
+                "inputs": {
+                  "RED": {
+                    "shadow": {
+                      "type": "math_number",
+                      "fields": {
+                        "NUM": 0
+                      }
+                    }
+                  },
+                  "GREEN": {
+                    "shadow": {
+                      "type": "math_number",
+                      "fields": {
+                        "NUM": 0
+                      }
+                    }
+                  },
+                  "BLUE": {
+                    "shadow": {
+                      "type": "math_number",
+                      "fields": {
+                        "NUM": 0
+                      }
+                    }
+                  },
+                }
+              }
+            },
+            "FADEIN": {
+              "shadow": {
+                "type": "math_number",
+                "fields": {
+                  "NUM": 0
+                }
+              }
+            },
+            "FADEOUT": {
+              "shadow": {
+                "type": "math_number",
+                "fields": {
+                  "NUM": 0
+                }
+              }
+            },
+
+          }
+        },
       ]
     },
 

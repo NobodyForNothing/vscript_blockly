@@ -467,6 +467,79 @@ vscriptGenerator['ppmod_wait'] = function(block) {
     
     return `ppmod.wait(function(){\n${code}\n}, ${delay});\n`;
 }
+vscriptGenerator['ppmod_repeat'] = function(block) {
+    const actions = vscriptGenerator.statementToCode(block, 'CODE');
+    const intervall = vscriptGenerator.statementToCode(block, 'INTERVALL');
+    const condition = vscriptGenerator.statementToCode(block, 'COND');
+    if(condition === 'true') return `ppmod.interval(function() {\n${actions}\n}, ${intervall});`
+    return `local en__ ddutil.genUniqueEntName();\n ppmod.interval(function(en__ = en__) {\nif(!(${condition})){ppmod.fire(en__, "kill")}\n${actions}\n}, ${intervall}, en__ );`
+}
+vscriptGenerator['ppmod_player_eyes'] = function(block) {
+    return 'ppmod.player.eyes.GetOrigin()'
+}
+vscriptGenerator['ppmod_player_holding'] = function(block) { // todo 
+    return `${privateVariablePrefix}.holds = null;ppmod.player.holding(function(state){${privateVariablePrefix}.holds = state});\nwhile(${privateVariablePrefix}.holds)`;
+} 
+vscriptGenerator['ppmod_player_event'] = function(block) {
+    const eventType = block.getFieldValue('EVENT');
+    const action = vscriptGenerator.statementToCode(block, 'CODE');
+    let code = 'ppmod.player.';
+    code += eventType.toLowerCase();
+    code += `(function() {${action}});`;
+    return code;
+}
+vscriptGenerator['ppmod_create'] = function(block) {
+    const name = vscriptGenerator.statementToCode(block, 'NAME');
+    const code = vscriptGenerator.statementToCode(block, 'CODE');
+    return `ppmod.create(${name}, function(_ent){\n${code}\n});`
+}
+vscriptGenerator['var_pre_ent'] = function(block) {
+    const varName = vscriptGenerator.idToName(block.getFieldValue('VAR')); 
+    return `// making local variable global\n// bad practise\n${variablePrefix}.${varName} = _ent;\n`
+}
+vscriptGenerator['ppmod_text_simple'] = function(block) {
+    const text = vscriptGenerator.statementToCode(block, 'TEXT');
+    return `ppmod.text(${text});`
+}
+vscriptGenerator['ppmod_text'] = function(block) {
+    // get variables
+    const text = vscriptGenerator.statementToCode(block, 'TEXT');
+    const x = vscriptGenerator.statementToCode(block, 'X');
+    const y = vscriptGenerator.statementToCode(block, 'Y');
+    const displayTime = vscriptGenerator.statementToCode(block, 'TIME');
+    const textColor = vscriptGenerator.statementToCode(block, 'COL_FORG');
+    const backgroundColor = vscriptGenerator.statementToCode(block, 'COL_BACK');
+    const fadeInTime = vscriptGenerator.statementToCode(block, 'FADEIN');
+    const fadeOutTime = vscriptGenerator.statementToCode(block, 'FADEOUT');
+    const optionPlayers = block.getFieldValue('PLAYERS');
+    const optionChannel = block.getFieldValue('CHANNEL');
+    const bgTransparent = block.getFieldValue('TRANSPARENT');
+
+    // generate code
+    let codePlayers;
+    switch (optionPlayers) {
+        case 'BLUE': // todo test multiplayer text
+            codePlayers = 'GetBluePlayerIndex()';
+            break;
+        case 'ORANGE':
+            codePlayers = 'GetOrangePlayerIndex()'
+        default:
+            codePlayers = 'null';
+            break;
+    }
+
+    let code = `ppmod.text(${text},${x}${y});\n`
+    code += `setChanel(${optionChannel.toLowerCase()});\n`;
+    code += `SetFade(${fadeInTime}, ${fadeOutTime});\n`;
+    code += `Display(${displayTime}, ${codePlayers});\n`;
+    if(bgTransparent === 'TRUE') {
+        code += `SetColor(${textColor});\n`;
+    } else {
+        code += `SetColor(${textColor}, ${backgroundColor});\n`;
+    }
+    console.log(code);
+    return code;
+}
 
 
 // events
@@ -478,10 +551,18 @@ vscriptGenerator['tick'] = function(block) {
     const actions = vscriptGenerator.statementToCode(block, 'CODE');
     return `ppmod.interval(function() {\n${actions}\n});`
 }
-vscriptGenerator['ppmod_repeat'] = function(block) {
-    const actions = vscriptGenerator.statementToCode(block, 'CODE');
-    const intervall = vscriptGenerator.statementToCode(block, 'INTERVALL');
-    const condition = vscriptGenerator.statementToCode(block, 'COND');
-    if(condition === 'true') return `ppmod.interval(function() {\n${actions}\n}, ${intervall});`
-    return `local en__ ddutil.genUniqueEntName();\n ppmod.interval(function(en__ = en__) {\nif(!(${condition})){ppmod.fire(en__, "kill")}\n${actions}\n}, ${intervall}, en__ );`
+
+// entities
+vscriptGenerator['entity_move_to'] = function(block) {
+    const ent1 = vscriptGenerator.statementToCode(block, 'ENT1');
+    const ent2 = vscriptGenerator.statementToCode(block, 'ENT2');
+    return `${ent1}.SetOrigin(${ent2}.GetOrigin());`;
+}
+
+// color
+vscriptGenerator['colour_rgb'] = function(block) {
+    const r = vscriptGenerator.statementToCode(block, 'RED');
+    const g = vscriptGenerator.statementToCode(block, 'GREEN');
+    const b = vscriptGenerator.statementToCode(block, 'BLUE');
+    return `${r} ${g} ${b}`;
 }

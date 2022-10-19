@@ -5,7 +5,7 @@ if(!("ppmod" in this)) {
   IncludeScript("custom/ppmod");
 }
 
-::ddutil <- {}
+::ddutil <- {};
 
 auto <- Entities.CreateByClassname("logic_auto");
 

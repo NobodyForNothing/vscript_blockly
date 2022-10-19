@@ -1,4 +1,5 @@
 const variablePrefix = 'mod.v.';
+const privateVariablePrefix = 'mod._pV';
 
 let mapSpawnCode = "";
 
@@ -19,7 +20,7 @@ function updateCode(event) {
     // define variables in script scope
     const variables = Blockly.getMainWorkspace().getAllVariables()
     code += '::mod <- {};\n';
-    code += `// decaring variables on a global scope is generally not advised when codeing manually\nmod.v <- {};\n`;
+    code += `// decaring variables on a global scope is generally not advised when codeing manually\nmod.v <- {};\nmod._pV <- {};\n`;
     variables.forEach(v => {
       code += variablePrefix + v.name + ' <- null;\n';
     });

@@ -568,3 +568,11 @@ vscriptGenerator['colour_rgb'] = function(block) {
     const b = vscriptGenerator.statementToCode(block, 'BLUE');
     return `${r} ${g} ${b}`;
 }
+
+// vector
+vscriptGenerator['vector'] = function(block) {
+    const x = vscriptGenerator.statementToCode(block, 'X');
+    const y = vscriptGenerator.statementToCode(block, 'Y');
+    const z = vscriptGenerator.statementToCode(block, 'Z');
+    return `Vector(${x}, ${y}, ${z})`;
+}

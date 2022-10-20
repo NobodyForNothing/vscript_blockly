@@ -8,7 +8,7 @@ const modInfo = {
   description: "A mod created with derdillas graphical portal 2 mod creator.",
 }
 
-const workspace = Blockly.inject('blocklyDiv', {toolbox: toolbox});
+const workspace = Blockly.inject('blocklyDiv', {toolbox: getToolbox()});
 vscriptGenerator.initNameDB(workspace);
 
 function updateCode(event) {

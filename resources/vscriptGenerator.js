@@ -1,4 +1,3 @@
-
 const vscriptGenerator = new Blockly.Generator('Vscript');
 
 vscriptGenerator.initNameDB = function(workspace) {
@@ -501,6 +500,7 @@ vscriptGenerator['ppmod_text_simple'] = function(block) {
     const text = vscriptGenerator.statementToCode(block, 'TEXT');
     return `ppmod.text(${text});`
 }
+vscriptGenerator.txtCount = 0;
 vscriptGenerator['ppmod_text'] = function(block) {
     // get variables
     const text = vscriptGenerator.statementToCode(block, 'TEXT');
@@ -516,6 +516,8 @@ vscriptGenerator['ppmod_text'] = function(block) {
     const bgTransparent = block.getFieldValue('TRANSPARENT');
 
     // generate code
+    vscriptGenerator.txtCount++;
+    const varNum = vscriptGenerator.variables.txtCount;
     let codePlayers;
     switch (optionPlayers) {
         case 'BLUE': // todo test multiplayer text
@@ -528,14 +530,14 @@ vscriptGenerator['ppmod_text'] = function(block) {
             break;
     }
 
-    let code = `ppmod.text(${text},${x}${y});\n`
-    code += `setChanel(${optionChannel.toLowerCase()});\n`;
-    code += `SetFade(${fadeInTime}, ${fadeOutTime});\n`;
-    code += `Display(${displayTime}, ${codePlayers});\n`;
+    let code = `local txt${varNum} = ppmod.text(${text},${x}${y});\n`
+    code += `txt${varNum}.setChanel(${optionChannel.toLowerCase()});\n`;
+    code += `txt${varNum}.SetFade(${fadeInTime}, ${fadeOutTime});\n`;
+    code += `txt${varNum}.Display(${displayTime}, ${codePlayers});\n`;
     if(bgTransparent === 'TRUE') {
-        code += `SetColor(${textColor});\n`;
+        code += `txt${varNum}.SetColor(${textColor});\n`;
     } else {
-        code += `SetColor(${textColor}, ${backgroundColor});\n`;
+        code += `txt${varNum}.SetColor(${textColor}, ${backgroundColor});\n`;
     }
     console.log(code);
     return code;

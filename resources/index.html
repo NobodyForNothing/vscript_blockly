@@ -5,6 +5,7 @@
     <title>blockly test</title>
   </head>
   <body>
+    
     <div id="blocklyDiv" style="height: 1000px; width: 1400px"></div>
     <p id="textArea"></p>
     
@@ -19,7 +20,7 @@
     <div id="packInforamtion">
       <label style="color: white; font-size: 12px; margin-left: 5px;">Information:</label>
       <input id="pkg-name" type="text" class="input" size="11" placeholder="packageName">
-      <!--<input id="iconPath" type="text" class="input" size="11" placeholder="icon path"> !-->
+      <!--<input id="iconPath" type="text" class="input" size="11" placeholder="icon path"> -->
       <div class="space">&nbsp;</h1></div>
     </div>
 
@@ -33,14 +34,10 @@
         <button id="saveBtn" onclick="VSCRIPT_BLOCKLY.loadWorkspaceFromFile()">Load blocks</button>
       </p>
     </div>
-    
-    <div id="entSelection" class="popup">
-      <input type="text" id="entSearch" class="center" size="50" onkeyup="limitList('entList','entSearch')" placeholder="Search for entity names..">
-
-      <dl id="entList">
-          <li class="listElement"> tst</li>
-          <li class="listElement"> tst</li>
-          <li class="listElement"> tst</li>
+    <div id="mdlSelection" class="popup">
+      <input type="text" id="mdlSearch" class="center" size="50" oninput="limitList(this.value)" placeholder="Search for models..">
+      <div style="height: 7vh"></div>
+      <dl id="mdlList">
       </dl> 
     </div>
 
@@ -56,5 +53,6 @@
     <script src="index.js"></script>
     <script src="spplicer/spplicer.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/models.js"></script>
   </body>
 </html>

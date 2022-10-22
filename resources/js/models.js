@@ -1,4 +1,4 @@
-const models = [
+const portal2_models = [
 'models/props_foliage/fungus_cluster02.mdl',
 'models/props_foliage/bush01.mdl',
 'models/props_foliage/vines_128_256_halfdry01_alphatest_static.mdl',
@@ -2040,4 +2040,4 @@ const models = [
 'models/props_junk/wood_crate001a_chunk09.mdl',
 'models/props_junk/wood_crate001a_chunk03.mdl',
 'models/props_junk/wood_crate001a_chunk07.mdl',
-]
+].sort();

@@ -48,7 +48,6 @@ body {
     z-index: 1000000;
     
 }
-
 #loading {
     position: absolute;
     right: 36vh;
@@ -58,7 +57,6 @@ body {
     z-index: 1000000;
     
 }
-
 #saveBtn {
     background-color: #3F3F3F;
     border-radius: 20px;
@@ -74,10 +72,9 @@ body {
     cursor: pointer;
 }
 
-#entSelection {
-    z-index: 1000000;
-}
-#entList {
+
+#mdlList {
+    position: relative;
     text-indent: 6px;
     font-size: medium;
     margin-left: 4% ;
@@ -85,25 +82,30 @@ body {
     list-style: none;
     border: 2px solid rgba(204, 204, 204, 0.456);
     border-radius: 5px;
+    z-index: -1;
+    overflow: hidden;
+
 }
-#entSearch {
-    margin-left: 19%;
-    margin-top: 2%;
-    scale: 150%;
+#mdlSearch {
+    margin-left: 4.3%;
+    margin-top: 1.5%;
+    width: 60%;
     background-color: #1f1f1fd2;
+    color: white;
     border: 2px solid rgba(204, 204, 204, 0.456);
     border-radius: 5px;
-    font-size: 102%;
+    font-size: 150%;
+    position: fixed;
 }
-.listElement {
+li {
     color: white;
-    background-color: rgb(33, 33, 33);
+    background-color: rgb(42, 42, 42);
 }
-.listElement:nth-child(odd) { 
+li:nth-child(odd) { 
     background: rgb(24, 24, 24);
 }
-.listElement:hover { /*todo*/
-    transform: scale(1.05);
+li:hover { /*todo*/
+    transform: scale(1.01);
 }
 
 .center {
@@ -125,13 +127,13 @@ body {
 
 .popup {
     background: rgba(34, 34, 34, 0.729);
-    pointer-events: none;
-    position: fixed;
+    position: absolute;
     left: 15%;
     top: 15%;
     width: 70%;
     height: 70%;
     border: 2px solid rgb(0, 0, 0);
     border-radius: 20px;
-    z-index: 100000;
+    overflow: scroll;
+    z-index: 10000000;
 }

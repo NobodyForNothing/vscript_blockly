@@ -1,12 +1,22 @@
-function limitList(listId, searchId) {
-  const input = document.getElementById(searchId);
-  const domList = document.getElementById(listId);
-  models.forEach(() => {
-      console.log(domList.innerHTML);
-  });
+function limitList(searchTerm) {
+  let validElements = portal2_models.filter(x => x.includes(searchTerm));
+  const domList = document.getElementById('mdlList');
+  domList.innerHTML = ""; // remove last search result
+  for(const e of validElements) {
+    const li = document.createElement('li');
+    li.innerHTML = e;
+    li.onclick = function() {selectModel(this.innerHTML)};
+    domList.appendChild(li);
+  } 
 }
 
-class VscriptBlockly { // todo: fix errors associated with refactoring
+function selectModel(mdlName) {
+  console.log(mdlName);
+  document.getElementById('mdlSearch').value = "";
+  document.getElementById('mdlSelection').hidden = true;
+}
+
+class VscriptBlockly { 
   updateCode(event) {
     // include dependencies
     let code = 'if(!Entities in this) {\nreturn;\n}\n'

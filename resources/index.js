@@ -1,6 +1,3 @@
-const variablePrefix = 'mod.v.';
-const privateVariablePrefix = 'mod._pV';
-
 function limitList(listId, searchId) {
   const input = document.getElementById(searchId);
   const domList = document.getElementById(listId);
@@ -8,6 +5,7 @@ function limitList(listId, searchId) {
       console.log(domList.innerHTML);
   });
 }
+
 class VscriptBlockly { // todo: fix errors associated with refactoring
   updateCode(event) {
     // include dependencies
@@ -20,13 +18,13 @@ class VscriptBlockly { // todo: fix errors associated with refactoring
     code += '::mod <- {};\n';
     code += `// decaring variables on a global scope is generally not advised when codeing manually\nmod.v <- {};\nmod._pV <- {};\n`;
     variables.forEach(v => {
-      code += variablePrefix + v.name + ' <- null;\n';
+      code += this.variablePrefix + v.name + ' <- null;\n';
     });
     code += '\n';
 
     // generate code
     code += vscriptGenerator.workspaceToCode(workspace);
-    mapSpawnCode = code;
+    this.mapSpawnCode = code;
     // document.getElementById('textArea').innerText = code;
   }
   async saveWorkspaceToFile() {
@@ -35,14 +33,10 @@ class VscriptBlockly { // todo: fix errors associated with refactoring
     catch (e) { await Neutralino.filesystem.createDirectory(`${NL_PATH}/workspaces`) }
     
     // save workspace
-    let xml = Blockly.Xml.workspaceToDom(workspace);
+    let xml = Blockly.Xml.workspaceToDom(this.workspace);
     xml = new XMLSerializer().serializeToString(xml);
     const modname = document.getElementById("pkg-name").value.toLowerCase().replace(/ /g, "-").replace(/[^A-Za-z0-9-]/g, "");
-    try { await Neutralino.filesystem.writeFile(`${NL_PATH}/workspaces/${modname}_${Date.now()}.xml`, xml); } catch (e) {
-    console.log(e)}
-    
-    
-    console.log(xml);
+    try { await Neutralino.filesystem.writeFile(`${NL_PATH}/workspaces/${modname}_${Date.now()}.xml`, xml); } catch (e) { console.log(e) }
   }
   async loadWorkspaceFromFile() {
     const xmlPath = await Neutralino.os.showOpenDialog('Load workspace from file', {
@@ -61,23 +55,26 @@ class VscriptBlockly { // todo: fix errors associated with refactoring
     xml = Blockly.Xml.textToDom(xml);
 
     // Clear the workspace to avoid merge.
-    workspace.clear();
-    Blockly.Xml.domToWorkspace(xml, workspace);
+    this.workspace.clear();
+    Blockly.Xml.domToWorkspace(xml, this.workspace);
   }
-  init: function(){
-    const modInfo = {
+  constructor(){
+    this.variablePrefix = 'mod.v.';
+    this.privateVariablePrefix = 'mod._pV';
+    this.modInfo = {
       name: "graphicalMod",
       description: "A mod created with derdillas graphical portal 2 mod creator.",
     }
-    let mapSpawnCode = "";
+    this.mapSpawnCode = "";
   
-    const workspace = Blockly.inject('blocklyDiv', {toolbox: getToolbox()});
-    vscriptGenerator.initNameDB(workspace);
-    workspace.addChangeListener(updateCode);
+    this.workspace = Blockly.inject('blocklyDiv', {toolbox: getToolbox()});
+    vscriptGenerator.initNameDB(this.workspace);
+    this.workspace.addChangeListener(this.updateCode);
   }
 }
 
+const VSCRIPT_BLOCKLY = new VscriptBlockly();
 
 window.addEventListener('unload',
-      saveWorkspaceToFile, false);
+      VSCRIPT_BLOCKLY.saveWorkspaceToFile, false);
 

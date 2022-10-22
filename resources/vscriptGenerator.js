@@ -378,13 +378,13 @@ vscriptGenerator['lists_length'] = function(block) {
 vscriptGenerator['variables_get'] = function(block) {
     const varId = block.getFieldValue('VAR');
     const varName = vscriptGenerator.idToName(varId);
-    return variablePrefix + varName;
+    return VSCRIPT_BLOCKLY.variablePrefix + varName;
 }
 vscriptGenerator['variables_set'] = function(block) {
     const varId = block.getFieldValue('VAR');
     const varName = vscriptGenerator.idToName(varId);
     const value = vscriptGenerator.statementToCode(block, 'VALUE');
-    return variablePrefix+varName + '=' + value;
+    return VSCRIPT_BLOCKLY.variablePrefix+varName + '=' + value;
 }
 
 
@@ -402,7 +402,7 @@ vscriptGenerator['procedures_defreturn'] = function(block) {
     // todo: find better way to solve this
     let variableGlobalization = '// variable globalization\n// bad practice: dont\'t do this when writing code yourself\n';
     for(const varName of params) {
-        variableGlobalization += `${variablePrefix + varName} = ${varName};\n`;
+        variableGlobalization += `${VSCRIPT_BLOCKLY.variablePrefix + varName} = ${varName};\n`;
     }
 
     let code = `function ${name}(`;
@@ -477,7 +477,7 @@ vscriptGenerator['ppmod_player_eyes'] = function(block) {
     return 'ppmod.player.eyes.GetOrigin()'
 }
 vscriptGenerator['ppmod_player_holding'] = function(block) { // todo 
-    return `${privateVariablePrefix}.holds = null;ppmod.player.holding(function(state){${privateVariablePrefix}.holds = state});\nwhile(${privateVariablePrefix}.holds)`;
+    return `${VSCRIPT_BLOCKLY.privateVariablePrefix}.holds = null;ppmod.player.holding(function(state){${VSCRIPT_BLOCKLY.privateVariablePrefix}.holds = state});\nwhile(${VSCRIPT_BLOCKLY.privateVariablePrefix}.holds)`;
 } 
 vscriptGenerator['ppmod_player_event'] = function(block) {
     const eventType = block.getFieldValue('EVENT');
@@ -494,7 +494,7 @@ vscriptGenerator['ppmod_create'] = function(block) {
 }
 vscriptGenerator['var_pre_ent'] = function(block) {
     const varName = vscriptGenerator.idToName(block.getFieldValue('VAR')); 
-    return `// making local variable global\n// bad practise\n${variablePrefix}.${varName} = _ent;\n`
+    return `// making local variable global\n// bad practise\n${VSCRIPT_BLOCKLY.variablePrefix}.${varName} = _ent;\n`
 }
 vscriptGenerator['ppmod_text_simple'] = function(block) {
     const text = vscriptGenerator.statementToCode(block, 'TEXT');

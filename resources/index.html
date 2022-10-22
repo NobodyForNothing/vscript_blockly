@@ -8,7 +8,6 @@
     <div id="blocklyDiv" style="height: 1000px; width: 1400px"></div>
     <p id="textArea"></p>
     
-
     <div id="packagingDiv">
       <button onclick="pack()">
         <svg width="80" height="80">
@@ -35,6 +34,15 @@
       </p>
     </div>
     
+    <div id="entSelection" class="popup">
+      <input type="text" id="entSearch" class="center" size="50" onkeyup="limitList('entList','entSearch')" placeholder="Search for entity names..">
+
+      <dl id="entList">
+          <li class="listElement"> tst</li>
+          <li class="listElement"> tst</li>
+          <li class="listElement"> tst</li>
+      </dl> 
+    </div>
 
     <script src="./blockly/blockly_compressed.js"></script>
     <script src="./blockly/blocks_compressed.js"></script>

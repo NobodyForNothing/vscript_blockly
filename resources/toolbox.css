@@ -13,7 +13,9 @@ body {
 .transparentBg {
     background-color: transparent;
 }
-
+#blocklyDiv {
+    z-index: 1;
+}
 #packagingDiv {
     position: absolute;
     right: 5vh;
@@ -72,6 +74,43 @@ body {
     cursor: pointer;
 }
 
+#entSelection {
+    z-index: 1000000;
+}
+#entList {
+    text-indent: 6px;
+    font-size: medium;
+    margin-left: 4% ;
+    width: 92%;
+    list-style: none;
+    border: 2px solid rgba(204, 204, 204, 0.456);
+    border-radius: 5px;
+}
+#entSearch {
+    margin-left: 19%;
+    margin-top: 2%;
+    scale: 150%;
+    background-color: #1f1f1fd2;
+    border: 2px solid rgba(204, 204, 204, 0.456);
+    border-radius: 5px;
+    font-size: 102%;
+}
+.listElement {
+    color: white;
+    background-color: rgb(33, 33, 33);
+}
+.listElement:nth-child(odd) { 
+    background: rgb(24, 24, 24);
+}
+.listElement:hover { /*todo*/
+    transform: scale(1.05);
+}
+
+.center {
+    margin: auto;
+    width: 60%;
+    padding: 10px;
+}
 
 .input {
     margin: 4px;
@@ -82,4 +121,17 @@ body {
     margin: 0;
     color: white;
     transition: border-color 0.5s, color 0.5s;
+}
+
+.popup {
+    background: rgba(34, 34, 34, 0.729);
+    pointer-events: none;
+    position: fixed;
+    left: 15%;
+    top: 15%;
+    width: 70%;
+    height: 70%;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 20px;
+    z-index: 100000;
 }

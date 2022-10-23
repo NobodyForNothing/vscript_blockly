@@ -1,6 +1,9 @@
 Neutralino.init();
 
 async function pack() {
+    // get inputs
+    if(!updateName()) return;
+
     // regenerate code
     VSCRIPT_BLOCKLY.updateCode();
 
@@ -28,7 +31,7 @@ async function pack() {
     catch (e) {console.log(e); document.getElementById('packingErrorBox').innerText = 'ERROR: check console'; return}
 
     // sanitize info for spplicer
-    updateName();
+    
     // pkg.name = modName.toLowerCase().replace(/ /g, "-").replace(/[^A-Za-z0-9-]/g, "");
     pkg.title = pkg.name;
     pkg.dir = `${NL_PATH}/.tmp/portal2_dlc5`;

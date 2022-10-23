@@ -141,3 +141,8 @@ li:hover { /*todo*/
     overflow: scroll;
     z-index: 10000000;
 }
+
+#pkg-title-warn {
+    font-size: 13px;
+    color: #ff6464;
+}

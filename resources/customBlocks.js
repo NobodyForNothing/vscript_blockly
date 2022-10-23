@@ -7,6 +7,8 @@ const colors = {
   variables: 0
 }
 
+const customBlockValues = {};
+
 // Vector
 Blockly.Blocks['vector'] = {
   init: function() {
@@ -35,72 +37,72 @@ Blockly.Blocks['vector'] = {
     });
   }
 }
-Blockly.Blocks['vector_get_e'] = {}
-Blockly.Blocks['vector_set_e'] = {}
+Blockly.Blocks['vector_get_element'] = {}
+Blockly.Blocks['vector_set_element'] = {}
 Blockly.Blocks['vector_math'] = {}
 
 
 // console
 Blockly.Blocks['console_print'] = {
-    init: function() {
-      this.jsonInit({
-        "type": "console_print",
-        "message0": "print %1 to console",
-        "args0": [
-          {
-            "type": "input_value",
-            "name": "TEXT"
-          }
-        ],
-        "inputsInline": true,
-        "previousStatement": null,
-        "nextStatement": null,
-        "colour": colors.console,
-        "tooltip": "prints something into the portal 2 console",
-        "helpUrl": ""
-      });
-    }
-  };
+  init: function() {
+    this.jsonInit({
+      "type": "console_print",
+      "message0": "print %1 to console",
+      "args0": [
+        {
+          "type": "input_value",
+          "name": "TEXT"
+        }
+      ],
+      "inputsInline": true,
+      "previousStatement": null,
+      "nextStatement": null,
+      "colour": colors.console,
+      "tooltip": "prints something into the portal 2 console",
+      "helpUrl": ""
+    });
+  }
+};
 Blockly.Blocks['console_execute'] = {
-    init: function() {
-      this.jsonInit({
-        "type": "console_execute",
-        "message0": "execute in console: %1",
-        "args0": [
-          {
-            "type": "input_value",
-            "name": "COMMAND"
-          }
-        ],
-        "inputsInline": true,
-        "previousStatement": null,
-        "nextStatement": null,
-        "colour": colors.console,
-        "tooltip": "executes command in portal 2 console",
-        "helpUrl": "https://developer.valvesoftware.com/wiki/List_of_Portal_2_console_commands_and_variables"
-      });
-    }
-  };
+  init: function() {
+    this.jsonInit({
+      "type": "console_execute",
+      "message0": "execute in console: %1",
+      "args0": [
+        {
+          "type": "input_value",
+          "name": "COMMAND"
+        }
+      ],
+      "inputsInline": true,
+      "previousStatement": null,
+      "nextStatement": null,
+      "colour": colors.console,
+      "tooltip": "executes command in portal 2 console",
+      "helpUrl": "https://developer.valvesoftware.com/wiki/List_of_Portal_2_console_commands_and_variables"
+    });
+  }
+};
 Blockly.Blocks['console_execute_client'] = {
-    init: function() {
-      this.jsonInit({
-        "type": "console_execute_client",
-        "message0": "execute as player in console: %1",
-        "args0": [
-          {
-            "type": "input_value",
-            "name": "COMMAND"
-          }
-        ],
-        "inputsInline": true,
-        "previousStatement": null,
-        "nextStatement": null,
-        "colour": colors.console,
-        "tooltip": "executes command in portal 2 console as if typed by player",
-        "helpUrl": "https://developer.valvesoftware.com/wiki/Point_broadcastclientcommand"
-      });
-    }
-  };
+  init: function() {
+    this.jsonInit({
+      "type": "console_execute_client",
+      "message0": "execute as player in console: %1",
+      "args0": [
+        {
+          "type": "input_value",
+          "name": "COMMAND"
+        }
+      ],
+      "inputsInline": true,
+      "previousStatement": null,
+      "nextStatement": null,
+      "colour": colors.console,
+      "tooltip": "executes command in portal 2 console as if typed by player",
+      "helpUrl": "https://developer.valvesoftware.com/wiki/Point_broadcastclientcommand"
+    });
+  }
+};
 
 
 // ppmod
@@ -269,33 +271,33 @@ Blockly.Blocks['ppmod_repeat'] = {
   }
 }
 Blockly.Blocks['ppmod_player_eyes'] = {
-    init: function() {
-      this.jsonInit({
-        "type": "ppmod_player_eyes",
-        "message0": "eye position of player",
-        "args0": [
-        ],
-        "output": null,
-        "colour": colors.ppmod,
-        "tooltip": "get 3d cordinates of eye position",
-        "helpUrl": "https://github.com/p2r3/ppmod/#ppmodplayereyes"
-      });
-    }
+  init: function() {
+    this.jsonInit({
+      "type": "ppmod_player_eyes",
+      "message0": "eye position of player",
+      "args0": [
+      ],
+      "output": null,
+      "colour": colors.ppmod,
+      "tooltip": "get 3d cordinates of eye position",
+      "helpUrl": "https://github.com/p2r3/ppmod/#ppmodplayereyes"
+    });
+  }
   }
 Blockly.Blocks['ppmod_player_holding'] = {
-    init: function() {
-      this.jsonInit({
-        "type": "ppmod_player_holding",
-        "message0": "player holds something",
-        "args0": [
-        ],
-        "output": "Boolean",
-        "colour": colors.ppmod,
-        "tooltip": "returns if the player is currently holding something",
-        "helpUrl": "https://github.com/p2r3/ppmod/#ppmodplayerholding"
-      });
-    }
+  init: function() {
+    this.jsonInit({
+      "type": "ppmod_player_holding",
+      "message0": "player holds something",
+      "args0": [
+      ],
+      "output": "Boolean",
+      "colour": colors.ppmod,
+      "tooltip": "returns if the player is currently holding something",
+      "helpUrl": "https://github.com/p2r3/ppmod/#ppmodplayerholding"
+    });
   }
+}
 Blockly.Blocks['ppmod_player_event'] = {
   init: function() {
     this.jsonInit({
@@ -630,4 +632,30 @@ Blockly.Blocks['list_addElement'] = {
   }
 }
 
+customBlockValues.mdl_select = ['-']
+Blockly.Blocks['mdl_select'] = { 
+  // block to select model
+  // dropdownlist opens model selector
+  // default value is '-'
+  // each block saves its index and passes to model selector
+  // after model selection it gets saved to global array
+  // customBlockValues.mdl_select = []
+  init: function() {
+    this.setColour(colors.lists,);
+    this.setTooltip("");
+    this.setHelpUrl("");
+    this.setOutput(true);
+  
+    let button = new Blockly.FieldDropdown([["select model", `${customBlockValues.mdl_select.length}`]]);
+    button.showEditor_=(()=>{ 
+      // instead of showing default selection menu show custom menu
+      console.log(button);
+      showModelSelection(button.menuGenerator_[0][1]); // saved array index
+    });
+    this.appendDummyInput()
+      .appendField('model:')
+      .appendField(button,'MODELINDEX');
+  }
+}
+let tmp = null;
 

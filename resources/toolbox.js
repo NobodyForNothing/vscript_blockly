@@ -610,7 +610,18 @@ function getToolbox() {
       cat_prtl_con,
       cat_events,
       cat_vectors,
-      cat_ppmod
+      cat_ppmod,
+
+      {
+        "kind": "category",
+        "name": "ppmod",
+        "contents": [
+          {
+            "kind": "block",
+            "type": "mdl_select"
+          },
+        ]
+      }
     ]
   }
   return toolbox;

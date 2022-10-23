@@ -13,7 +13,9 @@ body {
 .transparentBg {
     background-color: transparent;
 }
-
+#blocklyDiv {
+    z-index: 1;
+}
 #packagingDiv {
     position: absolute;
     right: 5vh;
@@ -46,7 +48,6 @@ body {
     z-index: 1000000;
     
 }
-
 #loading {
     position: absolute;
     right: 36vh;
@@ -56,7 +57,6 @@ body {
     z-index: 1000000;
     
 }
-
 #saveBtn {
     background-color: #3F3F3F;
     border-radius: 20px;
@@ -73,6 +73,51 @@ body {
 }
 
 
+#mdlList {
+    position: relative;
+    text-indent: 6px;
+    font-size: medium;
+    margin-left: 4% ;
+    width: 92%;
+    list-style: none;
+    border: 2px solid rgba(204, 204, 204, 0.456);
+    border-radius: 5px;
+    z-index: -1;
+    overflow: hidden;
+}
+#mdlSearch {
+    margin-left: 4.3%;
+    margin-top: 1.5%;
+    width: 60%;
+    background-color: #1f1f1fd2;
+    color: white;
+    border: 2px solid rgba(204, 204, 204, 0.456);
+    border-radius: 5px;
+    font-size: 150%;
+    position: fixed;
+}
+#mdlSelectionClose {
+    position: fixed;
+    right: 16%;
+    margin-top: 1.5%;
+}
+li {
+    color: white;
+    background-color: rgb(42, 42, 42);
+}
+li:nth-child(odd) { 
+    background: rgb(24, 24, 24);
+}
+li:hover { /*todo*/
+    transform: scale(1.01);
+}
+
+.center {
+    margin: auto;
+    width: 60%;
+    padding: 10px;
+}
+
 .input {
     margin: 4px;
     background: #242424;
@@ -82,4 +127,17 @@ body {
     margin: 0;
     color: white;
     transition: border-color 0.5s, color 0.5s;
+}
+
+.popup {
+    background: rgba(34, 34, 34, 0.729);
+    position: absolute;
+    left: 15%;
+    top: 15%;
+    width: 70%;
+    height: 70%;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 20px;
+    overflow: scroll;
+    z-index: 10000000;
 }

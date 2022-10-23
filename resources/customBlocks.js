@@ -638,12 +638,13 @@ Blockly.Blocks['mdl_select'] = {
   // dropdownlist opens model selector
   // default value is '-'
   // each block saves its index and passes to model selector
-  // after model selection it gets saved to globla array
+  // after model selection it gets saved to global array
   // customBlockValues.mdl_select = []
   init: function() {
     this.setColour(colors.lists,);
     this.setTooltip("");
     this.setHelpUrl("");
+    this.setOutput(true);
   
     let button = new Blockly.FieldDropdown([["select model", `${customBlockValues.mdl_select.length}`]]);
     button.showEditor_=(()=>{ 

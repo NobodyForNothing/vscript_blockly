@@ -47,6 +47,7 @@ class VscriptBlockly {
 
     // generate code
     code += vscriptGenerator.workspaceToCode(Blockly.getMainWorkspace());
+    console.log(code);
     VSCRIPT_BLOCKLY.mapSpawnCode = code;
     // document.getElementById('textArea').innerText = code;
   }

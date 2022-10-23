@@ -539,7 +539,7 @@ vscriptGenerator['ppmod_text'] = function(block) {
     } else {
         code += `txt${varNum}.SetColor(${textColor}, ${backgroundColor});\n`;
     }
-    console.log(code);
+    console.log(block);
     return code;
 }
 
@@ -575,4 +575,10 @@ vscriptGenerator['vector'] = function(block) {
     const y = vscriptGenerator.statementToCode(block, 'Y');
     const z = vscriptGenerator.statementToCode(block, 'Z');
     return `Vector(${x}, ${y}, ${z})`;
+}
+
+vscriptGenerator['mdl_select'] = function(block) {
+    const index = block.getFieldValue('MODELINDEX');
+    const value = customBlockValues.mdl_select[index];
+    return `"${value}"`;
 }

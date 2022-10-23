@@ -7,6 +7,8 @@ const colors = {
   variables: 0
 }
 
+const customBlockValues = {};
+
 // Vector
 Blockly.Blocks['vector'] = {
   init: function() {
@@ -630,4 +632,29 @@ Blockly.Blocks['list_addElement'] = {
   }
 }
 
+customBlockValues.mdl_select = ['-']
+Blockly.Blocks['mdl_select'] = { 
+  // block to select model
+  // dropdownlist opens model selector
+  // default value is '-'
+  // each block saves its index and passes to model selector
+  // after model selection it gets saved to globla array
+  // customBlockValues.mdl_select = []
+  init: function() {
+    this.setColour(colors.lists,);
+    this.setTooltip("");
+    this.setHelpUrl("");
+  
+    let button = new Blockly.FieldDropdown([["select model", `${customBlockValues.mdl_select.length}`]]);
+    button.showEditor_=(()=>{ 
+      // instead of showing default selection menu show custom menu
+      console.log(button);
+      showModelSelection(button.menuGenerator_[0][1]); // saved array index
+    });
+    this.appendDummyInput()
+      .appendField('model:')
+      .appendField(button,'MODELINDEX');
+  }
+}
+let tmp = null;
 

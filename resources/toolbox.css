@@ -84,7 +84,6 @@ body {
     border-radius: 5px;
     z-index: -1;
     overflow: hidden;
-
 }
 #mdlSearch {
     margin-left: 4.3%;
@@ -96,6 +95,11 @@ body {
     border-radius: 5px;
     font-size: 150%;
     position: fixed;
+}
+#mdlSelectionClose {
+    position: fixed;
+    right: 16%;
+    margin-top: 1.5%;
 }
 li {
     color: white;

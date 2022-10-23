@@ -1,3 +1,4 @@
+let mdlSelectionIndex;
 function limitList(searchTerm) {
   let validElements = portal2_models.filter(x => x.includes(searchTerm));
   const domList = document.getElementById('mdlList');
@@ -9,11 +10,23 @@ function limitList(searchTerm) {
     domList.appendChild(li);
   } 
 }
-
 function selectModel(mdlName) {
-  console.log(mdlName);
   document.getElementById('mdlSearch').value = "";
   document.getElementById('mdlSelection').hidden = true;
+  try {
+    customBlockValues.mdl_select[mdlSelectionIndex] = mdlName;
+    mdlSelectionIndex = -1;
+    VSCRIPT_BLOCKLY.updateCode();
+  } catch (e) {
+    console.warn('nowhere to save selected model to');
+  }
+}
+function showModelSelection(opt_index) {
+  limitList("");
+  document.getElementById('mdlSelection').hidden = false;
+  if(opt_index) {
+    mdlSelectionIndex = opt_index;
+  }
 }
 
 class VscriptBlockly { 
@@ -33,8 +46,8 @@ class VscriptBlockly {
     code += '\n';
 
     // generate code
-    code += vscriptGenerator.workspaceToCode(workspace);
-    this.mapSpawnCode = code;
+    code += vscriptGenerator.workspaceToCode(Blockly.getMainWorkspace());
+    VSCRIPT_BLOCKLY.mapSpawnCode = code;
     // document.getElementById('textArea').innerText = code;
   }
   async saveWorkspaceToFile() {
@@ -85,6 +98,7 @@ class VscriptBlockly {
 
 const VSCRIPT_BLOCKLY = new VscriptBlockly();
 
+selectModel()
 window.addEventListener('unload',
       VSCRIPT_BLOCKLY.saveWorkspaceToFile, false);
 

@@ -1,8 +1,8 @@
 Neutralino.init();
 
 async function pack() {
-    // get pack information
-    // const icon = document.getElementById('iconPath').value;
+    // regenerate code
+    VSCRIPT_BLOCKLY.updateCode();
 
     // create dlc structure
     try {await Neutralino.filesystem.getStats(`${NL_PATH}/.tmp`) }

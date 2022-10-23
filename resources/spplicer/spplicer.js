@@ -29,8 +29,8 @@ function sanitizeHTML(string) {
   return string.replace(/\\/g, "\\\\").replace(/"/g, '\\"').replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\n/g, "<br>");
 }
 
-function setWarning(element, text) {
-
+function setWarning(elementId, text) {
+  console.warn('SPPLICER WARN: ' + text);
 }
 
 var titleLengthWarningTimeout;
@@ -56,9 +56,8 @@ function updateTitle() {
       domTitle.style.borderColor = "#FF6461";
       setWarning(domTitle, "This title is already in use on the public package repositiory. You can still use it locally, but it will not be valid for uploading.");
       pkg.title = null;
-    } else setWarning(domTitle, null);
-
-    clearTimeout(titleLengthWarningTimeout);
+    } else document.getElementById(`pkg-title-warn`).innerText = null;;
+    
 
   } else {
 
@@ -69,10 +68,10 @@ function updateTitle() {
     setWarning(domTitle, null);
     if (domTitle.value.length !== 0) {
       titleLengthWarningTimeout = setTimeout(function () {
-        setWarning(domTitle, "The title must consist of 5 to 25 characters.");
+        document.getElementById(`pkg-title-warn`).innerText = "The title must consist of 5 to 25 characters.";
       }, 1000);
     } else {
-      clearTimeout(titleLengthWarningTimeout);
+      document.getElementById(`pkg-title-warn`).innerText = null;
     }
 
   }
@@ -86,10 +85,9 @@ function updateTitle() {
 
 }
 
-var nameLengthWarningTimeout;
 function updateName() {
 
-  const domName = document.getElementById("pkg-name");
+  const domName = document.getElementById("pkg-title");
   domName.value = domName.value.toLowerCase().replace(/ /g, "-").replace(/[^A-Za-z0-9-]/g, "");
 
   if(domName.value.length > 25) {
@@ -106,11 +104,9 @@ function updateName() {
     if (searchIndex("name", pkg.name)) {
       domName.style.color = "#FF6461";
       domName.style.borderColor = "#FF6461";
-      setWarning(domName, "This name is already in use on the public package repositiory. You can still use it locally, but it will not be valid for uploading.");
+      document.getElementById(`pkg-title-warn`).innerText = "This name is already in use on the public package repositiory. You can still use it locally, but it will not be valid for uploading.";
       pkg.title = null;
-    } else setWarning(domName, null);
-
-    clearTimeout(nameLengthWarningTimeout);
+    } else document.getElementById(`pkg-title-warn`).innerText = null;
 
   } else {
 
@@ -119,19 +115,15 @@ function updateName() {
     pkg.name = null;
 
     setWarning(domName, null);
-    if (domName.value.length !== 0 || domName.placeholder.length !== 0) {
-      nameLengthWarningTimeout = setTimeout(function() {
-        setWarning(domName, "The name must consist of 5 to 25 characters.");
-      }, 1000);
+    if (domName.value.length !== 0 || domName.placeholder.length !== 0) {  
+      document.getElementById(`pkg-title-warn`).innerText = "The title must consist of 5 to 25 characters.";
     } else {
-      clearTimeout(nameLengthWarningTimeout);
+      document.getElementById(`pkg-title-warn`).innerText = null;
     }
-
+    return false;
   }
-
-  
-
   checkValidity();
+  return true;
 
 }
 

@@ -590,6 +590,16 @@ function getToolbox() {
       },
     ]
   }
+  const cat_selections = {
+    "kind": "category",
+    "name": "useful values",
+    "contents": [
+      {
+        "kind": "block",
+        "type": "mdl_select"
+      },
+    ]
+  }
 
   const toolbox = {
     'kind': 'categoryToolbox',
@@ -612,16 +622,7 @@ function getToolbox() {
       cat_vectors,
       cat_ppmod,
 
-      {
-        "kind": "category",
-        "name": "ppmod",
-        "contents": [
-          {
-            "kind": "block",
-            "type": "mdl_select"
-          },
-        ]
-      }
+      cat_selections
     ]
   }
   return toolbox;

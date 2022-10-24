@@ -1,4 +1,4 @@
-function getToolbox() {
+export function getToolbox() {
   const tb_placeholder = {
     "kind": "sep",
     "cssConfig": {

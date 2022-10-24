@@ -1,4 +1,5 @@
-import { vscriptGenerator } from "./vscriptGenerator/generator.mjs";
+import { vscriptGenerator } from "./modules/vscriptGenerator/generator.mjs";
+import { getToolbox } from './js/toolbox.mjs';
 
 let mdlSelectionIndex;
 function limitList(searchTerm) {

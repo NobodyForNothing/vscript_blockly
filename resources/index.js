@@ -1,3 +1,5 @@
+import { vscriptGenerator } from "./vscriptGenerator/generator.mjs";
+
 let mdlSelectionIndex;
 function limitList(searchTerm) {
   let validElements = portal2_models.filter(x => x.includes(searchTerm));

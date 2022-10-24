@@ -41,7 +41,7 @@ class VscriptBlockly {
     code += '::mod <- {};\n';
     code += `// decaring variables on a global scope is generally not advised when codeing manually\nmod.v <- {};\nmod._pV <- {};\n`;
     variables.forEach(v => {
-      code += this.variablePrefix + v.name + ' <- null;\n';
+      code += VSCRIPT_BLOCKLY.variablePrefix + v.name + ' <- null;\n';
     });
     code += '\n';
 
@@ -59,7 +59,8 @@ class VscriptBlockly {
     // save workspace
     let xml = Blockly.Xml.workspaceToDom(this.workspace);
     xml = new XMLSerializer().serializeToString(xml);
-    const modname = document.getElementById("pkg-name").value.toLowerCase().replace(/ /g, "-").replace(/[^A-Za-z0-9-]/g, "");
+    let modname = document.getElementById("pkg-title").value.toLowerCase().replace(/ /g, "-").replace(/[^A-Za-z0-9-]/g, "");
+    if(modname === '') modname = 'unnamedMod';
     try { await Neutralino.filesystem.writeFile(`${NL_PATH}/workspaces/${modname}_${Date.now()}.xml`, xml); } catch (e) { console.log(e) }
   }
   async loadWorkspaceFromFile() {

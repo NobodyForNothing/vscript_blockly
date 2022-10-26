@@ -1,6 +1,10 @@
+"use strict";
+
 import { vscriptGenerator } from "./modules/vscriptGenerator/generator.mjs";
 import { getToolbox } from "./js/toolbox.mjs";
 import { customBlockValues } from "./modules/customBlocks/gameContents.mjs";
+import { pack } from "./js/main.js";
+import { portal2_models } from "./js/models.mjs"
 
 let mdlSelectionIndex;
 export function limitList(searchTerm) {
@@ -108,3 +112,8 @@ selectModel()
 window.addEventListener('unload',
       VSCRIPT_BLOCKLY.saveWorkspaceToFile, false);
 
+
+// make elements available in html
+window.VSCRIPT_BLOCKLY = VSCRIPT_BLOCKLY;
+window.selectModel = selectModel;
+window.pack = pack;

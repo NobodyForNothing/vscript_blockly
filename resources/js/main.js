@@ -1,8 +1,9 @@
 import { pkg, checkValidity, createPackage } from "../spplicer/spplicer.js";
+import { VSCRIPT_BLOCKLY } from "../index.js";
 
 Neutralino.init();
 
-async function pack() {
+export async function pack() {
     // regenerate code
     VSCRIPT_BLOCKLY.updateCode();
 

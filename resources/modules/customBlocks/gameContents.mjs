@@ -1,4 +1,5 @@
 import { colors } from "./customBlockDefaults.mjs";
+import { showModelSelection  } from "../../index.js";
 
 export const customBlockValues = {};
 
@@ -19,7 +20,6 @@ Blockly.Blocks['mdl_select'] = {
     let button = new Blockly.FieldDropdown([["select model", `${customBlockValues.mdl_select.length}`]]);
     button.showEditor_=(()=>{ 
       // instead of showing default selection menu show custom menu
-      console.log(button);
       showModelSelection(button.menuGenerator_[0][1]); // saved array index
     });
     this.appendDummyInput()

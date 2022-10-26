@@ -1,4 +1,4 @@
-const portal2_models = [
+export const portal2_models = [
 'models/props_foliage/fungus_cluster02.mdl',
 'models/props_foliage/bush01.mdl',
 'models/props_foliage/vines_128_256_halfdry01_alphatest_static.mdl',

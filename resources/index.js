@@ -1,5 +1,13 @@
+"use strict";
+
+import { vscriptGenerator } from "./modules/vscriptGenerator/generator.mjs";
+import { getToolbox } from "./js/toolbox.mjs";
+import { customBlockValues } from "./modules/customBlocks/gameContents.mjs";
+import { pack } from "./js/main.js";
+import { portal2_models } from "./js/models.mjs"
+
 let mdlSelectionIndex;
-function limitList(searchTerm) {
+export function limitList(searchTerm) {
   let validElements = portal2_models.filter(x => x.includes(searchTerm));
   const domList = document.getElementById('mdlList');
   domList.innerHTML = ""; // remove last search result
@@ -10,7 +18,7 @@ function limitList(searchTerm) {
     domList.appendChild(li);
   } 
 }
-function selectModel(mdlName) {
+export function selectModel(mdlName) {
   document.getElementById('mdlSearch').value = "";
   document.getElementById('mdlSelection').hidden = true;
   try {
@@ -21,7 +29,7 @@ function selectModel(mdlName) {
     console.warn('nowhere to save selected model to');
   }
 }
-function showModelSelection(opt_index) {
+export function showModelSelection(opt_index) {
   limitList("");
   document.getElementById('mdlSelection').hidden = false;
   if(opt_index) {
@@ -41,7 +49,7 @@ class VscriptBlockly {
     code += '::mod <- {};\n';
     code += `// decaring variables on a global scope is generally not advised when codeing manually\nmod.v <- {};\nmod._pV <- {};\n`;
     variables.forEach(v => {
-      code += this.variablePrefix + v.name + ' <- null;\n';
+      code += VSCRIPT_BLOCKLY.variablePrefix + v.name + ' <- null;\n';
     });
     code += '\n';
 
@@ -59,7 +67,8 @@ class VscriptBlockly {
     // save workspace
     let xml = Blockly.Xml.workspaceToDom(this.workspace);
     xml = new XMLSerializer().serializeToString(xml);
-    const modname = document.getElementById("pkg-name").value.toLowerCase().replace(/ /g, "-").replace(/[^A-Za-z0-9-]/g, "");
+    let modname = document.getElementById("pkg-title").value.toLowerCase().replace(/ /g, "-").replace(/[^A-Za-z0-9-]/g, "");
+    if(modname === '') modname = 'unnamedMod';
     try { await Neutralino.filesystem.writeFile(`${NL_PATH}/workspaces/${modname}_${Date.now()}.xml`, xml); } catch (e) { console.log(e) }
   }
   async loadWorkspaceFromFile() {
@@ -97,9 +106,14 @@ class VscriptBlockly {
   }
 }
 
-const VSCRIPT_BLOCKLY = new VscriptBlockly();
+export const VSCRIPT_BLOCKLY = new VscriptBlockly();
 
 selectModel()
 window.addEventListener('unload',
       VSCRIPT_BLOCKLY.saveWorkspaceToFile, false);
 
+
+// make elements available in html
+window.VSCRIPT_BLOCKLY = VSCRIPT_BLOCKLY;
+window.selectModel = selectModel;
+window.pack = pack;

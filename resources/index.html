@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="toolbox.css" />
-    <title>blockly test</title>
+    <link rel="stylesheet" href="index.css" />
+    <title>vscript-blockly</title>
   </head>
   <body>
     
@@ -46,16 +46,12 @@
     <script src="./blockly/blockly_compressed.js"></script>
     <script src="./blockly/blocks_compressed.js"></script>
     <script src="./blockly/msg/js/en.js"></script>
-    <script src="./blockly/appengine/storage.js"></script>
     <script src="js/neutralino.js"></script>
 
-    <script src="customBlocks.js"></script>
-    <script src="customFields.js"></script>
-    <script src="vscriptGenerator.js"></script>
-    <script src="toolbox.js"></script>
-    <script src="index.js"></script>
-    <script src="spplicer/spplicer.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/models.js"></script>
+    <script type="module" src="loadModules.js"></script>
+    <script type="module" src="spplicer/spplicer.js"></script>
+    <script type="module" src="js/main.js"></script>
+    <script type="module" src="index.js"></script>
+
   </body>
 </html>

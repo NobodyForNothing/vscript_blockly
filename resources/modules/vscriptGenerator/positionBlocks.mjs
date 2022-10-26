@@ -1,4 +1,5 @@
 import { vscriptGenerator } from "./generator.mjs";
+import { customBlockValues } from "../customBlocks/gameContents.mjs";
 
 // vector
 vscriptGenerator['vector'] = function(block) {

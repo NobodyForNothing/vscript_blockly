@@ -1,8 +1,9 @@
 import { vscriptGenerator } from "./modules/vscriptGenerator/generator.mjs";
-import { getToolbox } from './js/toolbox.mjs';
+import { getToolbox } from "./js/toolbox.mjs";
+import { customBlockValues } from "./modules/customBlocks/gameContents.mjs";
 
 let mdlSelectionIndex;
-function limitList(searchTerm) {
+export function limitList(searchTerm) {
   let validElements = portal2_models.filter(x => x.includes(searchTerm));
   const domList = document.getElementById('mdlList');
   domList.innerHTML = ""; // remove last search result
@@ -13,7 +14,7 @@ function limitList(searchTerm) {
     domList.appendChild(li);
   } 
 }
-function selectModel(mdlName) {
+export function selectModel(mdlName) {
   document.getElementById('mdlSearch').value = "";
   document.getElementById('mdlSelection').hidden = true;
   try {
@@ -24,7 +25,7 @@ function selectModel(mdlName) {
     console.warn('nowhere to save selected model to');
   }
 }
-function showModelSelection(opt_index) {
+export function showModelSelection(opt_index) {
   limitList("");
   document.getElementById('mdlSelection').hidden = false;
   if(opt_index) {
@@ -101,7 +102,7 @@ class VscriptBlockly {
   }
 }
 
-const VSCRIPT_BLOCKLY = new VscriptBlockly();
+export const VSCRIPT_BLOCKLY = new VscriptBlockly();
 
 selectModel()
 window.addEventListener('unload',

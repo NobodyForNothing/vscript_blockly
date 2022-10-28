@@ -33,10 +33,12 @@ body {
     right: 5vh;
     top: 20vh;
     left: 125vh;
-    border-radius: 10px;
-    background-color:#1F1F1F;
-    size: 50px;
-    z-index: 1000000;
+
+}
+#heading-mod-info { 
+    font-size: 13px; 
+    font-weight: bold;
+    margin-left: -0.5vh;
 }
 
 #saving {
@@ -120,14 +122,21 @@ li:hover { /*todo*/
 
 .input {
     margin: 4px;
-    background: #242424;
+    background: #0a0a0a;
     border: 1px solid white;
     border-radius: 5px;
     padding: 5px;
     margin: 0;
-    color: white;
+    color: #898989;
     transition: border-color 0.5s, color 0.5s;
 }
+.input::placeholder {
+    color: #9c9c9c;
+}
+.input:hover::placeholder{
+    color: #b5b5b5;
+    scale: 1.02;
+} 
 
 .popup {
     background: rgba(34, 34, 34, 0.729);
@@ -146,3 +155,5 @@ li:hover { /*todo*/
     font-size: 13px;
     color: #ff6464;
 }
+
+

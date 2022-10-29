@@ -13,7 +13,9 @@ body {
 .transparentBg {
     background-color: transparent;
 }
+
 #blocklyDiv {
+    margin-top: 20px;
     z-index: 1;
 }
 #packagingDiv {
@@ -110,7 +112,7 @@ li {
 li:nth-child(odd) { 
     background: rgb(24, 24, 24);
 }
-li:hover { /*todo*/
+li:hover {
     transform: scale(1.01);
 }
 

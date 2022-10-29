@@ -4,7 +4,8 @@ import { vscriptGenerator } from "./modules/vscriptGenerator/generator.mjs";
 import { getToolbox } from "./js/toolbox.mjs";
 import { customBlockValues } from "./modules/customBlocks/gameContents.mjs";
 import { pack } from "./js/main.js";
-import { portal2_models } from "./js/models.mjs"
+import { portal2_models } from "./js/models.mjs";
+import { menubar } from "./menuBar/menuBar.mjs"
 
 let mdlSelectionIndex;
 export function limitList(searchTerm) {
@@ -108,7 +109,6 @@ class VscriptBlockly {
 
 export const VSCRIPT_BLOCKLY = new VscriptBlockly();
 
-selectModel()
 window.addEventListener('unload',
       VSCRIPT_BLOCKLY.saveWorkspaceToFile, false);
 
@@ -117,3 +117,4 @@ window.addEventListener('unload',
 window.VSCRIPT_BLOCKLY = VSCRIPT_BLOCKLY;
 window.selectModel = selectModel;
 window.pack = pack;
+window.menubar = menubar;

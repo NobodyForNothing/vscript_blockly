@@ -2,9 +2,29 @@
 <html>
   <head>
     <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="./menuBar/menubar.css" />
     <title>vscript-blockly</title>
   </head>
   <body>
+    <div id="main-menu">
+      <div id="main-menu-file" class="menu-point">
+        <button class="top-level" onclick="menubar.showOptions_(this)">File</button>
+        <div class="menu-options" hidden>
+          <button class="option">tst</button>
+        </div>
+      </div>
+      <div id="main-menu-about" class="menu-point">
+        <button class="top-level" onclick="menubar.showOptions_(this)">MENUpoint with long name</button>
+        <div class="menu-options" hidden>
+          <div class="button-list">
+            <button class="option" id="menu-option-test" onclick="menubar.clickOption_(this)">tst</button>
+          <button class="option" id="menu-option-test-2" onclick="menubar.clickOption_(this)">tst2</button>
+          <button class="option" id="menu-option-test-2" onclick="menubar.clickOption_(this)">extremely long option</button>
+          </div>
+          
+        </div>
+      </div>
+    </div>
     
     <div id="blocklyDiv" style="height: 1000px; width: 1400px"></div>
     <p id="textArea"></p>
@@ -19,7 +39,7 @@
     </div>
     <div id="packInforamtion">
       <label id="heading-mod-info">Information:</label>
-      <input id="pkg-title" type="text" class="input" size="11" placeholder="packageName" onchange="updateName()">
+      <input id="pkg-title" class="input" type="text" size="15" placeholder="package name" onchange="updateName()">
       <label id="pkg-title-warn"></label>
       <!--<input id="iconPath" type="text" class="input" size="11" placeholder="icon path"> -->
       <div class="space">&nbsp;</h1></div>
@@ -35,7 +55,7 @@
         <button id="saveBtn" onclick="VSCRIPT_BLOCKLY.loadWorkspaceFromFile()">Load blocks</button>
       </p>
     </div>
-    <div id="mdlSelection" class="popup">
+    <div id="mdlSelection" class="popup" hidden>
       <button id="mdlSelectionClose" onclick="selectModel()">X</button>
       <input type="text" id="mdlSearch" class="center" size="50" oninput="limitList(this.value)" placeholder="Search for models..">
       <div style="height: 7vh"></div>
@@ -52,6 +72,8 @@
     <script type="module" src="spplicer/spplicer.js"></script>
     <script type="module" src="js/main.js"></script>
     <script type="module" src="index.js"></script>
+
+    <script type="module" src="menuBar/menuBar.mjs"></script>
 
   </body>
 </html>

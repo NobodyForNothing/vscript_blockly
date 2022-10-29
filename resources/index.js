@@ -3,9 +3,12 @@
 import { vscriptGenerator } from "./modules/vscriptGenerator/generator.mjs";
 import { getToolbox } from "./js/toolbox.mjs";
 import { customBlockValues } from "./modules/customBlocks/gameContents.mjs";
-import { pack } from "./js/main.js";
+import { pack, pickIcon } from "./js/main.js";
 import { portal2_models } from "./js/models.mjs";
-import { menubar } from "./menuBar/menuBar.mjs"
+import { menubar } from "./menuBar/menuBar.mjs";
+import { version__ } from "./js/constants.mjs";
+
+
 
 let mdlSelectionIndex;
 export function limitList(searchTerm) {
@@ -99,10 +102,6 @@ class VscriptBlockly {
   constructor(){
     this.variablePrefix = 'mod.v.';
     this.privateVariablePrefix = 'mod._pV';
-    this.modInfo = {
-      name: "graphicalMod",
-      description: "A mod created with derdillas graphical portal 2 mod creator.",
-    }
     this.mapSpawnCode = "";
   
     this.workspace = Blockly.inject('blocklyDiv', {toolbox: getToolbox()});
@@ -112,6 +111,22 @@ class VscriptBlockly {
 }
 
 export const VSCRIPT_BLOCKLY = new VscriptBlockly();
+
+
+function underline(s) { // https://stackoverflow.com/a/17471507/15581412
+  var arr = s.split('');
+  s = arr.join('\u0332');
+  if (s) s = s + '\u0332';
+  return s;
+}
+
+function showAbout() {
+  alert(`${underline('vscript-blockly')}
+
+  The simplest way to create portal 2 mods!
+  version: ${version__}
+  `)
+}
 
 // add menu bar
 menubar.addMenuPoint('File', [
@@ -123,6 +138,11 @@ menubar.addMenuPoint('Export', [
   ['show code', VSCRIPT_BLOCKLY.showCode]
 ]);
 
+menubar.addMenuPoint('Info', [
+  ['about', showAbout]
+]);
+
+
 window.addEventListener('unload',
       VSCRIPT_BLOCKLY.saveWorkspaceToFile, false);
 
@@ -131,4 +151,9 @@ window.addEventListener('unload',
 window.VSCRIPT_BLOCKLY = VSCRIPT_BLOCKLY;
 window.selectModel = selectModel;
 window.pack = pack;
+
 window.menubar = menubar;
+window.limitList = limitList;
+window.selectModel = selectModel;
+window.pickIcon = pickIcon;
+

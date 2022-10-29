@@ -3,6 +3,10 @@
   <head>
     <link rel="stylesheet" href="index.css" />
     <link rel="stylesheet" href="./menuBar/menubar.css" />
+
+    <script src="js/neutralino.js"></script>
+    <script type="module" src="./js/commandLineArgs.js"></script>
+
     <title>vscript-blockly</title>
   </head>
   <body>
@@ -13,11 +17,20 @@
 
     <div id="packInforamtion">
       <label id="heading-mod-info">Information:</label>
-      <input id="pkg-title" class="input" type="text" size="15" placeholder="package name" onchange="updateName()">
+
+      <input id="pkg-title" class="input" type="text" size="16" placeholder="package title">
+
       <label id="pkg-title-warn"></label>
-      <!--<input id="iconPath" type="text" class="input" size="11" placeholder="icon path"> -->
-      <div class="space">&nbsp;</h1></div>
+      <textarea id="pkg-desc" class="input" cols="15" rows="5" placeholder="description"></textarea>
+      <div class="tooltip">
+        <img id="icon-path" src="./icon.png" alt="mod icon" width="80" height="80" onclick="pickIcon()"/>
+        <div class="top">
+            <p>icon</p>
+        </div>
     </div>
+
+    </div>
+
     <div id="mdlSelection" class="popup" hidden>
       <button id="mdlSelectionClose" onclick="selectModel()">X</button>
       <input type="text" id="mdlSearch" class="center" size="50" oninput="limitList(this.value)" placeholder="Search for models..">
@@ -29,7 +42,6 @@
     <script src="./blockly/blockly_compressed.js"></script>
     <script src="./blockly/blocks_compressed.js"></script>
     <script src="./blockly/msg/js/en.js"></script>
-    <script src="js/neutralino.js"></script>
 
     <script type="module" src="loadModules.js"></script>
     <script type="module" src="spplicer/spplicer.js"></script>

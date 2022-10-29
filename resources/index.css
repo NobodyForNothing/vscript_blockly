@@ -2,6 +2,22 @@ body {
     overflow: hidden;
 }
 
+.transparentBg {
+    background-color: transparent;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+#blocklyDiv {
+    margin-top: 10px;
+    z-index: 1;
+}
+
 .toolBoxSeperator {
     height: 0;
     border-bottom-color: white;
@@ -10,14 +26,7 @@ body {
     margin: 5px 0; 
 }
 
-.transparentBg {
-    background-color: transparent;
-}
 
-#blocklyDiv {
-    margin-top: 10px;
-    z-index: 1;
-}
 #packInforamtion {
     position: absolute;
     top: 6vh;
@@ -25,10 +34,68 @@ body {
 
 }
 #heading-mod-info { 
-    font-size: 13px; 
-    font-weight: bold;
+    font-size: 15px; 
     margin-left: -0.5vh;
 }
+#icon-path {
+    margin-left: 2.5vh;
+    margin-top: -1px;
+    background-color: #000000;
+    border-radius: 5px;
+}
+#icon-path:hover {
+    transform: scale(1.03);
+}
+.input {
+    margin: 4px;
+    background: #c0c0c0;
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 0;
+    margin-top: 2px;
+    color: #000000;
+    transition: border-color 0.5s, color 0.5s;
+}
+.input::placeholder {
+    color: #272727;
+}
+.input:hover::placeholder{
+    color: #070707;
+    scale: 1.02;
+} 
+#pkg-title-warn {
+    font-size: 13px;
+    color: #ff6464;
+}
+
+.tooltip {
+    display:inline-block;
+    position:relative;
+    text-align:left;
+}
+.tooltip .top {
+    bottom: -15px;
+    left: 35%;
+    padding: 0 4px;
+    color:#444444;
+    background-color:#EEEEEE;
+    position:absolute;
+    z-index: 100;
+    margin-top: 0;
+    font-size: small;
+    border-radius: 4px;
+    visibility:hidden;
+}
+.tooltip:hover .top {
+    animation: wait-visible 1s infinite 1s;
+}
+@keyframes wait-visible {
+    100% {
+        visibility: visible;
+    }
+}
+
 #mdlList {
     position: relative;
     text-indent: 6px;
@@ -74,24 +141,6 @@ li:hover {
     padding: 10px;
 }
 
-.input {
-    margin: 4px;
-    background: #0a0a0a;
-    border: 1px solid white;
-    border-radius: 5px;
-    padding: 5px;
-    margin: 0;
-    color: #898989;
-    transition: border-color 0.5s, color 0.5s;
-}
-.input::placeholder {
-    color: #9c9c9c;
-}
-.input:hover::placeholder{
-    color: #b5b5b5;
-    scale: 1.02;
-} 
-
 .popup {
     background: rgba(34, 34, 34, 0.729);
     position: absolute;
@@ -104,10 +153,4 @@ li:hover {
     overflow: scroll;
     z-index: 10000000;
 }
-
-#pkg-title-warn {
-    font-size: 13px;
-    color: #ff6464;
-}
-
 

@@ -6,8 +6,8 @@ export var pkg = {
   title: null,
   name: null,
   dir: null,
-  img: null,
-  imgext: null,
+  img: `${NL_PATH}/resources/icon.png`,
+  imgext: 'png',
   desc: null,
   valid: false
 };
@@ -16,11 +16,64 @@ function setWarning(elementId, text) {
   console.warn('SPPLICER WARN: ' + text);
 }
 
+function sanitizeHTML(string) {
+  return string.replace(/\\/g, "\\\\").replace(/"/g, '\\"').replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\n/g, "<br>");
+}
+
+export async function selectImage() {
+  const filter = {
+    filters: [{
+      name: "Images",
+      extensions: ["jpg", "jpeg", "png"]
+    }]
+  };
+  const img = (await Neutralino.os.showOpenDialog("Select package thumbnail image", filter))[0];
+  if(!img) return;
+  const size = (await Neutralino.filesystem.getStats(img)).size;
+
+  if(size > 51200) {
+    Neutralino.os.showMessageBox(
+      "Invalid file size",
+      "File must be under 50 KB!",
+      "OK",
+      "ERROR"
+    );
+    return;
+  }
+
+  let fileName = img.split("/");
+  fileName = fileName[fileName.length - 1].split("\\");
+  fileName = fileName[fileName.length - 1];
+  let fileExt = fileName.split(".");
+  fileExt = fileExt[fileExt.length - 1];
+
+  let matches = false;
+  for(let i = 0; i < filter.filters[0].extensions.length; i++) {
+    if(fileExt == filter.filters[0].extensions[i]) {
+      matches = true;
+      break;
+    }
+  }
+  if(!matches) {
+    Neutralino.os.showMessageBox(
+      "Invalid file type",
+      "File must be a JPEG or PNG image!",
+      "OK",
+      "ERROR"
+    );
+    return;
+  }
+
+  pkg.img = img;
+  pkg.imgext = fileExt;
+  
+  return img;
+}
+
 var titleLengthWarningTimeout;
 export function updateTitle() {
 
   const domTitle = document.getElementById("pkg-title");
-  const domName = document.getElementById("pkg-name");
 
   domTitle.value = domTitle.value.replace(/[\\\n"]/g, "");
 
@@ -30,31 +83,39 @@ export function updateTitle() {
 
   if(domTitle.value.length > 4) {
 
-    domTitle.style.color = "#faa81a";
-    domTitle.style.borderColor = "#faa81a";
+    domTitle.style.color = "#f00";
+    domTitle.style.borderColor = "#f00";
     pkg.title = domTitle.value;
 
   } else {
 
-    domTitle.style.color = "#fff";
-    domTitle.style.borderColor = "#fff";
-    pkg.title = null;
-
-    setWarning(domTitle, null);
-    if (domTitle.value.length !== 0) {
-      titleLengthWarningTimeout = setTimeout(function () {
-        document.getElementById(`pkg-title-warn`).innerText = "The title must consist of 5 to 25 characters.";
-      }, 1000);
-    } else {
-      document.getElementById(`pkg-title-warn`).innerText = null;
-    }
-
+    domTitle.style.color = "#000";
+    domTitle.style.borderColor = "#0f0";
   }
 
-  domName.placeholder = domTitle.value.toLowerCase().replace(/[^A-Za-z0-9]/g, "-");
-  while(domName.placeholder.indexOf("--") > -1) domName.placeholder = domName.placeholder.replace("--", "-");
+  pkg.name = domTitle.value.toLowerCase().replace(/[^A-Za-z0-9]/g, "-");
 
-  checkValidity();
+}
+
+export function updateDesc() {
+  const domDesc = document.getElementById("pkg-desc");
+  if(desc.value.length === 0) {
+    pkg.desc = 'A mod made using vscript blockly.';
+    return;
+  }
+
+  if(domDesc.value.length >= 10) {
+
+    domDesc.style.color = "#000";
+    domDesc.style.borderColor = "#00ff00";
+    pkg.desc = sanitizeHTML(domDesc.value);
+
+  } else {
+    domDesc.style.color = "#ff0000";
+    domDesc.style.borderColor = "#ff0000";
+    pkg.desc = null;
+    
+  }
 }
 
 export function checkValidity() {

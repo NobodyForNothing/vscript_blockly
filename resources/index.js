@@ -6,6 +6,7 @@ import { customBlockValues } from "./modules/customBlocks/gameContents.mjs";
 import { pack, pickIcon } from "./js/main.js";
 import { portal2_models } from "./js/models.mjs";
 import { menubar } from "./menuBar/menuBar.mjs";
+import { version__ } from "./js/constants.mjs";
 
 
 let mdlSelectionIndex;
@@ -110,6 +111,21 @@ class VscriptBlockly {
 
 export const VSCRIPT_BLOCKLY = new VscriptBlockly();
 
+function underline(s) { // https://stackoverflow.com/a/17471507/15581412
+  var arr = s.split('');
+  s = arr.join('\u0332');
+  if (s) s = s + '\u0332';
+  return s;
+}
+
+function showAbout() {
+  alert(`${underline('vscript-blockly')}
+
+  The simplest way to create portal 2 mods!
+  version: ${version__}
+  `)
+}
+
 // add menu bar
 menubar.addMenuPoint('File', [
   ['Open workspace', VSCRIPT_BLOCKLY.loadWorkspaceFromFile],
@@ -118,6 +134,9 @@ menubar.addMenuPoint('File', [
 menubar.addMenuPoint('Export', [
   ['create spplice pack', pack],
   ['show code', VSCRIPT_BLOCKLY.showCode]
+]);
+menubar.addMenuPoint('Info', [
+  ['about', showAbout]
 ]);
 
 window.addEventListener('unload',

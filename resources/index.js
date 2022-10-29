@@ -9,6 +9,7 @@ import { menubar } from "./menuBar/menuBar.mjs";
 import { version__ } from "./js/constants.mjs";
 
 
+
 let mdlSelectionIndex;
 export function limitList(searchTerm) {
   let validElements = portal2_models.filter(x => x.includes(searchTerm));
@@ -111,6 +112,7 @@ class VscriptBlockly {
 
 export const VSCRIPT_BLOCKLY = new VscriptBlockly();
 
+
 function underline(s) { // https://stackoverflow.com/a/17471507/15581412
   var arr = s.split('');
   s = arr.join('\u0332');
@@ -135,9 +137,11 @@ menubar.addMenuPoint('Export', [
   ['create spplice pack', pack],
   ['show code', VSCRIPT_BLOCKLY.showCode]
 ]);
+
 menubar.addMenuPoint('Info', [
   ['about', showAbout]
 ]);
+
 
 window.addEventListener('unload',
       VSCRIPT_BLOCKLY.saveWorkspaceToFile, false);
@@ -147,7 +151,9 @@ window.addEventListener('unload',
 window.VSCRIPT_BLOCKLY = VSCRIPT_BLOCKLY;
 window.selectModel = selectModel;
 window.pack = pack;
+
 window.menubar = menubar;
 window.limitList = limitList;
 window.selectModel = selectModel;
 window.pickIcon = pickIcon;
+

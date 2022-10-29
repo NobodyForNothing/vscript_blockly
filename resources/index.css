@@ -5,16 +5,19 @@ body {
 .transparentBg {
     background-color: transparent;
 }
+
 .center {
     display: block;
     margin-left: auto;
     margin-right: auto;
 }
 
+
 #blocklyDiv {
     margin-top: 10px;
     z-index: 1;
 }
+
 .toolBoxSeperator {
     height: 0;
     border-bottom-color: white;
@@ -23,10 +26,12 @@ body {
     margin: 5px 0; 
 }
 
+
 #packInforamtion {
     position: absolute;
     top: 6vh;
     left: 125vh;
+
 }
 #heading-mod-info { 
     font-size: 15px; 

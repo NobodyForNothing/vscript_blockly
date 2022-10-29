@@ -3,9 +3,10 @@
 import { vscriptGenerator } from "./modules/vscriptGenerator/generator.mjs";
 import { getToolbox } from "./js/toolbox.mjs";
 import { customBlockValues } from "./modules/customBlocks/gameContents.mjs";
-import { pack } from "./js/main.js";
+import { pack, pickIcon } from "./js/main.js";
 import { portal2_models } from "./js/models.mjs";
-import { menubar } from "./menuBar/menuBar.mjs"
+import { menubar } from "./menuBar/menuBar.mjs";
+
 
 let mdlSelectionIndex;
 export function limitList(searchTerm) {
@@ -99,10 +100,6 @@ class VscriptBlockly {
   constructor(){
     this.variablePrefix = 'mod.v.';
     this.privateVariablePrefix = 'mod._pV';
-    this.modInfo = {
-      name: "graphicalMod",
-      description: "A mod created with derdillas graphical portal 2 mod creator.",
-    }
     this.mapSpawnCode = "";
   
     this.workspace = Blockly.inject('blocklyDiv', {toolbox: getToolbox()});
@@ -134,3 +131,4 @@ window.pack = pack;
 window.menubar = menubar;
 window.limitList = limitList;
 window.selectModel = selectModel;
+window.pickIcon = pickIcon;

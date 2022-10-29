@@ -1,5 +1,6 @@
-import { pkg, checkValidity, createPackage } from "../spplicer/spplicer.js";
+import { pkg, checkValidity, createPackage, selectImage, updateDesc, updateTitle } from "../spplicer/spplicer.js";
 import { VSCRIPT_BLOCKLY } from "../index.js";
+
 
 Neutralino.init();
 
@@ -31,14 +32,36 @@ export async function pack() {
     catch (e) {console.log(e); document.getElementById('packingErrorBox').innerText = 'ERROR: check console'; return}
 
     // sanitize info for spplicer
-    pkg.title = pkg.name;
     pkg.dir = `${NL_PATH}/.tmp/portal2_dlc5`;
-    pkg.img =`${NL_PATH}/resources/icon.png`;
-    pkg.imgext = 'png';
-    pkg.desc = VSCRIPT_BLOCKLY.modInfo.description;
-    
+    updateTitle()
+    updateDesc();
+
     checkValidity();
     createPackage();
+}
+
+export async function pickIcon() {
+    const imagePath = await selectImage();
+    if (imagePath) {
+        console.log(imagePath);
+        // load image
+        const data = await Neutralino.filesystem.readBinaryFile(imagePath
+          );
+
+        // display image
+        const domImg = document.getElementById('icon-path');
+        domImg.src = "data:image/png;base64," + _arrayBufferToBase64(data);
+    }
+}
+
+function _arrayBufferToBase64( buffer ) {
+    var binary = '';
+    var bytes = new Uint8Array( buffer );
+    var len = bytes.byteLength;
+    for (var i = 0; i < len; i++) {
+        binary += String.fromCharCode( bytes[ i ] );
+    }
+    return window.btoa( binary );
 }
 
 Neutralino.events.on("windowClose", function () {

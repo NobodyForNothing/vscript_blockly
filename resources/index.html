@@ -2,40 +2,23 @@
 <html>
   <head>
     <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="./menuBar/menubar.css" />
     <title>vscript-blockly</title>
   </head>
   <body>
+    <div id="main-menu"></div>
     
-    <div id="blocklyDiv" style="height: 1000px; width: 1400px"></div>
+    <div id="blocklyDiv" style="height: 958px; width: 1396px"></div>
     <p id="textArea"></p>
-    
-    <div id="packagingDiv">
-      <button onclick="pack()">
-        <svg width="80" height="80">
-            <g class="transparentBg" transform="matrix(1.626406, 0, 0, 1.592761, -143.603943, -86.757759)"><path style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0);" d="M 89.131 68.367 L 110.362 79.366 L 110.616 104.742 L 89.533 94.765 L 89.131 68.367 Z"></path><path style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0);" d="M 113.213 104.815 L 136.038 94.334 L 135.806 69.177 L 113.64 79.659 L 113.213 104.815 Z" transform="matrix(-1, 0, 0, -1, 249.250992, 173.992004)"></path><path style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0);" d="M 112.256 77.141 L 134.742 66.977 L 113.139 55.362 L 89.982 65.941 L 112.256 77.141 Z"></path></g>
-        </svg>
-      </button>
-      <h4 style="margin: 2px; margin-top: 0; color: white; text-align: center;">pack</h3>
-    </div>
+
     <div id="packInforamtion">
-      <label style="color: white; font-size: 12px; margin-left: 5px;">Information:</label>
-      <input id="pkg-title" type="text" class="input" size="11" placeholder="packageName" onchange="updateName()">
+      <label id="heading-mod-info">Information:</label>
+      <input id="pkg-title" class="input" type="text" size="15" placeholder="package name" onchange="updateName()">
       <label id="pkg-title-warn"></label>
       <!--<input id="iconPath" type="text" class="input" size="11" placeholder="icon path"> -->
       <div class="space">&nbsp;</h1></div>
     </div>
-
-    <div id="saving">
-      <p>
-        <button id="saveBtn" onclick="VSCRIPT_BLOCKLY.saveWorkspaceToFile()">Save blocks</button>
-      </p>
-    </div>
-    <div id="loading">
-      <p>
-        <button id="saveBtn" onclick="VSCRIPT_BLOCKLY.loadWorkspaceFromFile()">Load blocks</button>
-      </p>
-    </div>
-    <div id="mdlSelection" class="popup">
+    <div id="mdlSelection" class="popup" hidden>
       <button id="mdlSelectionClose" onclick="selectModel()">X</button>
       <input type="text" id="mdlSearch" class="center" size="50" oninput="limitList(this.value)" placeholder="Search for models..">
       <div style="height: 7vh"></div>
@@ -52,6 +35,8 @@
     <script type="module" src="spplicer/spplicer.js"></script>
     <script type="module" src="js/main.js"></script>
     <script type="module" src="index.js"></script>
+
+    <script type="module" src="menuBar/menuBar.mjs"></script>
 
   </body>
 </html>

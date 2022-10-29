@@ -4,7 +4,8 @@ import { vscriptGenerator } from "./modules/vscriptGenerator/generator.mjs";
 import { getToolbox } from "./js/toolbox.mjs";
 import { customBlockValues } from "./modules/customBlocks/gameContents.mjs";
 import { pack } from "./js/main.js";
-import { portal2_models } from "./js/models.mjs"
+import { portal2_models } from "./js/models.mjs";
+import { menubar } from "./menuBar/menuBar.mjs"
 
 let mdlSelectionIndex;
 export function limitList(searchTerm) {
@@ -65,7 +66,7 @@ class VscriptBlockly {
     catch (e) { await Neutralino.filesystem.createDirectory(`${NL_PATH}/workspaces`) }
     
     // save workspace
-    let xml = Blockly.Xml.workspaceToDom(this.workspace);
+    let xml = Blockly.Xml.workspaceToDom(VSCRIPT_BLOCKLY.workspace);
     xml = new XMLSerializer().serializeToString(xml);
     let modname = document.getElementById("pkg-title").value.toLowerCase().replace(/ /g, "-").replace(/[^A-Za-z0-9-]/g, "");
     if(modname === '') modname = 'unnamedMod';
@@ -88,8 +89,12 @@ class VscriptBlockly {
     xml = Blockly.Xml.textToDom(xml);
 
     // Clear the workspace to avoid merge.
-    this.workspace.clear();
-    Blockly.Xml.domToWorkspace(xml, this.workspace);
+    VSCRIPT_BLOCKLY.workspace.clear();
+    Blockly.Xml.domToWorkspace(xml, VSCRIPT_BLOCKLY.workspace);
+  }
+  showCode() {
+    VSCRIPT_BLOCKLY.updateCode();
+    alert(VSCRIPT_BLOCKLY.mapSpawnCode);
   }
   constructor(){
     this.variablePrefix = 'mod.v.';
@@ -108,7 +113,16 @@ class VscriptBlockly {
 
 export const VSCRIPT_BLOCKLY = new VscriptBlockly();
 
-selectModel()
+// add menu bar
+menubar.addMenuPoint('File', [
+  ['Open workspace', VSCRIPT_BLOCKLY.loadWorkspaceFromFile],
+  ['Save workspace', VSCRIPT_BLOCKLY.saveWorkspaceToFile]
+]);
+menubar.addMenuPoint('Export', [
+  ['create spplice pack', pack],
+  ['show code', VSCRIPT_BLOCKLY.showCode]
+]);
+
 window.addEventListener('unload',
       VSCRIPT_BLOCKLY.saveWorkspaceToFile, false);
 
@@ -117,3 +131,4 @@ window.addEventListener('unload',
 window.VSCRIPT_BLOCKLY = VSCRIPT_BLOCKLY;
 window.selectModel = selectModel;
 window.pack = pack;
+window.menubar = menubar;

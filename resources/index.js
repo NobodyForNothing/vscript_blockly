@@ -132,3 +132,5 @@ window.VSCRIPT_BLOCKLY = VSCRIPT_BLOCKLY;
 window.selectModel = selectModel;
 window.pack = pack;
 window.menubar = menubar;
+window.limitList = limitList;
+window.selectModel = selectModel;

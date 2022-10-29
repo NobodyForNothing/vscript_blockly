@@ -1,6 +1,5 @@
 export const menubar = {};
 
-menubar.Options = {};
 menubar.domBar = document.getElementById('main-menu');
 
 /**
@@ -16,7 +15,6 @@ menubar.showOptions_ = function(element) {
         optionsDiv = dropdownDiv.childNodes[optionsDivIndex];
         optionsDivIndex++;
     };
-    console.log(dropdownDiv.childNodes)
     if (optionsDiv.hidden === null) {
         optionsDiv.hidden = true;
     }

@@ -13,18 +13,14 @@ It is currently not possible to specify other meta information than the mod name
 You can code your mods relatively intuitively by putting together blocks from the right side. Please note that your code most likely won't work if it is not inside one of the blocks from the event section.
 
 ### known bugs and limitations
-- you can't get direct access to generated source code
 - search last in String won't work
-- current list implementation has little real use
--  some valid block constellations cause the generated code not to work (feel free to create an issue containing the workspace file)
+- some valid block constellations cause the generated code not to work (feel free to create an issue containing the workspace file)
 
 ### Contributing
-To contribute add contents of the [Blockly repository](https://github.com/google/blockly/tree/master) to `ressources/blockly` install neutralino and `neu run`  the project.
+To contribute add contents(blocks-compressed, blockly_compressed and msg folder) of the [Blockly repository](https://github.com/google/blockly/tree/master) to `ressources/blockly`.
+Install neutralino and `neu run` the project.
 
 ### Planed features
-- improving the list functionality
 - implementing Tables
 - more export options
-- allow adding more information to package export
-- rework GUI
 - adding plugin support

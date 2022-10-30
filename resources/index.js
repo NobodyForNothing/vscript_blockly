@@ -97,10 +97,16 @@ function showAbout() {
   `)
 }
 
+function appendWorkspace() {
+  loadWorkspaceFromFile(true);
+}
+
+
 // add menu bar
 menubar.addMenuPoint('File', [
   ['Open workspace', loadWorkspaceFromFile],
-  ['Save workspace', saveWorkspaceToFile]
+  ['Save workspace', saveWorkspaceToFile],
+  ['Append workspace', appendWorkspace]
 ]);
 menubar.addMenuPoint('Export', [
   ['create spplice pack', pack],

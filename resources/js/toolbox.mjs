@@ -250,9 +250,9 @@ export function getToolbox() {
       },
     ]
   }
-  const cat_vectors = {
+  const cat_buildin = {
     "kind": "category",
-    "name": "Vector",
+    "name": "Valve stuff",
     "contents": [
       {
         "kind": "block",
@@ -284,6 +284,14 @@ export function getToolbox() {
           },
         }
       },
+      {
+        "kind": "block",
+        "type": "vector_get_element",
+      },
+      {
+        "kind": "block",
+        "type": "vector_set_element",
+      }
     ]
   }
   const cat_prtl_con = {
@@ -619,7 +627,7 @@ export function getToolbox() {
 
       cat_prtl_con,
       cat_events,
-      cat_vectors,
+      cat_buildin,
       cat_ppmod,
 
       cat_selections

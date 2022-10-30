@@ -8,7 +8,7 @@ import './modules/vscriptGenerator/ppmodBlocks.mjs';
 import './modules/vscriptGenerator/_indevBlocks.mjs';
 
 // custom Blocks
-import './modules/customBlocks/vector.mjs';
+import './modules/customBlocks/buildIn.mjs';
 import './modules/customBlocks/portal2Console.mjs';
 import './modules/customBlocks/ppmod.mjs';
 import './modules/customBlocks/events.mjs';

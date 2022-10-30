@@ -203,7 +203,7 @@ export function getToolbox() {
       },
       {
         'kind': 'block',
-        'type': 'list_getElement',
+        'type': 'list_get_element',
         "inputs": {
           "ID": {
             "shadow": {
@@ -217,7 +217,7 @@ export function getToolbox() {
       },
       {
         'kind': 'block',
-        'type': 'list_setElement',
+        'type': 'list_set_element',
         "inputs": {
           "ID": {
             "shadow": {
@@ -231,7 +231,7 @@ export function getToolbox() {
       },
       {
         'kind': 'block',
-        'type': 'list_addElement',
+        'type': 'list_add_element',
       }
     ]
   }

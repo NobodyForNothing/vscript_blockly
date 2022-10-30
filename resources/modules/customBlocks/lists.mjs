@@ -1,10 +1,10 @@
 import { colors } from "./customBlockDefaults.mjs";
 
 // lists
-Blockly.Blocks['list_getElement'] = {
+Blockly.Blocks['list_get_element'] = {
     init: function() {
       this.jsonInit({
-        "type": "list_getElement",
+        "type": "list_get_element",
         "message0": "get element #%1 of list %2",
         "args0": [
           {
@@ -25,10 +25,10 @@ Blockly.Blocks['list_getElement'] = {
       });
     }
   }
-  Blockly.Blocks['list_setElement'] = {
+  Blockly.Blocks['list_set_element'] = {
     init: function() {
       this.jsonInit({
-        "type": "list_setElement",
+        "type": "list_set_element",
         "message0": "set element #%1 of list %2 to %3",
         "args0": [
           {
@@ -54,10 +54,10 @@ Blockly.Blocks['list_getElement'] = {
       });
     }
   }
-  Blockly.Blocks['list_addElement'] = {
+  Blockly.Blocks['list_add_element'] = {
     init: function() {
       this.jsonInit({
-        "type": "list_addElement",
+        "type": "list_add_element",
         "message0": "append element %1 to list %2",
         "args0": [
           {

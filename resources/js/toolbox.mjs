@@ -291,7 +291,15 @@ export function getToolbox() {
       {
         "kind": "block",
         "type": "vector_set_element",
-      }
+      },
+      {
+        "kind": "block",
+        "type": "vector_math",
+      },
+      {
+        "kind": "block",
+        "type": "util_destroy",
+      },
     ]
   }
   const cat_prtl_con = {

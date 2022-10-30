@@ -24,7 +24,7 @@ Blockly.Blocks['vector'] = {
       "output": "Vector",
       "colour": colors.vector,
       "tooltip": "create a vector (position in 3d space)",
-      "helpUrl": ""
+      "helpUrl": "https://developer.valvesoftware.com/wiki/List_of_Portal_2_Script_Functions#Vector"
     });
   }
 }
@@ -60,7 +60,7 @@ Blockly.Blocks['vector_get_element'] = {
       "output": "Number",
       "colour": colors.vector,
       "tooltip": "get a component of a vector",
-      "helpUrl": ""
+      "helpUrl": "https://developer.valvesoftware.com/wiki/List_of_Portal_2_Script_Functions#Vector"
     });
   }
 }
@@ -101,7 +101,7 @@ Blockly.Blocks['vector_set_element'] = {
       "nextStatement": null,
       "colour": colors.vector,
       "tooltip": "set a component of a vector",
-      "helpUrl": ""
+      "helpUrl": "https://developer.valvesoftware.com/wiki/List_of_Portal_2_Script_Functions#Vector"
     });
   }
 }
@@ -141,7 +141,7 @@ Blockly.Blocks['vector_math'] = {
       "output": "Vector",
       "colour": colors.vector,
       "tooltip": "add or substract 2 vectors or multiply a vector with a number",
-      "helpUrl": ""
+      "helpUrl": "https://developer.valvesoftware.com/wiki/List_of_Portal_2_Script_Functions#Vector"
     });
   }
 }

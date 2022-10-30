@@ -4,5 +4,6 @@ export const colors = {
     events: 330,
     lists: 260,
     vector: 0,
+    util: 0,
     variables: 0
   }

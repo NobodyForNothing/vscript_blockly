@@ -36,6 +36,13 @@ vscriptGenerator['vector_math'] = function (block) {
     }
 }
 
+// util
+vscriptGenerator['util_destroy'] = function (block) {
+    const entity = block.getFieldValue('ENT');
+    return `${entity}.Destroy();`;
+}
+
+
 vscriptGenerator['mdl_select'] = function (block) {
     const index = block.getFieldValue('MODELINDEX');
     const value = customBlockValues.mdl_select[index];

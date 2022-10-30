@@ -6,7 +6,8 @@ import { customBlockValues } from "./modules/customBlocks/gameContents.mjs";
 import { pack, pickIcon } from "./js/main.js";
 import { portal2_models } from "./js/models.mjs";
 import { menubar } from "./menuBar/menuBar.mjs";
-import { version__ } from "./js/constants.mjs";
+import { version__, fileVersion_ } from "./js/constants.mjs";
+import { saveWorkspaceToFile, loadWorkspaceFromFile } from "./modules/export-import.mjs";
 
 
 
@@ -63,38 +64,6 @@ class VscriptBlockly {
     VSCRIPT_BLOCKLY.mapSpawnCode = code;
     // document.getElementById('textArea').innerText = code;
   }
-  async saveWorkspaceToFile() {
-    // create workspace folder
-    try {await Neutralino.filesystem.getStats(`${NL_PATH}/workspaces`) }
-    catch (e) { await Neutralino.filesystem.createDirectory(`${NL_PATH}/workspaces`) }
-    
-    // save workspace
-    let xml = Blockly.Xml.workspaceToDom(VSCRIPT_BLOCKLY.workspace);
-    xml = new XMLSerializer().serializeToString(xml);
-    let modname = document.getElementById("pkg-title").value.toLowerCase().replace(/ /g, "-").replace(/[^A-Za-z0-9-]/g, "");
-    if(modname === '') modname = 'unnamedMod';
-    try { await Neutralino.filesystem.writeFile(`${NL_PATH}/workspaces/${modname}_${Date.now()}.xml`, xml); } catch (e) { console.log(e) }
-  }
-  async loadWorkspaceFromFile() {
-    const xmlPath = await Neutralino.os.showOpenDialog('Load workspace from file', {
-      defaultPath: `${NL_PATH}/workspaces`,
-      filters: [
-        {name: 'Images', extensions: ['xml']},
-        {name: 'All files', extensions: ['*']}
-      ]
-    });
-    console.log(xmlPath);
-    let xml = null;
-    try {xml = await Neutralino.filesystem.readFile(xmlPath[0])} catch (e) {
-      console.log(e);
-    }
-    console.log(xml);
-    xml = Blockly.Xml.textToDom(xml);
-
-    // Clear the workspace to avoid merge.
-    VSCRIPT_BLOCKLY.workspace.clear();
-    Blockly.Xml.domToWorkspace(xml, VSCRIPT_BLOCKLY.workspace);
-  }
   showCode() {
     VSCRIPT_BLOCKLY.updateCode();
     alert(VSCRIPT_BLOCKLY.mapSpawnCode);
@@ -130,8 +99,8 @@ function showAbout() {
 
 // add menu bar
 menubar.addMenuPoint('File', [
-  ['Open workspace', VSCRIPT_BLOCKLY.loadWorkspaceFromFile],
-  ['Save workspace', VSCRIPT_BLOCKLY.saveWorkspaceToFile]
+  ['Open workspace', loadWorkspaceFromFile],
+  ['Save workspace', saveWorkspaceToFile]
 ]);
 menubar.addMenuPoint('Export', [
   ['create spplice pack', pack],

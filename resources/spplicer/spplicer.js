@@ -31,7 +31,7 @@ export async function selectImage() {
   if(!img) return;
   const size = (await Neutralino.filesystem.getStats(img)).size;
 
-  if(size > 51200) {
+  if(size > 51200) { // todo: add atempt to compress
     Neutralino.os.showMessageBox(
       "Invalid file size",
       "File must be under 50 KB!",

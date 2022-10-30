@@ -23,7 +23,7 @@ Blockly.Blocks['vector'] = {
       "inputsInline": true,
       "output": "Vector",
       "colour": colors.vector,
-      "tooltip": "prints something into the portal 2 console",
+      "tooltip": "create a vector (position in 3d space)",
       "helpUrl": ""
     });
   }
@@ -59,7 +59,7 @@ Blockly.Blocks['vector_get_element'] = {
       ],
       "output": "Number",
       "colour": colors.vector,
-      "tooltip": "",
+      "tooltip": "get a component of a vector",
       "helpUrl": ""
     });
   }
@@ -100,9 +100,48 @@ Blockly.Blocks['vector_set_element'] = {
       "previousStatement": null,
       "nextStatement": null,
       "colour": colors.vector,
-      "tooltip": "",
+      "tooltip": "set a component of a vector",
       "helpUrl": ""
     });
   }
 }
-Blockly.Blocks['vector_math'] = {}
+Blockly.Blocks['vector_math'] = {
+  init: function () {
+    this.jsonInit({
+      "type": "vector_math",
+      "message0": "vector %1 %2 %3",
+      "args0": [
+        {
+          "type": "input_value",
+          "name": "VECTOR"
+        },
+        {
+          "type": "field_dropdown",
+          "name": "VALUE",
+          "options": [
+            [
+              "+",
+              "ADD"
+            ],
+            [
+              "-",
+              "SUBSTRACT"
+            ],
+            [
+              "*",
+              "TIMES"
+            ]
+          ]
+        },
+        {
+          "type": "input_value",
+          "name": "VALUE"
+        }
+      ],
+      "output": "Vector",
+      "colour": colors.vector,
+      "tooltip": "add or substract 2 vectors or multiply a vector with a number",
+      "helpUrl": ""
+    });
+  }
+}

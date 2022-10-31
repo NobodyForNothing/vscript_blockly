@@ -1,0 +1,20 @@
+.default-colors {
+    --text-color: #000;
+    --background-color: #c0c0c0;
+    --background-color-standout: #b0b0b0;
+    --mod-icon-background: #000;
+    --border-color: #fff;
+    --border-color-standout: #000;
+    --placeholder-color: #272727;
+    --placeholder-hover-color: #070707;
+    --warn-text-color: #ff6464;
+
+    --tool-box-seperator-color: #fff;
+    --input-background-color: var(--background-color);
+    --search-text-color: #fff;
+    --search-background-color: #1f1f1f91;
+    --list-text-color: #fff;
+    --list-background-color-0: rgb(26, 26, 26);
+    --list-background-color-2: rgb(20, 20, 20);
+    --popup-background-color: rgba(34, 34, 34, 0.729);
+}

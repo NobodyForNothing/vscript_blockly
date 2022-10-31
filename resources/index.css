@@ -1,6 +1,7 @@
 body {
     overflow: hidden;
     color: var(--text-color);
+    background-color: var(--color-workspace);
 }
 
 li {

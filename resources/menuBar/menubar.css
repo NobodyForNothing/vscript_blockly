@@ -35,8 +35,13 @@
     overflow: hidden;
 }
 #main-menu .option {
+    background-color: var(--background-color-standout);
     display: block;
     text-align: left;
     width: auto;
 }
+#main-menu .option:hover {
+    background-color: var(--background-color-standout-2);
+}
+
 

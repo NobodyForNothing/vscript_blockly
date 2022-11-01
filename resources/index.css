@@ -4,21 +4,6 @@ body {
     background-color: var(--color-workspace);
 }
 
-li {
-    color: var(--list-text-color);
-    background-color: var(--list-background-color-0);
-}
-li:nth-child(odd) { 
-    background: var(--list-background-color-1);
-}
-li:hover {
-    transform: scale(1.01);
-}
-
-.transparentBg {
-    background-color: transparent;
-}
-
 .center {
     display: block;
     margin-left: auto;
@@ -39,47 +24,23 @@ li:hover {
     margin: 5px 0; 
 }
 
+.center {
+    margin: auto;
+    width: 60%;
+    padding: 10px;
+}
 
-#packInforamtion {
+.popup {
+    background: var(--popup-background-color);
     position: absolute;
-    top: 6vh;
-    left: 125vh;
-
-}
-#heading-mod-info { 
-    font-size: 15px; 
-    margin-left: -0.5vh;
-}
-#icon-path {
-    margin-left: 2.5vh;
-    margin-top: -1px;
-    background-color: var(--mod-icon-background);
-    border-radius: 5px;
-}
-#icon-path:hover {
-    transform: scale(1.03);
-}
-.input {
-    margin: 4px;
-    background-color: var(--input-background-color);
-    border: 1px solid var(--border-color);
-    border-radius: 5px;
-    padding: 5px;
-    margin: 0;
-    margin-top: 2px;
-    color: var(--text-color);
-    transition: border-color 0.5s, color 0.5s;
-}
-.input::placeholder {
-    color: var(--placeholder-color);
-}
-.input:hover::placeholder{
-    color: var(--placeholder-hover-color);
-    scale: 1.02;
-} 
-#pkg-title-warn {
-    font-size: 13px;
-    color: var(--warn-text-color);
+    left: 15%;
+    top: 15%;
+    width: 70%;
+    height: 70%;
+    border: 2px solid var(--border-color-standout);
+    border-radius: 20px;
+    overflow: scroll;
+    z-index: 10000000;
 }
 
 .tooltip {
@@ -88,8 +49,6 @@ li:hover {
     text-align:left;
 }
 .tooltip .top {
-    bottom: -15px;
-    left: 35%;
     padding: 0 4px;
     color: var(--text-color);
     background-color: var(--background-color);
@@ -109,51 +68,51 @@ li:hover {
     }
 }
 
-#mdlList {
-    position: relative;
-    text-indent: 6px;
-    font-size: medium;
-    margin-left: 4% ;
-    width: 92%;
-    list-style: none;
-    border: 2px solid var(--border-color);
-    border-radius: 5px;
-    z-index: -1;
-    overflow: hidden;
-}
-#mdlSearch {
-    margin-left: 4.3%;
-    margin-top: 1.5%;
-    width: 60%;
-    background-color: var(--search-background-color);
-    color: var(--search-text-color);
-    border: 2px solid var(--border-color);
-    border-radius: 5px;
-    font-size: 150%;
-    position: fixed;
-}
-#mdlSelectionClose {
-    position: fixed;
-    right: 16%;
-    margin-top: 1.5%;
-}
-
-.center {
-    margin: auto;
-    width: 60%;
-    padding: 10px;
-}
-
-.popup {
-    background: var(--popup-background-color);
+#packInforamtion {
     position: absolute;
-    left: 15%;
-    top: 15%;
-    width: 70%;
-    height: 70%;
-    border: 2px solid var(--border-color-standout);
-    border-radius: 20px;
-    overflow: scroll;
-    z-index: 10000000;
+    top: 6vh;
+    left: 125vh;
+
 }
+#packInforamtion #heading-mod-info { 
+    font-size: 15px; 
+    margin-left: -0.5vh;
+}
+#packInforamtion #icon-path {
+    margin-left: 2.5vh;
+    margin-top: -1px;
+    background-color: var(--mod-icon-background);
+    border-radius: 5px;
+}
+#packInforamtion #icon-path:hover {
+    transform: scale(1.03);
+}
+#packInforamtion .input {
+    margin: 4px;
+    background-color: var(--input-background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    padding: 5px;
+    margin: 0;
+    margin-top: 2px;
+    color: var(--text-color);
+    transition: border-color 0.5s, color 0.5s;
+}
+#packInforamtion .input::placeholder {
+    color: var(--placeholder-color);
+}
+#packInforamtion .input:hover::placeholder{
+    color: var(--placeholder-hover-color);
+    scale: 1.02;
+} 
+#packInforamtion #pkg-title-warn {
+    font-size: 13px;
+    color: var(--warn-text-color);
+}
+#packInforamtion .tooltip .top {
+    bottom: -15px;
+    left: 35%;
+}
+
+
 

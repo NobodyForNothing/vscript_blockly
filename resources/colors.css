@@ -1,42 +1,45 @@
 .default-colors {
-    /* general colors */
-    --text-color: #000;
-    --text-color-standout: #fff;
-    --background-color: #ddd;
-    --background-color-standout: #cccccc;
-    --background-color-standout-2: #adadad;
-    --mod-icon-background: #000;
-    --border-color: #fff;
-    --border-color-standout: #000;
-    --placeholder-color: #272727;
-    --placeholder-hover-color: #070707;
+  /* general colors */
+  --text-color: #000;
+  --text-color-standout: #fff;
+  --background-color: #ddd;
+  --background-color-standout: #cccccc;
+  --background-color-standout-2: #adadad;
+  --mod-icon-background: #000;
+  --border-color: #fff;
+  --border-color-standout: #000;
+  --placeholder-color: #272727;
+  --placeholder-hover-color: #070707;
 
-    /* specific colors */
-    --color-workspace: #fff;
-    --tool-box-seperator-color: var(--border-color);
-    --input-background-color: var(--background-color);
-    --search-text-color: var(--text-color-standout);
-    --search-background-color: #1f1f1f91;
-    --list-text-color: var(--text-color-standout);
-    --list-background-color-0: rgb(26, 26, 26);
-    --list-background-color-2: rgb(20, 20, 20);
-    --popup-background-color: rgba(34, 34, 34, 0.729);
-    --warn-text-color: #ff6464;
+  /* specific colors */
+  --color-workspace: #fff;
+  --tool-box-seperator-color: var(--border-color);
+  --input-background-color: var(--background-color);
+  --search-text-color: var(--text-color-standout);
+  --search-background-color: #1f1f1f91;
+  --list-text-color: var(--text-color-standout);
+  --list-background-color-0: rgb(26, 26, 26);
+  --list-background-color-2: rgb(20, 20, 20);
+  --popup-background-color: rgba(34, 34, 34, 0.729);
+  --warn-text-color: #ff6464;
 }
 
 /* blockly colors */
 .blocklyToolboxDiv {
-    background-color: var(--background-color);
-    color: var(--text-color);
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
+
 .blocklyFlyoutBackground {
-    fill: var(--background-color);
-    fill-opacity: 0.7;
+  fill: var(--background-color);
+  fill-opacity: 0.7;
 }
+
 .blocklyMainBackground {
-    stroke: none;
-    background-color: var(--color-workspace);
+  stroke: none;
+  background-color: var(--color-workspace);
 }
+
 .blocklyToolboxCategory:hover {
-    background-color: var(--background-color-standout);
+  background-color: var(--background-color-standout);
 }

@@ -614,6 +614,10 @@ export function getToolbox() {
         "kind": "block",
         "type": "select_mdl"
       },
+      {
+        "kind": "block",
+        "type": "select_ent"
+      },
     ]
   }
 

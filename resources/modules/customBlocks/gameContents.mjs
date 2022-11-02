@@ -49,7 +49,7 @@ Blockly.Blocks['select_ent'] = {
     let button = new Blockly.FieldDropdown(
       () => {
         let displaytext = block.data ? block.data : 'select model'
-        return [[displaytext, block.data]];
+        return [[displaytext, 'DATA']];
       });
     button.showEditor_=(()=>{ 
       // instead of showing default selection menu show custom menu

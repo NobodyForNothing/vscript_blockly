@@ -5,5 +5,6 @@ export const colors = {
     lists: 260,
     vector: 0,
     util: 15,
-    variables: 30
+    variables: 30,
+    selection: 45
   }

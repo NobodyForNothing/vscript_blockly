@@ -612,7 +612,7 @@ export function getToolbox() {
     "contents": [
       {
         "kind": "block",
-        "type": "mdl_select"
+        "type": "select_mdl"
       },
     ]
   }

@@ -1,5 +1,4 @@
 import { vscriptGenerator } from "./generator.mjs";
-import { customBlockValues } from "../customBlocks/gameContents.mjs";
 
 // vector
 vscriptGenerator['vector'] = function (block) {
@@ -43,8 +42,6 @@ vscriptGenerator['util_destroy'] = function (block) {
 }
 
 
-vscriptGenerator['mdl_select'] = function (block) {
-    const index = block.getFieldValue('MODELINDEX');
-    const value = customBlockValues.mdl_select[index];
-    return `"${value}"`;
+vscriptGenerator['select_mdl'] = function (block) {
+    return `"${block.data}"`;
 };

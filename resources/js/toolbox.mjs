@@ -203,7 +203,7 @@ export function getToolbox() {
       },
       {
         'kind': 'block',
-        'type': 'list_getElement',
+        'type': 'list_get_element',
         "inputs": {
           "ID": {
             "shadow": {
@@ -217,7 +217,7 @@ export function getToolbox() {
       },
       {
         'kind': 'block',
-        'type': 'list_setElement',
+        'type': 'list_set_element',
         "inputs": {
           "ID": {
             "shadow": {
@@ -231,7 +231,7 @@ export function getToolbox() {
       },
       {
         'kind': 'block',
-        'type': 'list_addElement',
+        'type': 'list_add_element',
       }
     ]
   }
@@ -250,9 +250,9 @@ export function getToolbox() {
       },
     ]
   }
-  const cat_vectors = {
+  const cat_buildin = {
     "kind": "category",
-    "name": "Vector",
+    "name": "Valve stuff",
     "contents": [
       {
         "kind": "block",
@@ -283,6 +283,22 @@ export function getToolbox() {
             }
           },
         }
+      },
+      {
+        "kind": "block",
+        "type": "vector_get_element",
+      },
+      {
+        "kind": "block",
+        "type": "vector_set_element",
+      },
+      {
+        "kind": "block",
+        "type": "vector_math",
+      },
+      {
+        "kind": "block",
+        "type": "util_destroy",
       },
     ]
   }
@@ -596,7 +612,11 @@ export function getToolbox() {
     "contents": [
       {
         "kind": "block",
-        "type": "mdl_select"
+        "type": "select_mdl"
+      },
+      {
+        "kind": "block",
+        "type": "select_ent"
       },
     ]
   }
@@ -619,7 +639,7 @@ export function getToolbox() {
 
       cat_prtl_con,
       cat_events,
-      cat_vectors,
+      cat_buildin,
       cat_ppmod,
 
       cat_selections

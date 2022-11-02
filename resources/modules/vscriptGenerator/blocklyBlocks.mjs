@@ -388,3 +388,22 @@ vscriptGenerator['procedures_defreturn'] = function(block) {
     console.log(code);
     return code;
 }
+
+// lists
+vscriptGenerator['list_get_element'] = function(block) {
+    const id = vscriptGenerator.statementToCode(block, 'ID');
+    const list = vscriptGenerator.statementToCode(block, 'LIST');
+    return `${list}[${id}]`;
+}
+vscriptGenerator['list_set_element'] = function(block) {
+    const id = vscriptGenerator.statementToCode(block, 'ID');
+    const list = vscriptGenerator.statementToCode(block, 'LIST');
+    const value = vscriptGenerator.statementToCode(block, 'VALUE');
+    return `${list}[${id}] = ${value};`;
+}
+vscriptGenerator['list_add_element'] = function(block) {
+    const list = vscriptGenerator.statementToCode(block, 'LIST');
+    const value = vscriptGenerator.statementToCode(block, 'VALUE');
+    return `${list}.append(${value});`;
+}
+

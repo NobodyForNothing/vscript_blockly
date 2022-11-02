@@ -2,45 +2,12 @@
 
 import { vscriptGenerator } from "./modules/vscriptGenerator/generator.mjs";
 import { getToolbox } from "./js/toolbox.mjs";
-import { customBlockValues } from "./modules/customBlocks/gameContents.mjs";
 import { pack, pickIcon } from "./js/main.js";
-import { portal2_models } from "./js/models.mjs";
 import { menubar } from "./menuBar/menuBar.mjs";
 import { version__, fileVersion_ } from "./js/constants.mjs";
 import { saveWorkspaceToFile, loadWorkspaceFromFile } from "./modules/export-import.mjs";
+import { limitList, selectModel } from "./modules/selection/selectionMenu.mjs";
 
-
-
-let mdlSelectionIndex;
-export function limitList(searchTerm) {
-  let validElements = portal2_models.filter(x => x.includes(searchTerm));
-  const domList = document.getElementById('mdlList');
-  domList.innerHTML = ""; // remove last search result
-  for(const e of validElements) {
-    const li = document.createElement('li');
-    li.innerHTML = e;
-    li.onclick = function() {selectModel(this.innerHTML)};
-    domList.appendChild(li);
-  } 
-}
-export function selectModel(mdlName) {
-  document.getElementById('mdlSearch').value = "";
-  document.getElementById('mdlSelection').hidden = true;
-  try {
-    customBlockValues.mdl_select[mdlSelectionIndex] = mdlName;
-    mdlSelectionIndex = -1;
-    VSCRIPT_BLOCKLY.updateCode();
-  } catch (e) {
-    console.warn('nowhere to save selected model to');
-  }
-}
-export function showModelSelection(opt_index) {
-  limitList("");
-  document.getElementById('mdlSelection').hidden = false;
-  if(opt_index) {
-    mdlSelectionIndex = opt_index;
-  }
-}
 
 class VscriptBlockly { 
   updateCode(event) {

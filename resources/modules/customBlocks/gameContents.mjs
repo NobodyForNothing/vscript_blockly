@@ -1,29 +1,66 @@
 import { colors } from "./customBlockDefaults.mjs";
-import { showModelSelection  } from "../../index.js";
+import { getModelSelectionPromise  } from "../selection/selectionMenu.mjs";
+import { portal2_entities, portal2_models } from "../../js/models.mjs";
+import { reloadWorkspace } from "../export-import.mjs";
 
-export const customBlockValues = {};
 
-customBlockValues.mdl_select = ['-']
-Blockly.Blocks['mdl_select'] = { 
+Blockly.Blocks['select_mdl'] = { 
   // block to select model
   // dropdownlist opens model selector
-  // default value is '-'
-  // each block saves its index and passes to model selector
-  // after model selection it gets saved to global array
-  // customBlockValues.mdl_select = []
+  // the block value is stored in data property
+  // default value is undefined
+  // after each model selection it gets updated
   init: function() {
-    this.setColour(colors.lists,);
-    this.setTooltip("");
-    this.setHelpUrl("");
+    this.setColour(colors.selection);
+    this.setTooltip("a existing model from the game files");
+    this.setHelpUrl(); // todo 
     this.setOutput(true);
-  
-    let button = new Blockly.FieldDropdown([["select model", `${customBlockValues.mdl_select.length}`]]);
+    let block = this;
+
+    let button = new Blockly.FieldDropdown(
+      () => {
+        let displaytext = block.data ? block.data.replace('models/','') : 'select model'
+        return [[displaytext, 'DATA']];
+      });
     button.showEditor_=(()=>{ 
       // instead of showing default selection menu show custom menu
-      showModelSelection(button.menuGenerator_[0][1]); // saved array index
+      const promise = getModelSelectionPromise(portal2_models);
+      promise.then((selection)=>{
+        block.data = selection;
+        reloadWorkspace();
+      });
     });
     this.appendDummyInput()
       .appendField('model:')
-      .appendField(button,'MODELINDEX');
+      .appendField(button,'MODEL');
+  }
+}
+
+Blockly.Blocks['select_ent'] = { 
+  // block to select enitity
+  init: function() {
+    this.setColour(colors.selection);
+    this.setTooltip('create a entity from the portal 2 game. Please note that not every entity is useful and some might crash the game, if handled inproperly');
+    this.setHelpUrl('https://developer.valvesoftware.com/wiki/List_of_Portal_2_Entities');
+    this.setOutput(true);
+    
+    let block = this;
+
+    let button = new Blockly.FieldDropdown(
+      () => {
+        let displaytext = block.data ? block.data : 'select model'
+        return [[displaytext, 'DATA']];
+      });
+    button.showEditor_=(()=>{ 
+      // instead of showing default selection menu show custom menu
+      const promise = getModelSelectionPromise(portal2_entities);
+      promise.then((selection)=>{
+        block.data = selection;
+        reloadWorkspace();
+      });
+    });
+    this.appendDummyInput()
+      .appendField('entity:')
+      .appendField(button,'ENTITY');
   }
 }

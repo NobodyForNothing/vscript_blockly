@@ -43,5 +43,16 @@ vscriptGenerator['util_destroy'] = function (block) {
 
 
 vscriptGenerator['select_mdl'] = function (block) {
-    return `"${block.data}"`;
+    if (block.data) {
+        return `"${block.data}"`;
+    } else {
+        return '';
+    }
+};
+vscriptGenerator['select_ent'] = function (block) {
+    if (block.data) {
+        return `"${block.data}"`;
+    } else {
+        return '';
+    }
 };

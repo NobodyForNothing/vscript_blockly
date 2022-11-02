@@ -1,6 +1,6 @@
 import { colors } from "./customBlockDefaults.mjs";
 import { getModelSelectionPromise  } from "../selection/selectionMenu.mjs";
-import { portal2_models } from "../../js/models.mjs";
+import { portal2_entities, portal2_models } from "../../js/models.mjs";
 import { reloadWorkspace } from "../export-import.mjs";
 
 
@@ -26,14 +26,41 @@ Blockly.Blocks['select_mdl'] = {
       // instead of showing default selection menu show custom menu
       const promise = getModelSelectionPromise(portal2_models);
       promise.then((selection)=>{
-        // todo: find way to save to block dropdown
         block.data = selection;
         reloadWorkspace();
       });
     });
     this.appendDummyInput()
       .appendField('model:')
-      .appendField(button,'MODELINDEX');
+      .appendField(button,'MODEL');
   }
 }
 
+Blockly.Blocks['select_ent'] = { 
+  // block to select enitity
+  init: function() {
+    this.setColour(colors.selection);
+    this.setTooltip('create a entity from the portal 2 game. Please note that not every entity is useful and some might crash the game, if handled inproperly');
+    this.setHelpUrl('https://developer.valvesoftware.com/wiki/List_of_Portal_2_Entities');
+    this.setOutput(true);
+    
+    let block = this;
+
+    let button = new Blockly.FieldDropdown(
+      () => {
+        let displaytext = block.data ? block.data : 'select model'
+        return [[displaytext, block.data]];
+      });
+    button.showEditor_=(()=>{ 
+      // instead of showing default selection menu show custom menu
+      const promise = getModelSelectionPromise(portal2_entities);
+      promise.then((selection)=>{
+        block.data = selection;
+        reloadWorkspace();
+      });
+    });
+    this.appendDummyInput()
+      .appendField('entity:')
+      .appendField(button,'ENTITY');
+  }
+}

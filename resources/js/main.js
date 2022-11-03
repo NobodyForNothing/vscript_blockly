@@ -9,18 +9,12 @@ export async function pack() {
   VSCRIPT_BLOCKLY.updateCode();
 
   // create dlc structure
-  try { await Neutralino.filesystem.getStats(`${NL_PATH}/.tmp`) }
-  catch (e) { await Neutralino.filesystem.createDirectory(`${NL_PATH}/.tmp`) }
-  try { await Neutralino.filesystem.removeDirectory(`${NL_PATH}/.tmp/portal2_dlc5`) }
-  catch (e) { }
-  try {
-    await Neutralino.filesystem.createDirectory(`${NL_PATH}/.tmp/portal2_dlc5`);
-    await Neutralino.filesystem.createDirectory(`${NL_PATH}/.tmp/portal2_dlc5/scripts`);
-    await Neutralino.filesystem.createDirectory(`${NL_PATH}/.tmp/portal2_dlc5/scripts/vscripts`);
-    await Neutralino.filesystem.createDirectory(`${NL_PATH}/.tmp/portal2_dlc5/scripts/vscripts/custom`);
-  } catch (e) {
-    console.log(e);
-  }
+  await _createFolderIfPossible(`${NL_PATH}/.tmp`);
+  await _createFolderIfPossible(`${NL_PATH}/.tmp/portal2_dlc5`);
+  await _createFolderIfPossible(`${NL_PATH}/.tmp/portal2_dlc5/scripts`);
+  await _createFolderIfPossible(`${NL_PATH}/.tmp/portal2_dlc5/scripts/vscripts`);
+  await _createFolderIfPossible(`${NL_PATH}/.tmp/portal2_dlc5/scripts/vscripts/custom`);
+
   // copy libaray files
   try {
     await Neutralino.filesystem.copyFile(`${NL_PATH}/resources/vscripts/ppmod.nut`, `${NL_PATH}/.tmp/portal2_dlc5/scripts/vscripts/custom/ppmod.nut`);
@@ -63,6 +57,13 @@ function _arrayBufferToBase64(buffer) {
     binary += String.fromCharCode(bytes[i]);
   }
   return window.btoa(binary);
+}
+
+async function _createFolderIfPossible(path) {
+  try {
+    await Neutralino.filesystem.createDirectory(path);
+  } catch (error) {
+  }
 }
 
 Neutralino.events.on("windowClose", function () {

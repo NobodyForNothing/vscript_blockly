@@ -94,7 +94,7 @@ export function updateTitle() {
 
 export function updateDesc() {
   const domDesc = document.getElementById("pkg-desc");
-  if(desc.value.length === 0) {
+  if(domDesc.value.length === 0) {
     pkg.desc = 'A mod made using vscript blockly.';
     return;
   }

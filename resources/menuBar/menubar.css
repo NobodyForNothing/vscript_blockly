@@ -1,47 +1,53 @@
 #main-menu {
-    background-color: var(--background-color);
-    position: static;
-    left: 0;
-    top: 0;
-    z-index: 100;
+  background-color: var(--background-color);
+  position: static;
+  left: 0;
+  top: 0;
+  z-index: 100;
 }
+
 #main-menu button {
-    margin: 0;
-    border: none;
-    background-color: var(--background-color);
+  margin: 0;
+  border: none;
+  background-color: var(--background-color);
 }
+
 #main-menu button:hover {
-    transform: scale(1.02);
-    background-color: var(--background-color-standout);
+  transform: scale(1.02);
+  background-color: var(--background-color-standout);
 }
+
 #main-menu .button-list {
-    display: inline-flex;
-    flex-direction: column;
+  display: inline-flex;
+  flex-direction: column;
 }
+
 #main-menu .menu-point {
-    position: relative;
-    display: inline;
+  position: relative;
+  display: inline;
 }
+
 #main-menu .top-level {
-    font-size: large;
+  font-size: large;
 }
+
 #main-menu .menu-options {
-    position: absolute;
-    background-color: var(--background-color-standout);
-    top: 21px;
-    z-index: 100;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    overflow: hidden;
+  position: absolute;
+  background-color: var(--background-color-standout);
+  top: 21px;
+  z-index: 100;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  overflow: hidden;
 }
+
 #main-menu .option {
-    background-color: var(--background-color-standout);
-    display: block;
-    text-align: left;
-    width: auto;
+  background-color: var(--background-color-standout);
+  display: block;
+  text-align: left;
+  width: auto;
 }
+
 #main-menu .option:hover {
-    background-color: var(--background-color-standout-2);
+  background-color: var(--background-color-standout-2);
 }
-
-

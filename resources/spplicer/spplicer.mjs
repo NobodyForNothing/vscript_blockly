@@ -2,7 +2,7 @@ Neutralino.init();
 
 "use strict"
 
-export var pkg = {
+export let pkg = {
   title: null,
   name: null,
   dir: null,
@@ -11,10 +11,6 @@ export var pkg = {
   desc: null,
   valid: false
 };
-
-function setWarning(elementId, text) {
-  console.warn('SPPLICER WARN: ' + text);
-}
 
 function sanitizeHTML(string) {
   return string.replace(/\\/g, "\\\\").replace(/"/g, '\\"').replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\n/g, "<br>");
@@ -70,7 +66,6 @@ export async function selectImage() {
   return img;
 }
 
-var titleLengthWarningTimeout;
 export function updateTitle() {
 
   const domTitle = document.getElementById("pkg-title");

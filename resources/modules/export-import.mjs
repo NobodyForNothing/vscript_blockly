@@ -1,6 +1,6 @@
 import { VSCRIPT_BLOCKLY } from "../index.js";
 import { version__, fileVersion_ } from "../js/constants.mjs";
-import { pkg } from "../spplicer/spplicer.js";
+import { pkg } from "../spplicer/spplicer.mjs";
 import { displayImageFromFile } from "../js/main.js";
 
 export async function saveWorkspaceToFile(saveLocation = undefined) {

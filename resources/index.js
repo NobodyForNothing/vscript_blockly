@@ -50,7 +50,7 @@ export const VSCRIPT_BLOCKLY = new VscriptBlockly();
 
 
 function underline(s) { // https://stackoverflow.com/a/17471507/15581412
-  var arr = s.split('');
+  let arr = s.split('');
   s = arr.join('\u0332');
   if (s) s = s + '\u0332';
   return s;

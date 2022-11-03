@@ -77,27 +77,23 @@ export function updateTitle() {
   }
 
   if(domTitle.value.length > 4) {
-
-    domTitle.style.color = "#f00";
-    domTitle.style.borderColor = "#f00";
+    domTitle.style.color = "#000";
+    domTitle.style.borderColor = "#0f0";
     pkg.title = domTitle.value;
 
   } else {
-
-    domTitle.style.color = "#000";
-    domTitle.style.borderColor = "#0f0";
+    domTitle.style.color = "#f00";
+    domTitle.style.borderColor = "#f00";
+    pkg.title = 'vscript blockly mod';
+    
   }
 
-  pkg.name = domTitle.value.toLowerCase().replace(/[^A-Za-z0-9]/g, "-");
+  pkg.name = pkg.title.toLowerCase().replace(/[^A-Za-z0-9]/g, "-");
 
 }
 
 export function updateDesc() {
   const domDesc = document.getElementById("pkg-desc");
-  if(desc.value.length === 0) {
-    pkg.desc = 'A mod made using vscript blockly.';
-    return;
-  }
 
   if(domDesc.value.length >= 10) {
 
@@ -108,7 +104,8 @@ export function updateDesc() {
   } else {
     domDesc.style.color = "#ff0000";
     domDesc.style.borderColor = "#ff0000";
-    pkg.desc = null;
+    pkg.desc = 'A mod made using vscript blockly.';
+    return;
     
   }
 }

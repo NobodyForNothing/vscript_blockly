@@ -1,4 +1,4 @@
-import { pkg, checkValidity, createPackage, selectImage, updateDesc, updateTitle } from "../spplicer/spplicer.js";
+import { pkg, checkValidity, createPackage, selectImage, updateDesc, updateTitle } from "../spplicer/spplicer.mjs";
 import { VSCRIPT_BLOCKLY } from "../index.js";
 
 

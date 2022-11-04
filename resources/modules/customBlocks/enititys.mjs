@@ -285,3 +285,27 @@ Blockly.Blocks['ent_set_health'] = {
     });
   }
 }
+// ent_set_size is not active as there is no good way to teach the concept
+// Blockly.Blocks['ent_set_size'] = {
+//   init: function () {
+//     this.jsonInit({
+//       "type": "ent_set_size",
+//       "message0": "set size of %1 to %2",
+//       "args0": [
+//         {
+//           "type": "input_value",
+//           "name": "ENT"
+//         },
+//         {
+//           "type": "input_value",
+//           "name": "SIZE"
+//         }
+//       ],
+//       "previousStatement": null,
+//       "nextStatement": null,
+//       "colour": colors.util,
+//       "tooltip": "Sets the bounding box size of a entity.",
+//       "helpUrl": "https://developer.valvesoftware.com/wiki/List_of_Portal_2_Script_Functions#Methods"
+//     });
+//   }
+// }

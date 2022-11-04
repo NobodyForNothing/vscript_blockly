@@ -680,6 +680,10 @@ export function getToolbox() {
           },
         }
       },
+      // {
+      //   "kind": "block",
+      //   "type": "ent_set_size",
+      // },
     ]
   }
 

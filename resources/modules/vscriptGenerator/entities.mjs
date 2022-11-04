@@ -66,3 +66,8 @@ vscriptGenerator['ent_set_health'] = function (block) {
   const health = vscriptGenerator.statementToCode(block, 'HEALTH');
   return `${entity}.SetHealth(${health});`;
 }
+// vscriptGenerator['ent_set_size'] = function (block) {
+//   const entity = vscriptGenerator.statementToCode(block, 'ENT');
+//   const size = vscriptGenerator.statementToCode(block, 'SIZE');
+//   return `${entity}.SetSize(${health});`;
+// }

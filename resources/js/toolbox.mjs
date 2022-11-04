@@ -296,10 +296,6 @@ export function getToolbox() {
         "kind": "block",
         "type": "vector_math",
       },
-      {
-        "kind": "block",
-        "type": "util_destroy",
-      },
     ]
   }
   const cat_prtl_con = {
@@ -617,6 +613,16 @@ export function getToolbox() {
       {
         "kind": "block",
         "type": "select_ent"
+      },
+    ]
+  }
+  const cat_entitys = {
+    "kind": "category",
+    "name": "Valve stuff",
+    "contents": [
+      {
+        "kind": "block",
+        "type": "util_destroy",
       },
     ]
   }

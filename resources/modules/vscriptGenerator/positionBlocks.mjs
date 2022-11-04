@@ -35,12 +35,6 @@ vscriptGenerator['vector_math'] = function (block) {
   }
 }
 
-// util
-vscriptGenerator['util_destroy'] = function (block) {
-  const entity = block.getFieldValue('ENT');
-  return `${entity}.Destroy();`;
-}
-
 
 vscriptGenerator['select_mdl'] = function (block) {
   if (block.data) {

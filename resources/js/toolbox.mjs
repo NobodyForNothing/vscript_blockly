@@ -618,8 +618,44 @@ export function getToolbox() {
   }
   const cat_entitys = {
     "kind": "category",
-    "name": "Valve stuff",
+    "name": "Entities",
     "contents": [
+      {
+        "kind": "block",
+        "type": "ent_get_pos",
+      },
+      {
+        "kind": "block",
+        "type": "ent_get_angles",
+      },
+      {
+        "kind": "block",
+        "type": "ent_get_velocity",
+      },
+      {
+        "kind": "block",
+        "type": "ent_get_center",
+      },
+      {
+        "kind": "block",
+        "type": "ent_get_classname",
+      },
+      {
+        "kind": "block",
+        "type": "ent_get_modelname",
+      },
+      {
+        "kind": "block",
+        "type": "ent_get_health",
+      },
+      {
+        "kind": "block",
+        "type": "ent_get_maxhealth",
+      },
+      {
+        "kind": "block",
+        "type": "ent_exists",
+      },
       {
         "kind": "block",
         "type": "ent_destroy",
@@ -646,6 +682,7 @@ export function getToolbox() {
       cat_prtl_con,
       cat_events,
       cat_buildin,
+      cat_entitys,
       cat_ppmod,
 
       cat_selections

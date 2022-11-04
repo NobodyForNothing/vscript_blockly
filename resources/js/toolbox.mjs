@@ -658,6 +658,10 @@ export function getToolbox() {
         "kind": "block",
         "type": "ent_set_origin",
       },
+      {
+        "kind": "block",
+        "type": "ent_set_angles",
+      },
     ]
   }
 

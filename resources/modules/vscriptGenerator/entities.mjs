@@ -49,3 +49,10 @@ vscriptGenerator['ent_set_origin'] = function (block) {
   const vector = vscriptGenerator.statementToCode(block, 'POS');
   return `${entity}.SetOrigin(${vector});`;
 }
+vscriptGenerator['ent_set_angles'] = function (block) {
+  const entity = vscriptGenerator.statementToCode(block, 'ENT');
+  const pitch = vscriptGenerator.statementToCode(block, 'PITCH');
+  const yaw = vscriptGenerator.statementToCode(block, 'YAW');
+  const roll = vscriptGenerator.statementToCode(block, 'ROLL');
+  return `${entity}.SetAngles(${pitch}, ${yaw}, ${roll});`;
+}

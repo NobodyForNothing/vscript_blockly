@@ -208,3 +208,34 @@ Blockly.Blocks['ent_set_origin'] = {
     });
   }
 }
+Blockly.Blocks['ent_set_angles'] = {
+  init: function () {
+    this.jsonInit({
+      "type": "ent_set_angles",
+      "message0": "set angles of %1 pitch %2 yaw %3 roll %4",
+      "args0": [
+        {
+          "type": "input_value",
+          "name": "ENT"
+        },
+        {
+          "type": "input_value",
+          "name": "PITCH"
+        },
+        {
+          "type": "input_value",
+          "name": "YAW"
+        },
+        {
+          "type": "input_value",
+          "name": "ROLL"
+        }
+      ],
+      "previousStatement": null,
+      "nextStatement": null,
+      "colour": colors.util,
+      "tooltip": "Set entitys pitch, yaw, roll.",
+      "helpUrl": "https://developer.valvesoftware.com/wiki/List_of_Portal_2_Script_Functions#Methods"
+    });
+  }
+}

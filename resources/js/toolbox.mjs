@@ -342,7 +342,7 @@ export function getToolbox() {
   }
   const cat_events = {
     "kind": "category",
-    "name": "events",
+    "name": "Events",
     "contents": [
       {
         "kind": "block",
@@ -598,7 +598,7 @@ export function getToolbox() {
   }
   const cat_selections = {
     "kind": "category",
-    "name": "useful values",
+    "name": "Values",
     "contents": [
       {
         "kind": "block",

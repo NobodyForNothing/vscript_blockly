@@ -1,4 +1,4 @@
-# graph-p2
+# vscript-blockly
 ## a graphical portal 2 modding framework
 
 ### saving and loading workspaces

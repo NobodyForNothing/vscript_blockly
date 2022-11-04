@@ -37,24 +37,6 @@ Blockly.Blocks['ent_get_angles'] = {
     });
   }
 }
-Blockly.Blocks['ent_get_center'] = {
-  init: function () {
-    this.jsonInit({
-      "type": "ent_get_center",
-      "message0": "center of %1",
-      "args0": [
-        {
-          "type": "input_value",
-          "name": "ENT"
-        }
-      ],
-      "output": "Vector",
-      "colour": colors.util,
-      "tooltip": "Get vector to center of object - absolute coords",
-      "helpUrl": "https://developer.valvesoftware.com/wiki/List_of_Portal_2_Script_Functions#Methods"
-    });
-  }
-}
 Blockly.Blocks['ent_get_velocity'] = {
   init: function () {
     this.jsonInit({
@@ -69,6 +51,24 @@ Blockly.Blocks['ent_get_velocity'] = {
       "output": "Vector",
       "colour": colors.util,
       "tooltip": "Get the velocity of the entity.",
+      "helpUrl": "https://developer.valvesoftware.com/wiki/List_of_Portal_2_Script_Functions#Methods"
+    });
+  }
+}
+Blockly.Blocks['ent_get_center'] = {
+  init: function () {
+    this.jsonInit({
+      "type": "ent_get_center",
+      "message0": "center of %1",
+      "args0": [
+        {
+          "type": "input_value",
+          "name": "ENT"
+        }
+      ],
+      "output": "Vector",
+      "colour": colors.util,
+      "tooltip": "Get vector to center of object - absolute coords",
       "helpUrl": "https://developer.valvesoftware.com/wiki/List_of_Portal_2_Script_Functions#Methods"
     });
   }

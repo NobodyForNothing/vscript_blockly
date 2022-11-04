@@ -4,7 +4,7 @@ export function getToolbox() {
     "cssConfig": {
       "container": "toolBoxSeperator"
     }
-  }
+  };
   const cat_logic = {
     "kind": "category",
     "name": "Logic",
@@ -96,7 +96,7 @@ export function getToolbox() {
         'type': 'controls_flow_statements'
       },
     ]
-  }
+  };
   const cat_math = {
     "kind": "category",
     "name": "Math",
@@ -136,6 +136,48 @@ export function getToolbox() {
       {
         "kind": 'block',
         'type': 'math_random_float'
+      },
+      {
+        "kind": "block",
+        "type": "vector",
+        "inputs": {
+          "X": {
+            "shadow": {
+              "type": "math_number",
+              "fields": {
+                "NUM": 0
+              }
+            }
+          },
+          "Y": {
+            "shadow": {
+              "type": "math_number",
+              "fields": {
+                "NUM": 0
+              }
+            }
+          },
+          "Z": {
+            "shadow": {
+              "type": "math_number",
+              "fields": {
+                "NUM": 0
+              }
+            }
+          },
+        }
+      },
+      {
+        "kind": "block",
+        "type": "vector_get_element",
+      },
+      {
+        "kind": "block",
+        "type": "vector_set_element",
+      },
+      {
+        "kind": "block",
+        "type": "vector_math",
       },
     ]
   }
@@ -250,58 +292,6 @@ export function getToolbox() {
       },
     ]
   }
-  const cat_buildin = {
-    "kind": "category",
-    "name": "Valve stuff",
-    "contents": [
-      {
-        "kind": "block",
-        "type": "vector",
-        "inputs": {
-          "X": {
-            "shadow": {
-              "type": "math_number",
-              "fields": {
-                "NUM": 0
-              }
-            }
-          },
-          "Y": {
-            "shadow": {
-              "type": "math_number",
-              "fields": {
-                "NUM": 0
-              }
-            }
-          },
-          "Z": {
-            "shadow": {
-              "type": "math_number",
-              "fields": {
-                "NUM": 0
-              }
-            }
-          },
-        }
-      },
-      {
-        "kind": "block",
-        "type": "vector_get_element",
-      },
-      {
-        "kind": "block",
-        "type": "vector_set_element",
-      },
-      {
-        "kind": "block",
-        "type": "vector_math",
-      },
-      {
-        "kind": "block",
-        "type": "util_destroy",
-      },
-    ]
-  }
   const cat_prtl_con = {
     "kind": "category",
     "name": "Portal 2 console",
@@ -352,7 +342,7 @@ export function getToolbox() {
   }
   const cat_events = {
     "kind": "category",
-    "name": "events",
+    "name": "Events",
     "contents": [
       {
         "kind": "block",
@@ -608,7 +598,7 @@ export function getToolbox() {
   }
   const cat_selections = {
     "kind": "category",
-    "name": "useful values",
+    "name": "Values",
     "contents": [
       {
         "kind": "block",
@@ -618,6 +608,82 @@ export function getToolbox() {
         "kind": "block",
         "type": "select_ent"
       },
+    ]
+  }
+  const cat_entitys = {
+    "kind": "category",
+    "name": "Entities",
+    "contents": [
+      {
+        "kind": "block",
+        "type": "ent_get_pos",
+      },
+      {
+        "kind": "block",
+        "type": "ent_get_angles",
+      },
+      {
+        "kind": "block",
+        "type": "ent_get_velocity",
+      },
+      {
+        "kind": "block",
+        "type": "ent_get_center",
+      },
+      {
+        "kind": "block",
+        "type": "ent_get_classname",
+      },
+      {
+        "kind": "block",
+        "type": "ent_get_modelname",
+      },
+      {
+        "kind": "block",
+        "type": "ent_get_health",
+      },
+      {
+        "kind": "block",
+        "type": "ent_get_maxhealth",
+      },
+      {
+        "kind": "block",
+        "type": "ent_exists",
+      },
+      {
+        "kind": "block",
+        "type": "ent_destroy",
+      },
+      {
+        "kind": "block",
+        "type": "ent_set_origin",
+      },
+      {
+        "kind": "block",
+        "type": "ent_set_angles",
+      },
+      {
+        "kind": "block",
+        "type": "ent_set_velocity",
+      },
+      {
+        "kind": "block",
+        "type": "ent_set_health",
+        "inputs": {
+          "HEALTH": {
+            "shadow": {
+              "type": "math_number",
+              "fields": {
+                "NUM": 100
+              }
+            }
+          },
+        }
+      },
+      // {
+      //   "kind": "block",
+      //   "type": "ent_set_size",
+      // },
     ]
   }
 
@@ -639,7 +705,7 @@ export function getToolbox() {
 
       cat_prtl_con,
       cat_events,
-      cat_buildin,
+      cat_entitys,
       cat_ppmod,
 
       cat_selections

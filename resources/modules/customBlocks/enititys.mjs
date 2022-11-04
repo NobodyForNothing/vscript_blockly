@@ -185,3 +185,26 @@ Blockly.Blocks['ent_destroy'] = {
     });
   }
 }
+Blockly.Blocks['ent_set_origin'] = {
+  init: function () {
+    this.jsonInit({
+      "type": "ent_set_origin",
+      "message0": "set position of %1 to %2",
+      "args0": [
+        {
+          "type": "input_value",
+          "name": "ENT"
+        },
+        {
+          "type": "input_value",
+          "name": "POS"
+        }
+      ],
+      "previousStatement": null,
+      "nextStatement": null,
+      "colour": colors.util,
+      "tooltip": "Teleport a entity to the given location (vector).",
+      "helpUrl": "https://developer.valvesoftware.com/wiki/List_of_Portal_2_Script_Functions#Methods"
+    });
+  }
+}

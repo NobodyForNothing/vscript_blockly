@@ -654,6 +654,10 @@ export function getToolbox() {
         "kind": "block",
         "type": "ent_destroy",
       },
+      {
+        "kind": "block",
+        "type": "ent_set_origin",
+      },
     ]
   }
 

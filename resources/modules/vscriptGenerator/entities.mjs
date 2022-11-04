@@ -56,3 +56,8 @@ vscriptGenerator['ent_set_angles'] = function (block) {
   const roll = vscriptGenerator.statementToCode(block, 'ROLL');
   return `${entity}.SetAngles(${pitch}, ${yaw}, ${roll});`;
 }
+vscriptGenerator['ent_set_velocity'] = function (block) {
+  const entity = vscriptGenerator.statementToCode(block, 'ENT');
+  const vector = vscriptGenerator.statementToCode(block, 'VEL');
+  return `${entity}.SetVelocity(${vector});`;
+}

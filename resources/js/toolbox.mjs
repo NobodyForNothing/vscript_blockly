@@ -662,6 +662,10 @@ export function getToolbox() {
         "kind": "block",
         "type": "ent_set_angles",
       },
+      {
+        "kind": "block",
+        "type": "ent_set_velocity",
+      },
     ]
   }
 

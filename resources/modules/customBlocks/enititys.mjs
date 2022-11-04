@@ -239,3 +239,26 @@ Blockly.Blocks['ent_set_angles'] = {
     });
   }
 }
+Blockly.Blocks['ent_set_velocity'] = {
+  init: function () {
+    this.jsonInit({
+      "type": "ent_set_velocity",
+      "message0": "set velocity of %1 to %2",
+      "args0": [
+        {
+          "type": "input_value",
+          "name": "ENT"
+        },
+        {
+          "type": "input_value",
+          "name": "VEL"
+        }
+      ],
+      "previousStatement": null,
+      "nextStatement": null,
+      "colour": colors.util,
+      "tooltip": "Set local velocity of entity to vector.",
+      "helpUrl": "https://developer.valvesoftware.com/wiki/List_of_Portal_2_Script_Functions#Methods"
+    });
+  }
+}

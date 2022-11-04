@@ -61,3 +61,8 @@ vscriptGenerator['ent_set_velocity'] = function (block) {
   const vector = vscriptGenerator.statementToCode(block, 'VEL');
   return `${entity}.SetVelocity(${vector});`;
 }
+vscriptGenerator['ent_set_health'] = function (block) {
+  const entity = vscriptGenerator.statementToCode(block, 'ENT');
+  const health = vscriptGenerator.statementToCode(block, 'HEALTH');
+  return `${entity}.SetHealth(${health});`;
+}

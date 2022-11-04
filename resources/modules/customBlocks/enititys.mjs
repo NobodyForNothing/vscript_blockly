@@ -262,3 +262,26 @@ Blockly.Blocks['ent_set_velocity'] = {
     });
   }
 }
+Blockly.Blocks['ent_set_health'] = {
+  init: function () {
+    this.jsonInit({
+      "type": "ent_set_health",
+      "message0": "set health of %1 to %2",
+      "args0": [
+        {
+          "type": "input_value",
+          "name": "ENT"
+        },
+        {
+          "type": "input_value",
+          "name": "HEALTH"
+        }
+      ],
+      "previousStatement": null,
+      "nextStatement": null,
+      "colour": colors.util,
+      "tooltip": "Set current health of entity to number.",
+      "helpUrl": "https://developer.valvesoftware.com/wiki/List_of_Portal_2_Script_Functions#Methods"
+    });
+  }
+}

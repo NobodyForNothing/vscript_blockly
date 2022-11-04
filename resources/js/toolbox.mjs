@@ -666,6 +666,20 @@ export function getToolbox() {
         "kind": "block",
         "type": "ent_set_velocity",
       },
+      {
+        "kind": "block",
+        "type": "ent_set_health",
+        "inputs": {
+          "HEALTH": {
+            "shadow": {
+              "type": "math_number",
+              "fields": {
+                "NUM": 100
+              }
+            }
+          },
+        }
+      },
     ]
   }
 

@@ -622,7 +622,7 @@ export function getToolbox() {
     "contents": [
       {
         "kind": "block",
-        "type": "util_destroy",
+        "type": "ent_destroy",
       },
     ]
   }

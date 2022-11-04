@@ -4,7 +4,7 @@ export function getToolbox() {
     "cssConfig": {
       "container": "toolBoxSeperator"
     }
-  }
+  };
   const cat_logic = {
     "kind": "category",
     "name": "Logic",
@@ -96,7 +96,7 @@ export function getToolbox() {
         'type': 'controls_flow_statements'
       },
     ]
-  }
+  };
   const cat_math = {
     "kind": "category",
     "name": "Math",
@@ -136,6 +136,48 @@ export function getToolbox() {
       {
         "kind": 'block',
         'type': 'math_random_float'
+      },
+      {
+        "kind": "block",
+        "type": "vector",
+        "inputs": {
+          "X": {
+            "shadow": {
+              "type": "math_number",
+              "fields": {
+                "NUM": 0
+              }
+            }
+          },
+          "Y": {
+            "shadow": {
+              "type": "math_number",
+              "fields": {
+                "NUM": 0
+              }
+            }
+          },
+          "Z": {
+            "shadow": {
+              "type": "math_number",
+              "fields": {
+                "NUM": 0
+              }
+            }
+          },
+        }
+      },
+      {
+        "kind": "block",
+        "type": "vector_get_element",
+      },
+      {
+        "kind": "block",
+        "type": "vector_set_element",
+      },
+      {
+        "kind": "block",
+        "type": "vector_math",
       },
     ]
   }
@@ -247,54 +289,6 @@ export function getToolbox() {
       {
         "kind": 'block',
         'type': 'procedures_defreturn'
-      },
-    ]
-  }
-  const cat_buildin = {
-    "kind": "category",
-    "name": "Valve stuff",
-    "contents": [
-      {
-        "kind": "block",
-        "type": "vector",
-        "inputs": {
-          "X": {
-            "shadow": {
-              "type": "math_number",
-              "fields": {
-                "NUM": 0
-              }
-            }
-          },
-          "Y": {
-            "shadow": {
-              "type": "math_number",
-              "fields": {
-                "NUM": 0
-              }
-            }
-          },
-          "Z": {
-            "shadow": {
-              "type": "math_number",
-              "fields": {
-                "NUM": 0
-              }
-            }
-          },
-        }
-      },
-      {
-        "kind": "block",
-        "type": "vector_get_element",
-      },
-      {
-        "kind": "block",
-        "type": "vector_set_element",
-      },
-      {
-        "kind": "block",
-        "type": "vector_math",
       },
     ]
   }
@@ -681,7 +675,6 @@ export function getToolbox() {
 
       cat_prtl_con,
       cat_events,
-      cat_buildin,
       cat_entitys,
       cat_ppmod,
 

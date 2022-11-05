@@ -107,6 +107,5 @@ vscriptGenerator['ppmod_text'] = function (block) {
   } else {
     code += `txt${varNum}.SetColor(${textColor}, ${backgroundColor});\n`;
   }
-  console.log(block);
   return code;
 }

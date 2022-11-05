@@ -25,18 +25,6 @@ export async function loadMapFile(fileOnDisk) {
   }
 }
 
-export function getMapFilesAsArrayBuffer() {
-  const decompressed = []
-  for (const file of mapFiles_) {
-    const decompressedFile = {};
-    decompressedFile['fileName'] = file['fileName']
-    decompressedFile['data'] = LZString.decompressFromBase64(file['data']);
-    decompressedFile['data'] = _base64ToArrayBuffer(decompressedFile['data'])
-    decompressed[decompressed.length] = decompressedFile;
-  }
-  return decompressed;
-}
-
 export function getExtraContent() {
   return {
     'addedMaps': mapFiles_

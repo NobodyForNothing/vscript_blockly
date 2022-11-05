@@ -1,6 +1,7 @@
 import { pkg, checkValidity, createPackage, selectImage, updateDesc, updateTitle } from "../spplicer/spplicer.mjs";
 import { VSCRIPT_BLOCKLY } from "../index.js";
-import { _arrayBufferToBase64, _createFolderIfPossible } from "./util.mjs";
+import { _arrayBufferToBase64, _decompressToArrayBuffer, _createFolderIfPossible } from "./util.mjs";
+import { getExtraContent } from "../modules/customContenent/customContentStorage.mjs";
 
 Neutralino.init();
 
@@ -25,7 +26,20 @@ export async function pack() {
   try { Neutralino.filesystem.writeFile(`${NL_PATH}/.tmp/portal2_dlc5/scripts/vscripts/mapspawn.nut`, VSCRIPT_BLOCKLY.mapSpawnCode) }
   catch (e) { console.log(e); document.getElementById('packingErrorBox').innerText = 'ERROR: check console'; return }
 
-  // sanitize info for spplicer
+  // write custom content
+  const extraContent = getExtraContent();
+  // write maps
+  if (extraContent['addedMaps'].length > 0) {
+    try { await Neutralino.filesystem.removeDirectory('./tmpDirectory'); } catch (e) { }
+    await _createFolderIfPossible(`${NL_PATH}/.tmp/portal2_dlc5/maps`);
+    for (const mapFile of extraContent['addedMaps']) {
+      const rawBin = _decompressToArrayBuffer(mapFile['data']);
+      await Neutralino.filesystem.writeBinaryFile(`${NL_PATH}/.tmp/portal2_dlc5/maps/${mapFile['fileName']}`, rawBin);
+    }
+  }
+
+
+  // prepare info for spplicer
   pkg.dir = `${NL_PATH}/.tmp/portal2_dlc5`;
   updateTitle()
   updateDesc();

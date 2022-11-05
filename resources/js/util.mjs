@@ -92,3 +92,9 @@ export function _base64ToArrayBuffer(base64) {
   }
   return bytes.buffer;
 }
+
+export function _decompressToArrayBuffer(compressedString) {
+  let decompressed = LZString.decompressFromBase64(compressedString);
+  decompressed = _base64ToArrayBuffer(decompressed);
+  return decompressed;
+}

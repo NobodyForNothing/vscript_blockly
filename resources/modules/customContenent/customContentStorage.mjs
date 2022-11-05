@@ -51,17 +51,20 @@ export function getExtraContent() {
   }
 }
 
-export function loadExtraContent(content, append) {
+export function loadExtraContent(content, append, storageVersion) {
   if (!append) {
     mapFiles_ = content['addedMaps'];
-    vpkFiles_ = content['addedVpks'];
+    if (content['addedVpks']) vpkFiles_ = content['addedVpks'];
+    
 
   } else {
     for (const x of content['addedMaps']) {
       mapFiles_[mapFiles_.length] = x;
     }
-    for (const x of content['addedVpks']) {
-      vpkFiles_[vpkFiles_.length] = x;
+    if (content['addedVpks']) {
+      for (const x of content['addedVpks']) {
+        vpkFiles_[vpkFiles_.length] = x;
+      }
     }
   }
 }

@@ -85,6 +85,15 @@ menubar.addMenuPoint('Info', [
 ]);
 
 
+// make links work
+let defaultHelp = Blockly.ContextMenuRegistry.registry.getItem("blockHelp")
+defaultHelp.callback= function(a) {
+  console.log(a.block.helpUrl)
+  Neutralino.os.open(a.block.helpUrl);
+};
+
+
+
 window.addEventListener('unload',
       VSCRIPT_BLOCKLY.saveWorkspaceToFile, false);
 

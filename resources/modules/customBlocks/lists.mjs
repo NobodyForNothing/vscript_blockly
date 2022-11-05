@@ -19,7 +19,7 @@ Blockly.Blocks['list_get_element'] = {
       "output": null,
       "colour": colors.lists,
       "tooltip": "get element by index",
-      "helpUrl": ""
+      "helpUrl": null
     });
   }
 }
@@ -46,7 +46,7 @@ Blockly.Blocks['list_set_element'] = {
       "nextStatement": null,
       "colour": colors.lists,
       "tooltip": "set element by index",
-      "helpUrl": ""
+      "helpUrl": null
     });
   }
 }
@@ -69,7 +69,7 @@ Blockly.Blocks['list_add_element'] = {
       "nextStatement": null,
       "colour": colors.lists,
       "tooltip": "append element to list",
-      "helpUrl": ""
+      "helpUrl": null
     });
   }
 }

@@ -1,6 +1,6 @@
 import { pkg, checkValidity, createPackage, selectImage, updateDesc, updateTitle } from "../spplicer/spplicer.mjs";
 import { VSCRIPT_BLOCKLY } from "../index.js";
-
+import { _arrayBufferToBase64, _createFolderIfPossible } from "./util.mjs";
 
 Neutralino.init();
 
@@ -49,22 +49,7 @@ export async function displayImageFromFile(path, ext = 'png') {
   domImg.src = `data:image/${ext};base64,${_arrayBufferToBase64(data)}`;
 }
 
-function _arrayBufferToBase64(buffer) {
-  let binary = '';
-  let bytes = new Uint8Array(buffer);
-  let len = bytes.byteLength;
-  for (let i = 0; i < len; i++) {
-    binary += String.fromCharCode(bytes[i]);
-  }
-  return window.btoa(binary);
-}
 
-async function _createFolderIfPossible(path) {
-  try {
-    await Neutralino.filesystem.createDirectory(path);
-  } catch (error) {
-  }
-}
 
 Neutralino.events.on("windowClose", function () {
   Neutralino.app.exit();

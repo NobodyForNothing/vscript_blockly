@@ -7,6 +7,7 @@ import { menubar } from "./menuBar/menuBar.mjs";
 import { version__, fileVersion_ } from "./js/constants.mjs";
 import { saveWorkspaceToFile, loadWorkspaceFromFile } from "./modules/export-import.mjs";
 import { limitList, selectModel } from "./modules/selection/selectionMenu.mjs";
+import { importMapFile } from "./modules/customContenent/customContentMenus.mjs";
 
 
 class VscriptBlockly { 
@@ -107,4 +108,6 @@ window.menubar = menubar;
 window.limitList = limitList;
 window.selectModel = selectModel;
 window.pickIcon = pickIcon;
+
+window.importMapFile = importMapFile;
 

@@ -17,7 +17,7 @@ Blockly.Blocks['console_print'] = {
       "nextStatement": null,
       "colour": colors.console,
       "tooltip": "prints something into the portal 2 console",
-      "helpUrl": ""
+      "helpUrl": "https://developer.valvesoftware.com/wiki/Developer_Console"
     });
   }
 };

@@ -7,6 +7,7 @@ import { menubar } from "./menuBar/menuBar.mjs";
 import { version__, fileVersion_ } from "./js/constants.mjs";
 import { saveWorkspaceToFile, loadWorkspaceFromFile } from "./modules/export-import.mjs";
 import { limitList, selectModel } from "./modules/selection/selectionMenu.mjs";
+import { importMapFile, manageCustomContent } from "./modules/customContenent/customContentMenus.mjs";
 
 
 class VscriptBlockly { 
@@ -75,6 +76,10 @@ menubar.addMenuPoint('File', [
   ['Save workspace', saveWorkspaceToFile],
   ['Append workspace', appendWorkspace]
 ]);
+menubar.addMenuPoint('Resources', [
+  ['add map', importMapFile],
+  ['manage', manageCustomContent]
+]);
 menubar.addMenuPoint('Export', [
   ['create spplice pack', pack],
   ['show code', VSCRIPT_BLOCKLY.showCode]
@@ -83,6 +88,14 @@ menubar.addMenuPoint('Export', [
 menubar.addMenuPoint('Info', [
   ['about', showAbout]
 ]);
+
+
+// make links work
+let defaultHelp = Blockly.ContextMenuRegistry.registry.getItem("blockHelp")
+defaultHelp.callback= function(a) {
+  Neutralino.os.open(a.block.helpUrl);
+};
+
 
 
 window.addEventListener('unload',
@@ -98,4 +111,6 @@ window.menubar = menubar;
 window.limitList = limitList;
 window.selectModel = selectModel;
 window.pickIcon = pickIcon;
+
+window.importMapFile = importMapFile;
 

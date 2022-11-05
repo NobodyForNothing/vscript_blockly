@@ -1,7 +1,7 @@
 if("ppmod" in this) return;
 ::ppmod <- {};
-::min <- function(a, b) return a > b ? b : a;
-::max <- function(a, b) return a < b ? b : a;
+::min <- function(a, b) return a > b ? b: a;
+::max <- function(a, b) return a < b ? b: a;
 ::round <- function(a, b = 0) return floor(a * (b = pow(10, b)) + 0.5) / b;
 
 function Vector::_mul (other) {

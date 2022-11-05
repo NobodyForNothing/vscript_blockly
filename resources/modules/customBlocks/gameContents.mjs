@@ -19,7 +19,7 @@ Blockly.Blocks['select_mdl'] = {
 
     let button = new Blockly.FieldDropdown(
       () => {
-        let displaytext = block.data ? block.data.replace('models/','') : 'select model'
+        let displaytext = block.data ? block.data.replace('models/',''): 'select model'
         return [[displaytext, 'DATA']];
       });
     button.showEditor_=(()=>{ 
@@ -48,7 +48,7 @@ Blockly.Blocks['select_ent'] = {
 
     let button = new Blockly.FieldDropdown(
       () => {
-        let displaytext = block.data ? block.data : 'select model'
+        let displaytext = block.data ? block.data: 'select model'
         return [[displaytext, 'DATA']];
       });
     button.showEditor_=(()=>{ 

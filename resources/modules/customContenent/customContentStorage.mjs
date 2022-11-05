@@ -5,7 +5,6 @@ const SAVABLE_TYPES = {
 }
 
 let mapFiles_ = [];
-window.as = mapFiles_;
 
 export async function loadMapFile(fileOnDisk) {
   // check file
@@ -41,5 +40,14 @@ export function loadExtraContent(content, append) {
       mapFiles_[mapFiles_.length] = x;
     }
   }
+}
 
+export function deleteMap(fileName) {
+  for (let i = 0; i < mapFiles_.length; i++) {
+    const element = mapFiles_[i];
+    if(element['fileName'] === fileName) {
+      mapFiles_.splice(i, 1);
+    }
+    
+  }
 }

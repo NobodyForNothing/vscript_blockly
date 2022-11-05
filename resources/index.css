@@ -4,12 +4,20 @@ body {
   background-color: var(--color-workspace);
 }
 
+[hidden] {
+  display: none !important;
+}
+
 .center {
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
+.contentListItem {
+  display: inline-flex;
+  cursor: pointer;
+}
 
 #blocklyDiv {
   margin-top: 10px;
@@ -41,6 +49,12 @@ body {
   border-radius: 20px;
   overflow: scroll;
   z-index: 10000000;
+}
+
+.closePopup {
+  position: fixed;
+  right: 16%;
+  margin-top: 1.5%;
 }
 
 .tooltip {

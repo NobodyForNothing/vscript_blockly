@@ -1,4 +1,4 @@
-import { loadMapFile, getExtraContent, deleteMap } from "./customContentStorage.mjs";
+import { loadMapFile, loadVpkFile, getExtraContent, deleteMap, deleteVpk } from "./customContentStorage.mjs";
 
 export async function importMapFile() {
   const files = await Neutralino.os.showOpenDialog('Load compiled map file (level)', {
@@ -13,40 +13,61 @@ export async function importMapFile() {
   }
 }
 
+export async function importVpkFile() {
+  const files = await Neutralino.os.showOpenDialog('Load vpk file', {
+    defaultPath: `${NL_CWD}`,
+    filters: [
+      { name: 'Pack files', extensions: ['vpk'] },
+      { name: 'All files', extensions: ['*'] }
+    ]
+  });
+  for (const packFile of files) {
+    loadVpkFile(packFile);
+  }
+}
+
 export async function manageCustomContent() {
   const displayPopup = document.getElementById('customRessources');
   displayPopup.innerHTML = "";
   document.getElementById('manageCustom').hidden = false;
 
   const customContent = getExtraContent();
-  if (customContent['addedMaps'].length === 0) {
+  if (customContent['addedMaps'].length === 0 && customContent['addedVpks'].length === 0) {
     const noContentMsg = document.createElement('h2');
     noContentMsg.innerHTML = 'No custom content added!';
     noContentMsg.style.color = '#fff'
     displayPopup.appendChild(noContentMsg);
   } else {
-    const maps = document.createElement('div');
-    const mapsTitle = document.createElement('h3');
-    mapsTitle.innerHTML = 'Maps: (click to delete)';
-    mapsTitle.style.color = '#fff'
-    maps.appendChild(mapsTitle);
-    for (const map of customContent['addedMaps']) {
-      const mapOption = document.createElement('div');
-      const mapName = document.createElement('a');
-      
-      mapName.innerText = map['fileName'];
-      mapName.onclick = () => {
-        deleteMap(map['fileName']);
-        manageCustomContent();
-      };
-      
-      mapOption.classList.add('contentListItem')
-      mapOption.appendChild(mapName);
-      maps.appendChild(mapOption);
-    }
-    displayPopup.appendChild(maps);
-  }
-  
+    const maps = createMenuSection('Maps: (click to delete)', customContent['addedMaps'], (e) => deleteMap(e['fileName']));
+    const vpks = createMenuSection('Vpks: (click to delete)', customContent['addedVpks'], (e) => deleteVpk(e['fileName']));
 
+
+    displayPopup.appendChild(maps);
+    displayPopup.appendChild(vpks);
+  }
+}
+
+function createMenuSection(sectionTitle, elementList, elementClickFunction) {
+  const domSection = document.createElement('div');
+  if (elementList === undefined || elementList.length===0) return domSection;
+  const domTitle = document.createElement('h3');
+  domTitle.innerHTML = sectionTitle;
+  domTitle.style.color = '#fff'
+  domSection.appendChild(domTitle);
+  for (const map of elementList) {
+    const elementConainter = document.createElement('div');
+    const element = document.createElement('a');
+
+    element.innerText = map['fileName'];
+    element.onclick = () => {
+      elementClickFunction(map);
+      manageCustomContent();
+    };
+
+    elementConainter.classList.add('contentListItem')
+    elementConainter.appendChild(element);
+    domSection.appendChild(elementConainter);
+  }
+  return domSection
 }
 

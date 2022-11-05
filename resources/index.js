@@ -76,6 +76,9 @@ menubar.addMenuPoint('File', [
   ['Save workspace', saveWorkspaceToFile],
   ['Append workspace', appendWorkspace]
 ]);
+menubar.addMenuPoint('Resources', [
+  ['add map', importMapFile]
+]);
 menubar.addMenuPoint('Export', [
   ['create spplice pack', pack],
   ['show code', VSCRIPT_BLOCKLY.showCode]
@@ -89,7 +92,6 @@ menubar.addMenuPoint('Info', [
 // make links work
 let defaultHelp = Blockly.ContextMenuRegistry.registry.getItem("blockHelp")
 defaultHelp.callback= function(a) {
-  console.log(a.block.helpUrl)
   Neutralino.os.open(a.block.helpUrl);
 };
 

@@ -110,7 +110,6 @@ const loadWorkspaceFromJSON = {};
 
 loadWorkspaceFromJSON['1.0'] = function (json, appendWorkspace) {
   const blocklyVersion = json['blockly-version'];
-  console.log(json);
   // load information
   document.getElementById("pkg-title").value = json['mod-title'];
   document.getElementById("pkg-desc").value = json['mod-description'];
@@ -121,8 +120,6 @@ loadWorkspaceFromJSON['1.0'] = function (json, appendWorkspace) {
 }
 loadWorkspaceFromJSON['1.1'] = function (json, appendWorkspace) {
   const blocklyVersion = json['blockly-version'];
-  console.log('loading file version: 1.1')
-  console.log(json);
   // load information
   document.getElementById("pkg-title").value = json['mod-title'];
   document.getElementById("pkg-desc").value = json['mod-description'];

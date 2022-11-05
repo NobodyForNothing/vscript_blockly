@@ -34,7 +34,7 @@ export function getExtraContent() {
 export function loadExtraContent(content, append) {
   if (!append) {
     mapFiles_ = content['addedMaps'];
-    console.log(mapFiles_);
+
 
   } else {
     for (const x of content['addedMaps']) {

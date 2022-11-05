@@ -2,7 +2,7 @@ import { VSCRIPT_BLOCKLY } from "../index.js";
 import { version__, fileVersion_ } from "../js/constants.mjs";
 import { pkg } from "../spplicer/spplicer.mjs";
 import { displayImageFromFile } from "../js/main.js";
-import { getExtraContent } from "../modules/customContenent/customContentStorage.mjs";
+import { getExtraContent, loadExtraContent } from "../modules/customContenent/customContentStorage.mjs";
 
 export async function saveWorkspaceToFile(saveLocation = undefined) {
   // create workspace folder
@@ -118,6 +118,19 @@ loadWorkspaceFromJSON['1.0'] = function (json, appendWorkspace) {
     displayImageFromFile(json['icon-path'], json['icon-ext'])
   }
   loadWorkspace(json['workspace'], blocklyVersion, appendWorkspace)
+}
+loadWorkspaceFromJSON['1.1'] = function (json, appendWorkspace) {
+  const blocklyVersion = json['blockly-version'];
+  console.log('loading file version: 1.1')
+  console.log(json);
+  // load information
+  document.getElementById("pkg-title").value = json['mod-title'];
+  document.getElementById("pkg-desc").value = json['mod-description'];
+  if (json['icon-path'].length > 0) {
+    displayImageFromFile(json['icon-path'], json['icon-ext'])
+  }
+  loadWorkspace(json['workspace'], blocklyVersion, appendWorkspace)
+  loadExtraContent(json['customContent'], appendWorkspace);
 }
 
 export function reloadWorkspace() {

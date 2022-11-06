@@ -7,7 +7,7 @@ import { menubar } from "./menuBar/menuBar.mjs";
 import { version__, fileVersion_ } from "./js/constants.mjs";
 import { saveWorkspaceToFile, loadWorkspaceFromFile } from "./modules/export-import.mjs";
 import { limitList, selectModel } from "./modules/selection/selectionMenu.mjs";
-import { importMapFile, manageCustomContent } from "./modules/customContenent/customContentMenus.mjs";
+import { importMapFile, importVpkFile, manageCustomContent } from "./modules/customContenent/customContentMenus.mjs";
 
 
 class VscriptBlockly { 
@@ -78,6 +78,7 @@ menubar.addMenuPoint('File', [
 ]);
 menubar.addMenuPoint('Resources', [
   ['add map', importMapFile],
+  ['add vpk', importVpkFile],
   ['manage', manageCustomContent]
 ]);
 menubar.addMenuPoint('Export', [

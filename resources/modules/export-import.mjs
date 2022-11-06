@@ -129,6 +129,7 @@ loadWorkspaceFromJSON['1.1'] = function (json, appendWorkspace) {
   loadWorkspace(json['workspace'], blocklyVersion, appendWorkspace)
   loadExtraContent(json['customContent'], appendWorkspace);
 }
+loadWorkspaceFromJSON['1.2'] = loadWorkspaceFromJSON['1.1']
 
 export function reloadWorkspace() {
   let workspaceJson = Blockly.serialization.workspaces.save(VSCRIPT_BLOCKLY.workspace);

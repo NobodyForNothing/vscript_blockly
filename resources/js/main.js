@@ -28,16 +28,8 @@ export async function pack() {
 
   // write custom content
   const extraContent = getExtraContent();
-  // write maps
-  if (extraContent['addedMaps'].length > 0) {
-    try { await Neutralino.filesystem.removeDirectory('./tmpDirectory'); } catch (e) { }
-    await _createFolderIfPossible(`${NL_PATH}/.tmp/portal2_dlc5/maps`);
-    for (const mapFile of extraContent['addedMaps']) {
-      const rawBin = _decompressToArrayBuffer(mapFile['data']);
-      await Neutralino.filesystem.writeBinaryFile(`${NL_PATH}/.tmp/portal2_dlc5/maps/${mapFile['fileName']}`, rawBin);
-    }
-  }
-
+  writeExtraContent(extraContent['addedMaps'], `${NL_PATH}/.tmp/portal2_dlc5/maps`);
+  writeExtraContent(extraContent['addedVpks'], `${NL_PATH}/.tmp/portal2_dlc5`);
 
   // prepare info for spplicer
   pkg.dir = `${NL_PATH}/.tmp/portal2_dlc5`;
@@ -63,6 +55,16 @@ export async function displayImageFromFile(path, ext = 'png') {
   domImg.src = `data:image/${ext};base64,${_arrayBufferToBase64(data)}`;
 }
 
+async function writeExtraContent(content, path) {
+  if (content && content.length > 0) {
+    try { await Neutralino.filesystem.removeDirectory(path); } catch (e) { }
+    await _createFolderIfPossible(path);
+    for (const contentFile of content) {
+      const rawBin = _decompressToArrayBuffer(contentFile['data']);
+      await Neutralino.filesystem.writeBinaryFile(`${path}/${contentFile['fileName']}`, rawBin);
+    }
+  }
+}
 
 
 Neutralino.events.on("windowClose", function () {

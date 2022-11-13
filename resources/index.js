@@ -8,7 +8,7 @@ import { version__, fileVersion_ } from "./js/constants.mjs";
 import { saveWorkspaceToFile, loadWorkspaceFromFile } from "./modules/export-import.mjs";
 import { limitList, selectModel } from "./modules/selection/selectionMenu.mjs";
 import { importMapFile, importVpkFile, manageCustomContent } from "./modules/customContenent/customContentMenus.mjs";
-
+import { donwloadSpplice } from "./js/setup.mjs";
 
 class VscriptBlockly { 
   updateCode(event) {
@@ -114,4 +114,4 @@ window.selectModel = selectModel;
 window.pickIcon = pickIcon;
 
 window.importMapFile = importMapFile;
-
+window.donwloadSpplice = donwloadSpplice;

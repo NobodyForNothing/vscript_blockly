@@ -1119,7 +1119,7 @@ export const portal2_models = [
   "models/props_bts/walkway_destroyed_64a.mdl",
   "models/props_bts/wheatley_chamber.mdl",
   "models/props_buildings/warehouse_roofbeams.mdl",
-  "models/props_debris/burnt_building_debrispile_01.mdl",
+  "models/props_debris/burnt_g_debrispile_01.mdl",
   "models/props_debris/burnt_building_debrispile_02.mdl",
   "models/props_debris/burnt_building_rafters_02.mdl",
   "models/props_debris/burnt_building_wall_04.mdl",

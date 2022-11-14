@@ -6,5 +6,6 @@ export const colors = {
   vector: 0,
   util: 15,
   variables: 30,
-  selection: 45
+  selection: 45,
+  rendering: 50,
 }

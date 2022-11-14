@@ -64,6 +64,3 @@ Blockly.Blocks['select_ent'] = {
       .appendField(button,'ENTITY');
   }
 }
-
-// texture list
-// https://docs.google.com/document/d/1C8lGxwyicsJU29Twrr0Xf8TfvjM6YV4qKjgPpxGtu_0/edit?usp=sharing

@@ -9,7 +9,7 @@ import './modules/vscriptGenerator/_indevBlocks.mjs';
 import './modules/vscriptGenerator/entities.mjs';
 
 // custom Blocks
-import './modules/customBlocks/vectors.mjs';
+import './modules/customBlocks/buildIn.mjs';
 import './modules/customBlocks/portal2Console.mjs';
 import './modules/customBlocks/ppmod.mjs';
 import './modules/customBlocks/events.mjs';

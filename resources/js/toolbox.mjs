@@ -687,6 +687,128 @@ export function getToolbox() {
     ]
   }
 
+  const cat_render_tab = {
+    "kind": "category",
+    "name": "Renderables",
+    "contents": [
+      {
+        "kind": "block",
+        "type": "debug_draw_box",
+        "inputs": {
+          "ORIGIN": {
+            "shadow": {
+              "type": "vector",
+              "inputs": {
+                "X": {
+                  "shadow": {
+                    "type": "math_number",
+                    "fields": {
+                      "NUM": 0
+                    }
+                  }
+                },
+                "Y": {
+                  "shadow": {
+                    "type": "math_number",
+                    "fields": {
+                      "NUM": 0
+                    }
+                  }
+                },
+                "Z": {
+                  "shadow": {
+                    "type": "math_number",
+                    "fields": {
+                      "NUM": 0
+                    }
+                  }
+                },
+              }
+            }
+          },
+          "SIZE": {
+            "shadow": {
+              "type": "vector",
+              "inputs": {
+                "X": {
+                  "shadow": {
+                    "type": "math_number",
+                    "fields": {
+                      "NUM": 100
+                    }
+                  }
+                },
+                "Y": {
+                  "shadow": {
+                    "type": "math_number",
+                    "fields": {
+                      "NUM": 100
+                    }
+                  }
+                },
+                "Z": {
+                  "shadow": {
+                    "type": "math_number",
+                    "fields": {
+                      "NUM": 100
+                    }
+                  }
+                },
+              }
+            }
+          },
+          "COLOR": {
+            "shadow": {
+              "type": "colour_rgb",
+              "inputs": {
+                "RED": {
+                  "shadow": {
+                    "type": "math_number",
+                    "fields": {
+                      "NUM": 255
+                    }
+                  }
+                },
+                "GREEN": {
+                  "shadow": {
+                    "type": "math_number",
+                    "fields": {
+                      "NUM": 255
+                    }
+                  }
+                },
+                "BLUE": {
+                  "shadow": {
+                    "type": "math_number",
+                    "fields": {
+                      "NUM": 255
+                    }
+                  }
+                },
+              }
+            }
+          },
+          "OPACITY": {
+            "shadow": {
+              "type": "math_number",
+              "fields": {
+                "NUM": 5
+              }
+            }
+          },
+          "DURATION": {
+            "shadow": {
+              "type": "math_number",
+              "fields": {
+                "NUM": 20
+              }
+            }
+          },
+        }
+      },
+    ]
+  }
+
   const toolbox = {
     'kind': 'categoryToolbox',
     'contents': [
@@ -695,12 +817,12 @@ export function getToolbox() {
       cat_math,
       cat_text,
       cat_lists,
-      
+
       tb_placeholder,
-      
+
       cat_variables,
       cat_procedures,
-      
+
       tb_placeholder,
 
       cat_prtl_con,
@@ -708,7 +830,8 @@ export function getToolbox() {
       cat_entitys,
       cat_ppmod,
 
-      cat_selections
+      cat_selections,
+      cat_render_tab
     ]
   }
   return toolbox;

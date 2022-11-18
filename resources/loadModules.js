@@ -7,6 +7,7 @@ import './modules/vscriptGenerator/positionBlocks.mjs';
 import './modules/vscriptGenerator/ppmodBlocks.mjs';
 import './modules/vscriptGenerator/_indevBlocks.mjs';
 import './modules/vscriptGenerator/entities.mjs';
+import './modules/vscriptGenerator/renderBlocks.mjs'
 
 // custom Blocks
 import './modules/customBlocks/vectors.mjs';

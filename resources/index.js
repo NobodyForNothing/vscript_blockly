@@ -1,5 +1,13 @@
 "use strict";
 
+let SETTINGS = {
+  pretifyGeneratedCode: {
+    active: true,
+    removeRepeatingCommata: true,
+    removeComments: false
+  }
+}
+
 import { vscriptGenerator } from "./modules/vscriptGenerator/generator.mjs";
 import { getToolbox } from "./js/toolbox.mjs";
 import { pack, pickIcon } from "./js/main.js";
@@ -29,6 +37,16 @@ class VscriptBlockly {
     // generate code
     code += vscriptGenerator.workspaceToCode(Blockly.getMainWorkspace());
     console.log(code);
+
+    if (SETTINGS.pretifyGeneratedCode.active) {
+      if (SETTINGS.pretifyGeneratedCode.removeRepeatingCommata) {
+        code = code.replace(/ +(?= )/g,' ')
+      }
+      if (SETTINGS.pretifyGeneratedCode.removeComments) {
+        code = code.replace(/\/\*[\s\S]*?\*\/|([^\\:]|^)\/\/.*$/gm, '$1');
+      }
+    }
+
     VSCRIPT_BLOCKLY.mapSpawnCode = code;
     // document.getElementById('textArea').innerText = code;
   }

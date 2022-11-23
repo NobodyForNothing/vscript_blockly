@@ -806,6 +806,10 @@ export function getToolbox() {
           },
         }
       },
+      {
+        "kind": "block",
+        "type": "color_wheel",
+      },
     ]
   }
 

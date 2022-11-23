@@ -1,3 +1,4 @@
+import { ColorWheelField } from "../customBlockFields/ColorWheelField.mjs";
 import { colors } from "./customBlockDefaults.mjs";
 
 Blockly.Blocks['debug_draw_box'] = {
@@ -12,7 +13,7 @@ Blockly.Blocks['debug_draw_box'] = {
       .appendField("size");
     this.appendValueInput("COLOR")
       .setCheck(null)
-      .appendField("color");
+      .appendField("color")
     this.appendValueInput("OPACITY")
       .appendField("opacity"); // todo: make field slider
     this.appendValueInput("DURATION")
@@ -24,3 +25,9 @@ Blockly.Blocks['debug_draw_box'] = {
     this.setHelpUrl("https://developer.valvesoftware.com/wiki/List_of_Portal_2_Script_Functions#Other");
   }
 }
+
+Blockly.Blocks['color_wheel'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(new ColorWheelField());
+  }}

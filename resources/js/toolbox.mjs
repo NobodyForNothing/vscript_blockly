@@ -515,65 +515,15 @@ export function getToolbox() {
           },
           "COL_FORG": {
             "shadow": {
-              "type": "colour_rgb",
-              "inputs": {
-                "RED": {
-                  "shadow": {
-                    "type": "math_number",
-                    "fields": {
-                      "NUM": 255
-                    }
-                  }
-                },
-                "GREEN": {
-                  "shadow": {
-                    "type": "math_number",
-                    "fields": {
-                      "NUM": 255
-                    }
-                  }
-                },
-                "BLUE": {
-                  "shadow": {
-                    "type": "math_number",
-                    "fields": {
-                      "NUM": 255
-                    }
-                  }
-                },
-              }
-            }
+              "kind": "block",
+              "type": "colour_wheel",
+            },
           },
           "COL_BACK": {
             "shadow": {
-              "type": "colour_rgb",
-              "inputs": {
-                "RED": {
-                  "shadow": {
-                    "type": "math_number",
-                    "fields": {
-                      "NUM": 0
-                    }
-                  }
-                },
-                "GREEN": {
-                  "shadow": {
-                    "type": "math_number",
-                    "fields": {
-                      "NUM": 0
-                    }
-                  }
-                },
-                "BLUE": {
-                  "shadow": {
-                    "type": "math_number",
-                    "fields": {
-                      "NUM": 0
-                    }
-                  }
-                },
-              }
-            }
+              "kind": "block",
+              "type": "colour_wheel",
+            },
           },
           "FADEIN": {
             "shadow": {
@@ -759,34 +709,9 @@ export function getToolbox() {
           },
           "COLOR": {
             "shadow": {
-              "type": "colour_rgb",
-              "inputs": {
-                "RED": {
-                  "shadow": {
-                    "type": "math_number",
-                    "fields": {
-                      "NUM": 255
-                    }
-                  }
-                },
-                "GREEN": {
-                  "shadow": {
-                    "type": "math_number",
-                    "fields": {
-                      "NUM": 255
-                    }
-                  }
-                },
-                "BLUE": {
-                  "shadow": {
-                    "type": "math_number",
-                    "fields": {
-                      "NUM": 255
-                    }
-                  }
-                },
-              }
-            }
+              "kind": "block",
+              "type": "colour_wheel",
+            },
           },
           "OPACITY": {
             "shadow": {
@@ -810,6 +735,37 @@ export function getToolbox() {
         "kind": "block",
         "type": "colour_wheel",
       },
+      {
+        "kind": "block",
+        "type": "colour_rgb",
+        "inputs": {
+          "RED": {
+            "shadow": {
+              "type": "math_number",
+              "fields": {
+                "NUM": 255
+              }
+            }
+          },
+          "GREEN": {
+            "shadow": {
+              "type": "math_number",
+              "fields": {
+                "NUM": 255
+              }
+            }
+          },
+          "BLUE": {
+            "shadow": {
+              "type": "math_number",
+              "fields": {
+                "NUM": 255
+              }
+            }
+          },
+        }
+      }
+      
     ]
   }
 

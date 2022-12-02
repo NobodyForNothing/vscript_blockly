@@ -5,7 +5,7 @@ Blockly.Blocks['vector'] = {
   init: function () {
     this.jsonInit({
       "type": "vector",
-      "message0": "create Vector x: %1 y: %2 z: %3",
+      "message0": "Vector x: %1 y: %2 z: %3",
       "args0": [
         {
           "type": "input_value",

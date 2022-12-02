@@ -1,3 +1,4 @@
+import { ColorWheelField } from "../customBlockFields/ColorWheelField.mjs";
 import { colors } from "./customBlockDefaults.mjs";
 
 // lists
@@ -71,5 +72,22 @@ Blockly.Blocks['list_add_element'] = {
       "tooltip": "append element to list",
       "helpUrl": null
     });
+  }
+}
+
+// colors
+Blockly.Blocks['colour_wheel'] = {
+  init: function () {
+    this.colorWheel = new ColorWheelField();
+    this.appendDummyInput()
+      .appendField(this.colorWheel, "COLOUR");
+    console.log(this.colorWheel.getText())
+    this.setOutput(true, 'Color');
+    this.setColour(this.colorWheel.getText());
+
+    this.setOnChange(function(changeEvent) {
+      this.setColour(this.colorWheel.getText());
+    });
+
   }
 }

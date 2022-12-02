@@ -808,7 +808,7 @@ export function getToolbox() {
       },
       {
         "kind": "block",
-        "type": "color_wheel",
+        "type": "colour_wheel",
       },
     ]
   }

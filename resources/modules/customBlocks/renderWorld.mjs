@@ -25,9 +25,3 @@ Blockly.Blocks['debug_draw_box'] = {
     this.setHelpUrl("https://developer.valvesoftware.com/wiki/List_of_Portal_2_Script_Functions#Other");
   }
 }
-
-Blockly.Blocks['color_wheel'] = {
-  init: function () {
-    this.appendDummyInput()
-      .appendField(new ColorWheelField());
-  }}

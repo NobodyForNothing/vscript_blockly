@@ -4,8 +4,8 @@ export class ColorWheelField extends Blockly.Field {
   constructor(opt_value, opt_validator) {
     const value = opt_value ? opt_value : {
       r: 255,
-      g: 255,
-      b: 255
+      g: 0,
+      b: 0
     };
 
     super(value, opt_validator);
@@ -20,7 +20,7 @@ export class ColorWheelField extends Blockly.Field {
 
   // Gets the text to display when the block is collapsed
   getText() {
-    return valueToHex(this.value_);
+    return valueToHex(this.value);
   }
 
   doClassValidation_(newValue) {
@@ -49,7 +49,6 @@ export class ColorWheelField extends Blockly.Field {
   }
 
   disposeWidget_() {
-    console.log(this)
     this.render_();
   }
 
@@ -81,8 +80,6 @@ export class ColorWheelField extends Blockly.Field {
     
       // handler
       onChange: function (color) {
-        console.log(color.rgb);
-        console.log(colorwheel);
         colorwheel.value = {
           r: color.rgb[0],
           g: color.rgb[1],
@@ -90,14 +87,13 @@ export class ColorWheelField extends Blockly.Field {
         };
       },
     });
-    console.log(editor);
-    
+    wheel.redraw();
   }
 }
 
 function valueToHex(value) {
   if (!value) {
-    console.log(value);
+    console.warn(value);
     return '#000000'
   }
   let r = value.r.toString(16);

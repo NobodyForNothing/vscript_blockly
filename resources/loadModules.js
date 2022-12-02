@@ -14,7 +14,7 @@ import './modules/customBlocks/vectors.mjs';
 import './modules/customBlocks/portal2Console.mjs';
 import './modules/customBlocks/ppmod.mjs';
 import './modules/customBlocks/events.mjs';
-import './modules/customBlocks/lists.mjs';
+import './modules/customBlocks/languageFeatures.mjs';
 import './modules/customBlocks/gameContents.mjs';
 import './modules/customBlocks/enititys.mjs';
 import './modules/customBlocks/renderWorld.mjs';

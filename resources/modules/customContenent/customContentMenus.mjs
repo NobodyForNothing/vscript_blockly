@@ -35,7 +35,7 @@ export async function manageCustomContent() {
   if (customContent['addedMaps'].length === 0 && customContent['addedVpks'].length === 0) {
     const noContentMsg = document.createElement('h2');
     noContentMsg.innerHTML = 'No custom content added!';
-    noContentMsg.style.color = '#fff'
+    noContentMsg.style.color = 'var(--text-color)'
     displayPopup.appendChild(noContentMsg);
   } else {
     const maps = createMenuSection('Maps: (click to delete)', customContent['addedMaps'], (e) => deleteMap(e['fileName']));
@@ -52,7 +52,7 @@ function createMenuSection(sectionTitle, elementList, elementClickFunction) {
   if (elementList === undefined || elementList.length===0) return domSection;
   const domTitle = document.createElement('h3');
   domTitle.innerHTML = sectionTitle;
-  domTitle.style.color = '#fff'
+  domTitle.style.color = 'var(--text-color)'
   domSection.appendChild(domTitle);
   for (const map of elementList) {
     const elementConainter = document.createElement('div');

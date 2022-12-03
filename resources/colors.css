@@ -7,7 +7,6 @@
   --background-color-standout-2: #adadad;
   --mod-icon-background: #000;
   --border-color: #fff;
-  --border-color-standout: #000;
   --placeholder-color: #272727;
   --placeholder-hover-color: #070707;
 
@@ -16,10 +15,6 @@
   --tool-box-seperator-color: var(--border-color);
   --search-text-color: var(--text-color-standout);
   --search-background-color: #1f1f1f91;
-  --list-text-color: var(--text-color-standout);
-  --list-background-color-0: rgb(26, 26, 26);
-  --list-background-color-2: rgb(20, 20, 20);
-  --popup-background-color: rgba(34, 34, 34, 0.729);
   --warn-text-color: #ff6464;
 }
 

@@ -39,13 +39,13 @@ body {
 }
 
 .popup {
-  background: var(--popup-background-color);
+  background: var(--background-color);
   position: absolute;
   left: 15%;
   top: 15%;
   width: 70%;
   height: 70%;
-  border: 2px solid var(--border-color-standout);
+  border: 2px solid var(--border-color);
   border-radius: 20px;
   overflow: scroll;
   z-index: 10000000;

@@ -14,7 +14,6 @@
   /* specific colors */
   --color-workspace: #fff;
   --tool-box-seperator-color: var(--border-color);
-  --input-background-color: var(--background-color);
   --search-text-color: var(--text-color-standout);
   --search-background-color: #1f1f1f91;
   --list-text-color: var(--text-color-standout);

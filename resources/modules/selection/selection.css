@@ -1,10 +1,10 @@
 #mdlSelection li {
-  color: var(--list-text-color);
-  background-color: var(--list-background-color-0);
+  color: var(--text-color);
+  background-color: var(--background-color-standout);
 }
 
 #mdlSelection li:nth-child(odd) {
-  background: var(--list-background-color-1);
+  background: var(--background-color-standout-2);
 }
 
 #mdlSelection li:hover {
@@ -29,15 +29,18 @@
 }
 
 #mdlSelection #mdlSearch {
+  background-color: var(--background-color-standout-2);
+  color: var(--text-color);
   margin-left: 4.3%;
   margin-top: 1.5%;
   width: 60%;
-  background-color: var(--search-background-color);
-  color: var(--search-text-color);
-  border: 2px solid var(--border-color);
   border-radius: 5px;
   font-size: 150%;
   position: fixed;
+}
+
+#mdlSelection #mdlSearch::placeholder {
+  color: var(--placeholder-color);
 }
 
 #mdlSelection #mdlSelectionClose {

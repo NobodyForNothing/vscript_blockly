@@ -97,15 +97,21 @@ body {
   margin-left: -0.5vh;
 }
 
-#packInformation #icon-path {
+#packInformation #icon-container {
   margin-left: 2.5vh;
   margin-top: -1px;
   background-color: var(--mod-icon-background);
   border-radius: 5px;
+  overflow: hidden;
 }
 
-#packInformation #icon-path:hover {
-  transform: scale(1.03);
+#packInformation #icon-path:hover { 
+  /* 
+  This is seperate from the container
+  so the icon doesn't change it's size
+  in the layout.
+  */
+  transform: scale(1.1);
 }
 
 #packInformation .input {

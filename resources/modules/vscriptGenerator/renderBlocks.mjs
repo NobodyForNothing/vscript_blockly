@@ -9,5 +9,5 @@ vscriptGenerator['debug_draw_box'] = function (block) {
 
   const commaSeperatedColor = color.trim().replace(/ +(?= )/g,', '); // replace however many spaces present
 
-  return `DebugDrawBox(${origin}, Vector(0,0,0), ${size}, ${commaSeperatedColor}, ${opacity}, ${duration})`;
+  return `DebugDrawBox(${origin}, Vector(0,0,0), ${size}, ${commaSeperatedColor}, ${opacity}, ${duration});\n`;
 }

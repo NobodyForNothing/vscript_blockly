@@ -149,3 +149,7 @@ body {
   bottom: -15px;
   left: 35%;
 }
+
+#customRessources .contentListItem {
+  display: block;
+}

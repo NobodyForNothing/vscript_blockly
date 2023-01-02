@@ -5,21 +5,19 @@ vscriptGenerator['logic_boolean'] = function (block) {
   const value = block.getFieldValue('BOOL');
   if (value === 'TRUE') {
     return 'true';
-  } else if (value === 'FALSE') {
-    return 'false';
-  }
-  return value;
+  } 
+  return 'false';
 }
 vscriptGenerator['controls_if'] = function (block) {
   const condition = vscriptGenerator.statementToCode(block, 'IF0');
   const action = vscriptGenerator.statementToCode(block, 'DO0');
-  let code = 'if (' + condition + ') { ' + action + '}';
+  let code = `if(${condition}) {\n${action}\n}`;
 
   let elseIfCount = 1;
   let nextIf = vscriptGenerator.statementToCode(block, ('IF' + elseIfCount));
   while (nextIf !== '') {  // revisit: find better way to detect else creation
     const nextAction = vscriptGenerator.statementToCode(block, ('DO' + elseIfCount));
-    code += ' else if (' + nextIf + ') {' + nextAction + '}';
+    code += `else if (${nextIf}) {\n${nextAction}\n}`;
 
     elseIfCount++;
     nextIf = vscriptGenerator.statementToCode(block, ('IF' + elseIfCount));
@@ -27,10 +25,10 @@ vscriptGenerator['controls_if'] = function (block) {
 
   const elseCode = vscriptGenerator.statementToCode(block, 'ELSE');
   if (elseCode !== '') {
-    code += 'else { ' + elseCode + '}';
+    code += `else {\n${elseCode}\n}`;
   }
 
-  return code
+  return code;
 }
 vscriptGenerator['logic_compare'] = function (block) {
   const a = vscriptGenerator.statementToCode(block, 'A');
@@ -58,7 +56,7 @@ vscriptGenerator['logic_compare'] = function (block) {
     default:
       break;
   }
-  return a + ' ' + operator + ' ' + b;
+  return `(${a} ${operator} ${b})`;
 }
 vscriptGenerator['logic_operation'] = function (block) {
   const a = vscriptGenerator.statementToCode(block, 'A');
@@ -69,11 +67,11 @@ vscriptGenerator['logic_operation'] = function (block) {
   } else if (operator === 'OR') {
     operator = '||';
   }
-  return a + ' ' + operator + ' ' + b;
+  return `(${a} ${operator} ${b})`;
 }
 vscriptGenerator['logic_negate'] = function (block) {
   const boolean = vscriptGenerator.statementToCode(block, 'BOOL');
-  return '!(' + boolean + ')';
+  return `!(${boolean})`;
 }
 vscriptGenerator['logic_null'] = function (block) {
   return 'null';
@@ -85,7 +83,7 @@ vscriptGenerator['logic_null'] = function (block) {
 vscriptGenerator['controls_repeat_ext'] = function (block) {
   const loopCount = vscriptGenerator.statementToCode(block, 'TIMES');
   const action = vscriptGenerator.statementToCode(block, 'DO');
-  return 'for(local a=0;a<' + loopCount + ';a+=1) {' + action + '}';
+  return `for(local a=0;a<${loopCount};a+=1){\n${action}\n}`;
 }
 vscriptGenerator['controls_whileUntil'] = function (block) {
   const mode = block.getFieldValue('MODE');
@@ -94,7 +92,7 @@ vscriptGenerator['controls_whileUntil'] = function (block) {
   if (mode === 'UNTIL') {
     condition = '!(' + condition + ')';
   }
-  return 'while (' + condition + ') {' + action + '}'
+  return `while(${condition}){\n${action}\n}`;
 }
 vscriptGenerator['controls_for'] = function (block) {
   const varName = vscriptGenerator.idToName(block.getFieldValue('VAR'));
@@ -103,25 +101,20 @@ vscriptGenerator['controls_for'] = function (block) {
   const endNum = vscriptGenerator.statementToCode(block, 'TO');
   const stepSize = vscriptGenerator.statementToCode(block, 'BY');
   const action = vscriptGenerator.statementToCode(block, 'DO');
-  return ('for(local ' + varName + '=' + startNum + ';a<=' + endNum + ';a+=' + stepSize + ') {' + action + '}');
+  return `for(mod.v.${varName}=${startNum}; mod.v.${varName}<=${endNum}; mod.v.${varName}+=${stepSize}){\n${action}\n}`;
 }
 vscriptGenerator['controls_forEach'] = function (block) {
-  const varId = block.getFieldValue('VAR');
-  const varName = vscriptGenerator.idToName(varId);
+  const varName = vscriptGenerator.idToName(block.getFieldValue('VAR'));
   const inputList = vscriptGenerator.statementToCode(block, 'LIST');
   const action = vscriptGenerator.statementToCode(block, 'DO');
-  return 'foreach(' + varName + ' in ' + inputList + '){' + action + '}';
+  return `foreach(mod.v.${varName} in ${inputList}){\n${action}\n}`;
 }
 vscriptGenerator['controls_flow_statements'] = function (block) {
   const flowOption = block.getFieldValue('FLOW');
-  switch (flowOption) {
-    case 'BREAK':
-      return 'break';
-    case 'CONTINUE':
-      return 'continue';
-    default:
-      return flowOption;
+  if (flowOption === 'BREAK') {
+    return 'break;';
   }
+  return 'continue;';
 }
 
 

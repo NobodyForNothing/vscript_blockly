@@ -9,7 +9,7 @@ vscriptGenerator.initNameDB = function (workspace) {
 }
 
 vscriptGenerator.idToName = function (id) { // todo find cleaner implementation
-  return vscriptGenerator.nameDB_.getNameForUserVariable_(id);
+  return VSCRIPT_BLOCKLY.variablePrefix + vscriptGenerator.nameDB_.getNameForUserVariable_(id);
 }
 
 // allow stacking

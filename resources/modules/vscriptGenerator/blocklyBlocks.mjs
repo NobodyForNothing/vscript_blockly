@@ -101,13 +101,13 @@ vscriptGenerator['controls_for'] = function (block) {
   const endNum = vscriptGenerator.statementToCode(block, 'TO');
   const stepSize = vscriptGenerator.statementToCode(block, 'BY');
   const action = vscriptGenerator.statementToCode(block, 'DO');
-  return `for(mod.v.${varName}=${startNum}; mod.v.${varName}<=${endNum}; mod.v.${varName}+=${stepSize}){\n${action}\n}`;
+  return `for(${varName}=${startNum}; ${varName}<=${endNum}; ${varName}+=${stepSize}){\n${action}\n}`;
 }
 vscriptGenerator['controls_forEach'] = function (block) {
   const varName = vscriptGenerator.idToName(block.getFieldValue('VAR'));
   const inputList = vscriptGenerator.statementToCode(block, 'LIST');
   const action = vscriptGenerator.statementToCode(block, 'DO');
-  return `foreach(mod.v.${varName} in ${inputList}){\n${action}\n}`;
+  return `foreach(${varName} in ${inputList}){\n${action}\n}`;
 }
 vscriptGenerator['controls_flow_statements'] = function (block) {
   const flowOption = block.getFieldValue('FLOW');
@@ -121,12 +121,12 @@ vscriptGenerator['controls_flow_statements'] = function (block) {
 // math
 vscriptGenerator['math_number'] = function (block) {
   const value = block.getFieldValue('NUM');
-  return '' + value;
+  return value.toString();
 }
 vscriptGenerator['math_change'] = function (block) {
   const varName = vscriptGenerator.idToName(block.getFieldValue('VAR'));
   const delta = vscriptGenerator.statementToCode(block, 'DELTA');
-  return varName + '+=' + delta;
+  return `${varName}+=${delta}`;
 }
 vscriptGenerator['math_arithmetic'] = function (block) {
   const a = vscriptGenerator.statementToCode(block, 'A');
@@ -344,13 +344,13 @@ vscriptGenerator['lists_length'] = function (block) {
 vscriptGenerator['variables_get'] = function (block) {
   const varId = block.getFieldValue('VAR');
   const varName = vscriptGenerator.idToName(varId);
-  return VSCRIPT_BLOCKLY.variablePrefix + varName;
+  return varName;
 }
 vscriptGenerator['variables_set'] = function (block) {
   const varId = block.getFieldValue('VAR');
   const varName = vscriptGenerator.idToName(varId);
   const value = vscriptGenerator.statementToCode(block, 'VALUE');
-  return VSCRIPT_BLOCKLY.variablePrefix + varName + '=' + value;
+  return varName + '=' + value;
 }
 
 
@@ -368,7 +368,7 @@ vscriptGenerator['procedures_defreturn'] = function (block) {
   // todo: find better way to solve this
   let variableGlobalization = '// variable globalization\n// bad practice: dont\'t do this when writing code yourself\n';
   for (const varName of params) {
-    variableGlobalization += `${VSCRIPT_BLOCKLY.variablePrefix + varName} = ${varName};\n`;
+    variableGlobalization += `${varName} = ${varName};\n`;
   }
 
   let code = `function ${name}(`;

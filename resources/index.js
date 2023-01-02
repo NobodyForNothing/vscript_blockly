@@ -29,8 +29,10 @@ class VscriptBlockly {
     const variables = Blockly.getMainWorkspace().getAllVariables()
     code += '::mod <- {};\n';
     code += `// decaring variables on a global scope is generally not advised when codeing manually\nmod.v <- {};\nmod._pV <- {};\n`;
+    console.log(variables);
     variables.forEach(v => {
-      code += VSCRIPT_BLOCKLY.variablePrefix + v.name + ' <- null;\n';
+      const varName = vscriptGenerator.idToName(v.id);
+      code += `${varName} <- null;\n`;
     });
     code += '\n';
 

@@ -62,7 +62,7 @@ vscriptGenerator['ppmod_create'] = function (block) {
 }
 vscriptGenerator['var_pre_ent'] = function (block) {
   const varName = vscriptGenerator.idToName(block.getFieldValue('VAR'));
-  return `// making local variable global\n// bad practise\n${VSCRIPT_BLOCKLY.variablePrefix}.${varName} = _ent;\n`
+  return `// making local variable global\n// bad practise\n${varName} = _ent;\n`
 }
 vscriptGenerator['ppmod_text_simple'] = function (block) {
   const text = vscriptGenerator.statementToCode(block, 'TEXT');

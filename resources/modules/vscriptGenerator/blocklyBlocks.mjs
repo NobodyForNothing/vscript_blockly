@@ -125,7 +125,7 @@ vscriptGenerator['math_number'] = function (block) {
 }
 vscriptGenerator['math_change'] = function (block) {
   const varName = vscriptGenerator.idToName(block.getFieldValue('VAR'));
-  const delta = vscriptGenerator.statementToCode(block, 'DELTA');
+  const delta = vscriptGenerator.valueToCode(block, 'DELTA');
   return `${varName}+=${delta}`;
 }
 vscriptGenerator['math_arithmetic'] = function (block) {
@@ -146,10 +146,10 @@ vscriptGenerator['math_arithmetic'] = function (block) {
       operator = '/';
       break;
     case 'POWER':
-      return 'pow(' + a + ',' + b + ')';
+      return `pow(${a}, ${b})`;
       break;
   }
-  return '(' + a + operator + b + ')';
+  return `(${a} ${operator} ${b})`;
 }
 vscriptGenerator['math_single'] = function (block) {
   const operator = block.getFieldValue('OP');
@@ -158,7 +158,7 @@ vscriptGenerator['math_single'] = function (block) {
     case 'ROOT':
       return 'sqrt(' + value + ')';
     case 'ABS':
-      return 'abs(' + value + ')';
+      return `abs(${value})`;
     case 'NEG':
       return '(-' + value + ')';
     case 'LN':
@@ -248,7 +248,7 @@ vscriptGenerator['math_random_float'] = function (block) {
 vscriptGenerator['math_atan2'] = function (block) {
   const a = vscriptGenerator.statementToCode(block, 'A');
   const b = vscriptGenerator.statementToCode(block, 'B');
-  return 'atan2(' + a + ',' + b + ')'
+  return `atan2(${a}, ${b})`;
 }
 
 vscriptGenerator['math_on_list'] = function (block) { }

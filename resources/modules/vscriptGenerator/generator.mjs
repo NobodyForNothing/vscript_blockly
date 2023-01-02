@@ -12,6 +12,13 @@ vscriptGenerator.idToName = function (id) { // todo find cleaner implementation
   return VSCRIPT_BLOCKLY.variablePrefix + vscriptGenerator.nameDB_.getNameForUserVariable_(id);
 }
 
+// overwrote default to remove wrong indentation
+vscriptGenerator.statementToCode = function(block, name) {
+  const targetBlock = block.getInputTargetBlock(name);
+  let code = vscriptGenerator.blockToCode(targetBlock);
+  return code;
+}
+
 // allow stacking
 vscriptGenerator.scrub_ = function (block, code, opt_thisOnly) {
   const nextBlock =

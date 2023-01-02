@@ -111,6 +111,10 @@ export function getToolbox() {
       },
       {
         "kind": 'block',
+        'type': 'math_single'
+      },
+      {
+        "kind": 'block',
         'type': 'math_trig'
       },
       {

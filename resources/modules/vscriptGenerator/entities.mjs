@@ -1,6 +1,9 @@
 import { vscriptGenerator } from "./generator.mjs";
 
 // get information from ent
+vscriptGenerator['ent_list'] = function (block) {
+  return `Entities`;
+}
 vscriptGenerator['ent_get_pos'] = function (block) {
   const entity = vscriptGenerator.statementToCode(block, 'ENT');
   return `${entity}.GetOrigin()`;

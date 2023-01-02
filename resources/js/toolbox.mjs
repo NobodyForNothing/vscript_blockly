@@ -566,6 +566,10 @@ export function getToolbox() {
     "contents": [
       {
         "kind": "block",
+        "type": "ent_list",
+      },
+      {
+        "kind": "block",
         "type": "ent_get_pos",
       },
       {

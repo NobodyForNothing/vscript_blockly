@@ -1,6 +1,19 @@
 import { colors } from "./customBlockDefaults.mjs";
 
 // get info from ent
+Blockly.Blocks['ent_list'] = {
+  init: function () {
+    this.jsonInit({
+      "type": "ent_list",
+      "message0": "all Entities",
+      "args0": [],
+      "output": "Array",
+      "colour": colors.util,
+      "tooltip": "List of all entities in map",
+      "helpUrl": "https://developer.valvesoftware.com/wiki/List_of_Portal_2_Script_Functions#Methods"
+    });
+  }
+}
 Blockly.Blocks['ent_get_pos'] = {
   init: function () {
     this.jsonInit({

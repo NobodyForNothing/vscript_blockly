@@ -111,6 +111,10 @@ export function getToolbox() {
       },
       {
         "kind": 'block',
+        'type': 'math_single'
+      },
+      {
+        "kind": 'block',
         'type': 'math_trig'
       },
       {
@@ -564,6 +568,10 @@ export function getToolbox() {
     "kind": "category",
     "name": "Entities",
     "contents": [
+      {
+        "kind": "block",
+        "type": "ent_list",
+      },
       {
         "kind": "block",
         "type": "ent_get_pos",

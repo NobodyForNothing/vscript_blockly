@@ -8,6 +8,8 @@ let SETTINGS = {
     indentCode: true,
     indentCodeCharCount: 2, // indentation characters per depth
     indentCodeChar: ' ', 
+    removeEmptyLines: true,
+    removeLinesWithoutUse: true,
   }
 }
 
@@ -62,7 +64,7 @@ class VscriptBlockly {
           currentIndent -= blockCloseCount;
 
           const spaceCount = currentIndent * SETTINGS.pretifyGeneratedCode.indentCodeCharCount;
-          code += SETTINGS.pretifyGeneratedCode.indentCodeChar.repeat(spaceCount);
+          code += SETTINGS.pretifyGeneratedCode.indentCodeChar.repeat(Math.max(spaceCount,0));
           code += line.trim(); // might mess with multiline-strings in code
           code += '\n';
           
@@ -71,6 +73,29 @@ class VscriptBlockly {
         }
         console.log(code);
       }
+      if (SETTINGS.pretifyGeneratedCode.removeEmptyLines 
+        || SETTINGS.pretifyGeneratedCode.removeLinesWithoutUse) {
+        const codeLines = code.split('\n');
+        code = '';
+        for (const line of codeLines) {
+          let pureLine = line.trim();
+          let addLine = true;
+          if (SETTINGS.pretifyGeneratedCode.removeEmptyLines
+            && pureLine.length <= 0) {
+            addLine = false;
+          }
+          pureLine = pureLine.replace(';',''); // might add these characterlist as settting
+          if (SETTINGS.pretifyGeneratedCode.removeLinesWithoutUse
+            && pureLine.length <= 0) {
+            addLine = false;
+          }
+          
+          if(addLine) {
+            code += `${line}\n`;
+          }
+        }
+      }
+
     }
 
     VSCRIPT_BLOCKLY.mapSpawnCode = code;
@@ -87,7 +112,7 @@ class VscriptBlockly {
   
     this.workspace = Blockly.inject('blocklyDiv', {toolbox: getToolbox()});
     vscriptGenerator.initNameDB(this.workspace);
-    this.workspace.addChangeListener(this.updateCode);
+    // this.workspace.addChangeListener(this.updateCode);
   }
 }
 

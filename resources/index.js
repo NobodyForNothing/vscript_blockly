@@ -4,7 +4,10 @@ let SETTINGS = {
   pretifyGeneratedCode: {
     active: true,
     removeRepeatingCommata: true,
-    removeComments: false
+    removeComments: false,
+    indentCode: true,
+    indentCodeCharCount: 2, // indentation characters per depth
+    indentCodeChar: ' ', 
   }
 }
 
@@ -46,6 +49,27 @@ class VscriptBlockly {
       }
       if (SETTINGS.pretifyGeneratedCode.removeComments) {
         code = code.replace(/\/\*[\s\S]*?\*\/|([^\\:]|^)\/\/.*$/gm, '$1');
+      }
+      if (SETTINGS.pretifyGeneratedCode.indentCode) {
+        // indentation detection happens through detecting how often blocks open ('{') and close ('}')
+        const codeLines = code.split('\n');
+        let currentIndent = 0;
+        console.log(code);
+        code = '';
+        for(const line of codeLines) {
+          // closing brackets must be searched before indentation to avoid ugly closing if statements
+          const blockCloseCount = line.split('}').length-1;
+          currentIndent -= blockCloseCount;
+
+          const spaceCount = currentIndent * SETTINGS.pretifyGeneratedCode.indentCodeCharCount;
+          code += SETTINGS.pretifyGeneratedCode.indentCodeChar.repeat(spaceCount);
+          code += line.trim(); // might mess with multiline-strings in code
+          code += '\n';
+          
+          const blockOpenCount = line.split('{').length-1;
+          currentIndent += blockOpenCount;
+        }
+        console.log(code);
       }
     }
 

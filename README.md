@@ -1,6 +1,7 @@
 # vscript-blockly
 ## a graphical portal 2 modding framework
-## Attention many features that require variable access or looping are curently broken. This will soon be fixed in an upcomming release.
+## This project is flawed in concept and not under active development
+## Attention many features that require variable access or looping are curently broken. Thismight be fixed in an upcomming release.
 
 ### saving and loading workspaces
 you can save your current workspace by pressing the save button. The program will create a file named with the workspace name and the current time (highest number = newest) and save it to the workspaces folder at the program's location.
